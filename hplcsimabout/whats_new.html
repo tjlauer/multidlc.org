@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111207257-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			
+			gtag('config', 'UA-111207257-1');
+		</script>
+		<title>Multi-Dimensional Separations</title>
+		<link rel="stylesheet" type="text/css" href="sim_css.css">
+		<meta charset="utf-8">
+		<link rel="icon" href="../images/mini-icon.png">
+		<link rel="shortcut icon" href="../images/mini-icon.png">
+		<script src="http://d3js.org/d3.v4.min.js"></script>
+		<script src="../d3.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript" src="../toolkit/pressure_prediction.js"></script>
+		<script type="text/javascript" src="simulator.js"></script>
+		<script type="text/javascript" src="../master-js.js"></script>
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+		<style></style>
+	</head>
+	<body onload="fadeIn();">
+		<div id="everything">
+			<div class="bar"></div>
+			<div id="topYellowBar" class="bar"></div>
+			<img src="../images/column.png" alt="Multi-D LC" id="column">
+			<div style="min-width:1060px">
+				<div id="left">
+					<img src="../images/icon.png" alt="Multi-D LC" id="logo">
+					<div id="corner"></div>
+				</div>
+				<div id="middle">
+					<header>
+						<div id="tfheader">
+							<!--<form id="tfnewsearch" method="get" action="http://www.google.com">
+								<input type="text" id="tfq" class="tftextinput searchOurWebsite" name="q" size="21" maxlength="120" value="Search our website">
+								<input type="submit" value=">" class="tfbutton">
+							</form>-->
+							<div class="tfclear"></div>
+						</div>
+						<a href="http://gustavus.edu">
+							<div id="banner" onmouseover="lower($(this))" onmouseleave="raise($(this))" style="top: -50px;">
+								<img src="../images/gac_logo.png" alt="GAC" id="gac" style="width:76px">
+							</div>
+						</a>
+						<a href="https://www.uva.nl/en">
+						<div id="bannerUVA" onmouseover="lower($(this))" onmouseleave="raise($(this))">
+							<img src="../images/uva_logo.png" alt="UAV" id="UVA" style="width:76px"></img>
+						</div> </a>
+						<h1><br>Multi-Dimensional Separations</h1>
+
+						<div style="color:#FDBD2D;float:left;position:relative;top:-68.6px;">
+							A site dedicated to multi-dimensional separations with an emphasis on the liquid phase.
+						</div>
+
+						<img src="../images/peak.png" alt="peak" class="peak" id="peak" "="" style="left: 28px; z-index: 1; height: 23px; padding-top: 5px; width: 80px; opacity: 1;">
+						<img src="../images/peak2.png" alt="peak" class="peak" id="peak2" "="" style="z-index: -2; opacity: 1; height: 23px; padding-top: 5px; width: 80px; left: -57px;">
+						<script>
+							selected_tab = 5;							setPeak(selected_tab);
+							menuSelect(selected_tab);
+						</script>
+						<menu style="position:relative;top:-36px;">
+							<ul class="cf">
+								<li class="unselectable" onmouseover="menuSelect(0)" onmouseleave="menuSelect(selected_tab);">
+									<a href="../">Home</a>
+								</li>
+								<li class="unselectable" onmouseover="menuSelect(1)" onmouseleave="menuSelect(selected_tab);">
+									<a href="../about/about">About</a>
+								</li>
+								<li class="unselectable" onmouseover="menuSelect(2)" onmouseleave="menuSelect(selected_tab);">
+									<a href="../hplc_resources">Resources</a>
+								</li>
+								<li class="unselectable" onmouseleave="menuSelect(selected_tab);hideLiteratureDropdown();">
+									<a class="dropdown" id="LiteratureDropdownA" onmouseover="menuSelect(3);showLiteratureDropdown();" href="../literature/applications-multidlc" style="width:110px">Literature</a>
+									<ul id="LiteratureDropdownUL">
+										<li>
+											<a href="../literature/applications-multidlc">Applications of Multi-Dimensional LC</a>
+										</li>
+										<li>
+											<a href="../literature/reviews">Reviews</a>
+										</li>
+										<li>
+											<a href="../literature/top-30">Top 30</a>
+										</li>
+										<li>
+											<a href="../literature/top-10">Top Ten</a>
+										</li>
+										<li>
+											<a href="../books">Books</a>
+										</li>
+									</ul>
+								</li>
+								<li class="unselectable" onmouseover="menuSelect(4)" onmouseleave="menuSelect(selected_tab);">
+									<a href="../terminology">Terminology</a>
+								</li>
+								<li class="unselectable" onmouseleave="menuSelect(selected_tab);hideToolsDropdown();">
+									<a class="dropdown" id="ToolsDropdownA" onmouseover="menuSelect(5);showToolsDropdown();" href="../toolkit/tools" style="width:110px">Tools</a>
+									<ul id="ToolsDropdownUL">
+										<li>
+											<a href="../hplcsim/hplcsim.html">Simulator</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<cap id="column"></cap>
+						</menu>
+						<script>
+							function showLiteratureDropdown(){
+								//console.log("showLiteratureDropdown()");
+								document.getElementById("LiteratureDropdownUL").style.opacity = "0.9";
+								document.getElementById("LiteratureDropdownUL").style.visibility = "visible";
+								document.getElementById("LiteratureDropdownA").className = "dropdownSelected";
+							}
+							function hideLiteratureDropdown(){
+								//console.log("hideLiteratureDropdown()");
+								document.getElementById("LiteratureDropdownUL").style.opacity = "0";
+								document.getElementById("LiteratureDropdownUL").style.visibility = "hidden";
+								document.getElementById("LiteratureDropdownA").className = "dropdown";
+							}
+							function showToolsDropdown(){
+								//console.log("showToolsDropdown()");
+								document.getElementById("ToolsDropdownUL").style.opacity = "0.9";
+								document.getElementById("ToolsDropdownUL").style.visibility = "visible";
+								document.getElementById("ToolsDropdownA").className = "dropdownSelected";
+							}
+							function hideToolsDropdown(){
+								//console.log("hideToolsDropdown()");
+								document.getElementById("ToolsDropdownUL").style.opacity = "0";
+								document.getElementById("ToolsDropdownUL").style.visibility = "hidden";
+								document.getElementById("ToolsDropdownA").className = "dropdown";
+							}
+							hideLiteratureDropdown();
+							hideToolsDropdown();
+						</script>
+					</header>
+					<style>
+						#posts {
+							font-size: 16px;
+						}
+						
+						h2 {
+							font-size: 20px;
+						}
+						
+						main {
+							width: 760px;
+						}
+						
+						th {
+							width: 5%;
+							background: #f2f6f8;
+							border: 0px solid white;
+							vertical-align: top;
+							font-weight: bold;
+						}
+						
+						td {
+							width: 95%;
+						}
+					</style>
+					<main>
+						<div id="posts">
+							<h2 style="font-size: 28px;">HPLC Simulator: What's New</h2>
+							<a href="../hplcsim"><input type="button" value="Back to Simulator"></a>
+							<!--
+							[+] Added something
+							[-] Removed something
+							[*] Changed/Fixed something
+							[|] Temporarily disabled something
+							[~] Deprecated something
+							[=] Added functionality that is not yet enabled
+							[^] Small tweak to something
+							-->
+							
+							<!--
+							<table width="100%">
+								<tr>
+									<th></th>
+									<td></td>
+								</tr>
+							</table>
+							-->
+							
+							<br>--------------------------------------------------------------------------------
+							<h2><a href="http://multidlc.org/hplcsim_4_0_0" style="color:red;">Version 4.0.0 <b>(Beta)</b></a></h2>
+							<!--Released: <strong>11/16/2020</strong><br><br>-->
+							<table width="100%">
+								<tr>
+									<th>[+]</th>
+									<td>Added "Detector Frequency" input in the "General Properties" menu. This is replacing the "Plot Points" input.</td>
+								</tr>
+								<tr>
+									<th>[~]</th>
+									<td>Deprecated "Time Constant" input. Instead of disabling the input box, the input box was removed and tau is now locked at 0.1 seconds.</td>
+								</tr>
+								<tr>
+									<th>[~]</th>
+									<td>Deprecated "Plot Points" input. This is being replaced by the "Detector Frequency" input.</td>
+								</tr>
+								<tr>
+									<th>[*]</th>
+									<td>HPLCSim user interface files are now <b>.PHP</b> instead of <b>.HTML</b> starting from version <b>4.0.0 and onward</b>. This change allows intigration with the website master header and footer files.</td>
+								</tr>
+								<tr>
+									<th>[-]</th>
+									<td><b><i>Removed covfefe factor.</i></b></td>
+								</tr>
+							</table>
+							<!--<br><br>
+							<b style="font-size: 20px;">----- What's New & About Pages -----</b><br>
+							<table width="100%">
+								<tr>
+									<th>[*]</th>
+									<td>Increased title font size from 18px to 28px to improve readability.</td>
+								</tr>
+								<tr>
+									<th>[*]</th>
+									<td>Increased header font size from 18px to 20px to improve readability.</td>
+								</tr>
+								<tr>
+									<th>[*]</th>
+									<td>Increased text font size from 12px to 16px to improve readability.</td>
+								</tr>
+							</table>-->
+							<br>--------------------------------------------------------------------------------
+							<h2><a href="http://multidlc.org/hplcsim_3_3_0" style="color: #007aa2;">Version 3.3.0 <b>(Latest Stable Release)</b></a></h2>
+							Released: <strong>12/28/2020</strong><br><br>
+							<table width="100%">
+								<tr>
+									<th>[*]</th>
+									<td>Fixed issue where compound lnkw and S parameters were duplicated across mobile phases.</td>
+								</tr>
+								<tr>
+									<th>[*]</th>
+									<td>The "Manage Compounds" list now updates with valid compounds when switching between different mobile phases.</td>
+								</tr>
+								<tr>
+									<th>[^]</th>
+									<td><i>Potentially</i> fixed issue where the data table wasn't updating correctly when using<br>Isocratic Elution Mode.</td>
+								</tr>
+								<tr>
+									<th>[-]</th>
+									<td><b><i>Removed covfefe factor.</i></b></td>
+								</tr>
+							</table>
+							<br>--------------------------------------------------------------------------------
+							<h2><a href="http://multidlc.org/hplcsim_3_2_0">Version 3.2.0</a></h2>
+							Released: <strong>11/16/2020</strong><br><br>
+							<table width="100%">
+								<tr>
+									<th>[+]</th>
+									<td>Added ability to set compound concentrations.</td>
+								</tr>
+								<tr>
+									<th>[*]</th>
+									<td>Peaks are now drawn starting at t<sub>R</sub> - 8σ to improve program performance, especially when working with large retention factors.</td>
+								</tr>
+								<tr>
+									<th>[*]</th>
+									<td>Fixed issue where the reset button didn't redraw the table or the graph.</td>
+								</tr>
+								<tr>
+									<th>[~]</th>
+									<td>In future versions, the "plot points" input will be replaced with a "detector frequency" input.</td>
+								</tr>
+								<tr>
+									<th>[-]</th>
+									<td><b><i>Removed covfefe factor.</i></b></td>
+								</tr>
+							</table>
+							<!--+ Added ability to set compound concentrations.<br>
+							* Peaks are now drawn starting at t<sub>R</sub> - 8σ to improve performance with large retention factors.<br>
+							* Fixed issue where the reset button didn't redraw the table or the graph.<br>
+							~ In future versions, the "plot points" input will be replaced with a "detector frequency" input.<br>
+							- <b><i>Removed covfefe factor.</i></b>-->
+							<br>--------------------------------------------------------------------------------
+							<h2><a href="http://multidlc.org/hplcsim_3_1_0">Version 3.1.0</a></h2>
+							Released: <strong>07/23/2020</strong><br><br>
+							+ Added ability to show data point dots on the graph.<br>
+							+ Added display for "Frequency" between data points.<br>
+							- Removed "curvy" lines in favor of straight lines to connect data points.<br>
+							* Fixed issue where the reset button didn't remove highlight from the graph or the table.<br>
+							- <b><i>Removed covfefe factor.</i></b>
+							<br>--------------------------------------------------------------------------------
+							<h2><a href="http://multidlc.org/hplcsim_3_0_3">Version 3.0.3</a></h2>
+							Released: <strong>07/03/2020</strong><br><br>
+							+ Added "Instructor Resources" .<br>
+							* Increased "Plot Points" default value from 3000 to 6000.<br>
+							- <b><i>Removed covfefe factor.</i></b>
+							<br>--------------------------------------------------------------------------------
+							<h2><a href="http://multidlc.org/hplcsim_3_0_2">Version 3.0.2</a></h2>
+							Released: <strong>05/09/2020</strong><br><br>
+							* Fixed bug where "Automatically determine time span" didn't work when using the Gradient Elution Mode.<br>
+							- <b><i>Removed covfefe factor.</i></b>
+							<br>--------------------------------------------------------------------------------
+							<h2><a href="http://multidlc.org/hplcsim_3_0_1">Version 3.0.1</a></h2>
+							Released: <strong>05/08/2020</strong><br><br>
+							* Fixed Flow Velocities indenting.<br>
+							* Renamed "HETP" to "H (plate height)" to reflect current IUPAC recommendations.<br>
+							* Renamed "Theoretical Plates" to "Plate number" to reflect current IUPAC recommendations.<br>
+							* Renamed "k&#39;" to "k" to reflect current IUPAC recommendations.<br>
+							+ Reset button now resets values in General Properties and Column Properties menus.<br>
+							+ Added "Signal Offset" functionality in the General Properties menu.<br>
+							+ Added "Noise" functionality in the General Properties menu.<br>
+							- <b><i>Removed covfefe factor.</i></b>
+							<br>--------------------------------------------------------------------------------
+							<h2><a href="http://multidlc.org/hplcsim_3_0_0">Version 3.0.0</a></h2>
+							Released: <strong>03/29/2020</strong><br><br>
+							* Fixed infinite loop problem.<br>
+							* Fixed graph end time to make sure peaks are displayed properly.<br>
+							* Fixed bug where some gradient profiles weren't correct.<br>
+							* All menus are now collapsed by default when loading the simulator.<br>
+							+ Added functionality to add more stationary phases in the future.<br>
+							+ Added functionality to show gradient profile in graph. Will be added in future update.<br>
+							+ Added compound selection checkboxes.<br>
+							- Removed compound selection dropdown.<br>
+							- <b><i>Removed covfefe factor.</i></b>
+							<br>--------------------------------------------------------------------------------
+							<h2><a href="http://multidlc.org/hplcsim_2_1_2">Version 2.1.2 <b>(Classic)</b></a></h2>
+							Released: <strong>08/14/2019</strong><br><br>
+							* Fixed viscosity calculation to account for MeOH.<br>
+							+ Added gradient viscosity calculation. Viscosity value is now the average viscosity across the entire gradient.<br>
+							- <b><i>Removed covfefe factor.</i></b>
+							<br>--------------------------------------------------------------------------------
+							<h2>Version 2.1.1</h2>
+							Released: <strong>04/22/2018</strong><br><br>
+							* Changed default compounds list.<br>
+							- Removed Solvent B Fraction warning.<br>
+							- <b><i>Removed covfefe factor.</i></b>
+							<br>--------------------------------------------------------------------------------
+							<h2>Version 2.1.0</h2>
+							Released: <strong>04/18/2018</strong><br><br>
+							* Fixed problem with highlighted peaks not lining up with the highlighted row on the table.<br>
+							* Fixed problem with the ability to highlight breaking when a compound is added, removed, or the reset button was pressed.<br>
+							- <b><i>Removed covfefe factor.</i></b>
+							<br>--------------------------------------------------------------------------------
+							<h2>Version 2.0.2</h2>
+							Released: <strong>03/06/2018</strong><br><br>
+							+ Added analyte diffusion coefficient calculations.<br>
+							(Using 200 g/mol as a representitive value for 'Vm')<br>
+							- <b><i>Removed covfefe factor.</i></b>
+							<br>--------------------------------------------------------------------------------
+							<h2>Version 2.0.1</h2>
+							Released: <strong>01/03/2018</strong><br><br>
+							* More tweaks to the style code.<br>
+							= Started development on graph interactivity.<br>
+							- <b><i>Removed covfefe factor.</i></b>
+							<br>--------------------------------------------------------------------------------
+							<h2>Version 2.0.0</h2>
+							Released: <strong>01/02/2018</strong><br><br>
+							+ Added the ability to add custom compounds.<br>
+							- Removed unneeded and 'bad idea' compounds.<br>
+							* Fixed gradient elution mode equations.<br>
+							* Changed the style code to make the page more dynamic.<br>
+							- <b><i>Removed covfefe factor.</i></b>
+							<br>--------------------------------------------------------------------------------
+							<h2>Version 1.3.0</h2>
+							Released: <strong>12/17/2017</strong><br><br>
+							+ Added a "What's New" page.<br>
+							* Table below graph is now sorted by retention time (t<sub>R</sub>).<br>
+							- <b><i>Removed covfefe factor.</i></b>
+							<br>--------------------------------------------------------------------------------
+							<h2>Version 1.2.0</h2>
+							Released: <strong>12/07/2017</strong><br><br>
+							+ Added style code to make simulator match the rest of the website.<br>
+							- <b><i>Removed covfefe factor.</i></b>
+							<br>--------------------------------------------------------------------------------
+							<h2>Version 1.1.0</h2>
+							Released: <strong>11/23/2017</strong><br><br>
+							+ Added more compounds to the dropdown menu.<br>
+							+ Added impurities to the dropdown menu.<br>
+							- <b><i>Removed covfefe factor.</i></b>
+							<br>--------------------------------------------------------------------------------
+							<h2>Version 1.0.1</h2>
+							Released: <strong>10/29/2017</strong><br><br>
+							|| Disabled pre-column tubing parameters.<br>
+							- <b><i>Removed covfefe factor.</i></b>
+							<br>--------------------------------------------------------------------------------
+							<h2>Version 1.0.0</h2>
+							Released: <strong>10/27/2017</strong><br><br>
+							+ Added the gradient elution mode.<br>
+							- <b><i>Removed covfefe factor.</i></b>
+							<br>--------------------------------------------------------------------------------
+						</div>
+					</main>
+					<div id="copyright">
+						Copyright © 2016 Multi-Dimensional Separations - All Rights Reserved
+					</div>
+				</div>
+			</div>
+
+			<div id="lowerYellowBar" class="bar"></div>
+			<footer></footer>
+		</div>
+	</body>
+	<script>
+		document.onload = load();
+		document.onload = openMenu_ALL();
+		//document.onload = openMenu('general_properties');
+		//document.onload = openMenu('chromatographic_properties');
+		
+		console.log(document.getElementById('content').clientWidth);
+		console.log(window.innerWidth);
+		console.log((window.innerWidth - document.getElementById('content').clientWidth)/2);
+
+		window.onclick = function(event) {
+		  if (!event.target.matches('.dropbutton')) {
+		    var dropdowns = document.getElementsByClassName("dropdown-content");
+		    var i;
+		    for (i = 0; i < dropdowns.length; i++) {
+		      var openDropdown = dropdowns[i];
+		      if (openDropdown.classList.contains('show')) {
+		      	var div = openDropdown.id.replace("dropdown", "switch");
+		      	var arrow = document.getElementById(div).innerHTML.charCodeAt();
+		      	if (arrow == "9650") {
+		      		document.getElementById(div).innerHTML = "&#9660;";
+		      	}
+		        openDropdown.classList.remove('show');
+		      }
+		    }
+		  }
+		}
+
+		$("#dataTable tr").click(function() {
+			var selected = $(this).hasClass("highlight");
+			$("#dataTable tbody tr").removeClass("highlight");
+			$("#dataTable").removeClass();
+			if(!selected){
+				$(this).addClass("highlight");
+				$('#dataTable').addClass($(this).attr("id"));
+			}
+			calculatePeaks();
+		});
+		
+		function switchToTab(tab){
+		  if(tab == "about"){
+		    document.getElementById("about").hidden = false;
+			document.getElementById("content").hidden = true;
+		  } else if(tab == "main"){
+		    document.getElementById("about").hidden = true;
+			document.getElementById("content").hidden = false;
+		  }
+		}
+		
+		function updateDebugLog(){
+			var master = document.getElementById("showDebuggingLog");
+			if(master.checked == true){
+				document.getElementById("debuggingLog").hidden = false;
+			} else {
+				document.getElementById("debuggingLog").hidden = true;
+				document.getElementById("showDebuggingLog_Loading").checked = false;
+				document.getElementById("showDebuggingLog_Other").checked = false;
+			}
+		}
+		
+		function setDebugLog(){
+			var masterOne = document.getElementById("showDebuggingLog_Loading");
+			var masterTwo = document.getElementById("showDebuggingLog_Other");
+			if(masterOne.checked == true){
+				document.getElementById("debuggingLog_Loading").hidden = false;
+			} else {
+				document.getElementById("debuggingLog_Loading").hidden = true;
+			}
+			if(masterTwo.checked == true){
+				document.getElementById("debuggingLog_Other").hidden = false;
+			} else {
+				document.getElementById("debuggingLog_Other").hidden = true;
+			}
+		}
+	</script>
+</html>

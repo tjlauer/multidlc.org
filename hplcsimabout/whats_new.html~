@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Multi-Dimensional Separations</title>
+		<link rel="stylesheet" type="text/css" href="sim_css.css">
+		<meta charset="utf-8">
+		<link rel="icon" href="../images/mini-icon.png">
+		<link rel="shortcut icon" href="../images/mini-icon.png">
+		<script src="http://d3js.org/d3.v4.min.js"></script>
+		<script src="../d3.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript" src="../toolkit/pressure_prediction.js"></script>
+		<script type="text/javascript" src="simulator.js"></script>
+		<script type="text/javascript" src="../master-js.js"></script>
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+		<style></style>
+	</head>
+	<body onload="fadeIn();">
+		<div id="everything">
+			<div class="bar"></div>
+			<div id="topYellowBar" class="bar"></div>
+			<img src="../images/column.png" alt="Multi-D LC" id="column">
+			<div style="min-width:1060px">
+				<div id="left">
+					<img src="../images/icon.png" alt="Multi-D LC" id="logo">
+					<div id="corner"></div>
+				</div>
+				<div id="middle">
+					<header>
+						<div id="tfheader">
+							<form id="tfnewsearch" method="get" action="http://www.google.com">
+								<input type="text" id="tfq" class="tftextinput" name="q" size="21" maxlength="120" value="Search our website">
+								<input type="submit" value=">" class="tfbutton">
+							</form>
+							<div class="tfclear"></div>
+						</div>
+						<a href="http://gustavus.edu">
+							<div id="banner" onmouseover="lower($(this))" onmouseleave="raise($(this))" style="top: -50px;">
+								<img src="../images/gac_logo.png" alt="GAC" id="gac" style="width:76px">
+							</div>
+						</a>
+						<h1><br>Multi-Dimensional Separations</h1>
+
+						<div style="color:#FDBD2D;float:left;">
+							A site dedicated to multi-dimensional separations with an emphasis on the liquid phase.
+						</div>
+
+						<img src="../images/peak.png" alt="peak" class="peak" id="peak" "="" style="left: 28px; z-index: 1; height: 23px; padding-top: 5px; width: 80px; opacity: 1;">
+						<img src="../images/peak2.png" alt="peak" class="peak" id="peak2" "="" style="z-index: -2; opacity: 1; height: 23px; padding-top: 5px; width: 80px; left: -57px;">
+						<script>
+							selected_tab = 0;							setPeak(selected_tab);
+							menuSelect(selected_tab);
+						</script>
+						<menu>
+							<ul class="cf">
+								<li class="unselectable" onmouseover="menuSelect(0)" onmouseleave="menuSelect(selected_tab);">
+									<a href="../index">Home</a>
+								</li>
+								<li class="unselectable" onmouseover="menuSelect(1)" onmouseleave="menuSelect(selected_tab);">
+									<a href="../about">About</a>
+								</li>
+								<li class="unselectable" onmouseover="menuSelect(2)" onmouseleave="menuSelect(selected_tab);">
+									<a href="../hplc_resources">Resources</a>
+								</li>
+								<li class="unselectable" onmouseover="menuSelect(3)" onmouseleave="menuSelect(selected_tab);">
+									<a class="dropdown" href="../literature/applications-multidlc" style="width:110px">Literature</a>
+									<ul>
+										<li>
+											<a href="../literature/applications-multidlc" style="font-size:10px;">Applications of Multi-Dimensional LC</a>
+										</li>
+										<li>
+											<a href="../literature/reviews">Reviews</a>
+										</li>
+										<li>
+											<a href="../literature/top-30">Top 30</a>
+										</li>
+										<li>
+											<a href="../literature/top-10">Top Ten</a>
+										</li>
+										<li>
+											<a href="../books">Books</a>
+										</li>
+									</ul>
+								</li>
+								<li class="unselectable" onmouseover="menuSelect(4)" onmouseleave="menuSelect(selected_tab);">
+									<a href="../terminology">Terminology</a>
+								</li>
+								<li class="unselectable" onmouseover="menuSelect(5)" onmouseleave="menuSelect(selected_tab);">
+									<a href="../toolkit/tools">Tools</a>
+								</li>
+							</ul>
+							<cap id="column"></cap>
+						</menu>
+					</header>
+					<main>
+						<div id="posts">
+							<h2>HPLC Simulator: What's New</h2>
+							<a href="../hplcsim/hplcsim.html"><input type="button" value="Back to Simulator"></a><br>
+							--------------------------------------------------------------------------------
+							<h2>Version 2.1.1</h2>
+							Released: <strong>04/22/2018</strong><br><br>
+							* Changed default compounds list.<br>
+							- Removed .
+							<br>--------------------------------------------------------------------------------
+							<h2>Version 2.1.0</h2>
+							Released: <strong>04/18/2018</strong><br><br>
+							* Fixed problem with highlighted peaks not lining up with the highlighted row on the table.<br>
+							* Fixed problem with the ability to highlight breaking when a compound is added, removed, or the reset button was pressed.
+							<br>--------------------------------------------------------------------------------
+							<h2>Version 2.0.2</h2>
+							Released: <strong>03/06/2018</strong><br><br>
+							+ Added analyte diffusion coefficient calculations.<br>
+							(Using 200 g/mol as a representitive value for 'Vm')
+							<br>--------------------------------------------------------------------------------
+							<h2>Version 2.0.1</h2>
+							Released: <strong>01/03/2018</strong><br><br>
+							* More tweaks to the style code.<br>
+							= Started development on graph interactivity.
+							<br>--------------------------------------------------------------------------------
+							<h2>Version 2.0.0</h2>
+							Released: <strong>01/02/2018</strong><br><br>
+							+ Added the ability to add custom compounds.<br>
+							- Removed unneeded and 'bad idea' compounds.<br>
+							* Fixed gradient elution mode equations.<br>
+							* Changed the style code to make the page more dynamic.
+							<br>--------------------------------------------------------------------------------
+							<h2>Version 1.3.0</h2>
+							Released: <strong>12/17/2017</strong><br><br>
+							+ Added a "What's New" page.<br>
+							* Table below graph is now sorted by retention time (t<sub>R</sub>).
+							<br>--------------------------------------------------------------------------------
+							<h2>Version 1.2.0</h2>
+							Released: <strong>12/07/2017</strong><br><br>
+							+ Added style code to make simulator match the rest of the website.
+							<br>--------------------------------------------------------------------------------
+							<h2>Version 1.1.0</h2>
+							Released: <strong>11/23/2017</strong><br><br>
+							+ Added more compounds to the dropdown menu.<br>
+							+ Added impurities to the dropdown menu.
+							<br>--------------------------------------------------------------------------------
+							<h2>Version 1.0.1</h2>
+							Released: <strong>10/29/2017</strong><br><br>
+							|| Disabled pre-column tubing parameters.
+							<br>--------------------------------------------------------------------------------
+							<h2>Version 1.0.0</h2>
+							Released: <strong>10/27/2017</strong><br><br>
+							+ Added the gradient elution mode.
+							<br>--------------------------------------------------------------------------------
+						</div>
+					</main>
+					<div id="copyright">
+						Copyright © 2016 Multi-Dimensional Separations - All Rights Reserved
+					</div>
+				</div>
+			</div>
+
+			<div id="lowerYellowBar" class="bar"></div>
+			<footer></footer>
+		</div>
+	</body>
+	<script>
+		document.onload = load();
+		document.onload = openMenu_ALL();
+		//document.onload = openMenu('general_properties');
+		//document.onload = openMenu('chromatographic_properties');
+		
+		console.log(document.getElementById('content').clientWidth);
+		console.log(window.innerWidth);
+		console.log((window.innerWidth - document.getElementById('content').clientWidth)/2);
+
+		window.onclick = function(event) {
+		  if (!event.target.matches('.dropbutton')) {
+		    var dropdowns = document.getElementsByClassName("dropdown-content");
+		    var i;
+		    for (i = 0; i < dropdowns.length; i++) {
+		      var openDropdown = dropdowns[i];
+		      if (openDropdown.classList.contains('show')) {
+		      	var div = openDropdown.id.replace("dropdown", "switch");
+		      	var arrow = document.getElementById(div).innerHTML.charCodeAt();
+		      	if (arrow == "9650") {
+		      		document.getElementById(div).innerHTML = "&#9660;";
+		      	}
+		        openDropdown.classList.remove('show');
+		      }
+		    }
+		  }
+		}
+
+		$("#dataTable tr").click(function() {
+			var selected = $(this).hasClass("highlight");
+			$("#dataTable tbody tr").removeClass("highlight");
+			$("#dataTable").removeClass();
+			if(!selected){
+				$(this).addClass("highlight");
+				$('#dataTable').addClass($(this).attr("id"));
+			}
+			calculatePeaks();
+		});
+		
+		function switchToTab(tab){
+		  if(tab == "about"){
+		    document.getElementById("about").hidden = false;
+			document.getElementById("content").hidden = true;
+		  } else if(tab == "main"){
+		    document.getElementById("about").hidden = true;
+			document.getElementById("content").hidden = false;
+		  }
+		}
+		
+		function updateDebugLog(){
+			var master = document.getElementById("showDebuggingLog");
+			if(master.checked == true){
+				document.getElementById("debuggingLog").hidden = false;
+			} else {
+				document.getElementById("debuggingLog").hidden = true;
+				document.getElementById("showDebuggingLog_Loading").checked = false;
+				document.getElementById("showDebuggingLog_Other").checked = false;
+			}
+		}
+		
+		function setDebugLog(){
+			var masterOne = document.getElementById("showDebuggingLog_Loading");
+			var masterTwo = document.getElementById("showDebuggingLog_Other");
+			if(masterOne.checked == true){
+				document.getElementById("debuggingLog_Loading").hidden = false;
+			} else {
+				document.getElementById("debuggingLog_Loading").hidden = true;
+			}
+			if(masterTwo.checked == true){
+				document.getElementById("debuggingLog_Other").hidden = false;
+			} else {
+				document.getElementById("debuggingLog_Other").hidden = true;
+			}
+		}
+	</script>
+</html>

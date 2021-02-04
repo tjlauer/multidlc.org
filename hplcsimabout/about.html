@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-111207257-1"></script>
+    <script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			
+			gtag('config', 'UA-111207257-1');
+		</script>
+    <title>Multi-Dimensional Separations</title>
+    <link rel="stylesheet" type="text/css" href="sim_css.css">
+    <link rel="icon" href="../images/mini-icon.png">
+    <link rel="shortcut icon" href="../images/mini-icon.png">
+    <script src="http://d3js.org/d3.v4.min.js"></script>
+    <script src="../d3.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+    <script type="text/javascript" src="../jquery.js"></script>
+    <script type="text/javascript" src="../toolkit/pressure_prediction.js"></script>
+    <script type="text/javascript" src="simulator.js"></script>
+    <script type="text/javascript" src="../master-js.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style></style>
+  </head>
+  <body onload="fadeIn();">
+    <div id="everything">
+      <div class="bar"></div>
+      <div id="topYellowBar" class="bar"></div>
+      <img src="../images/column.png" alt="Multi-D LC" id="column">
+      <div style="min-width:1060px">
+        <div id="left"> <img src="../images/icon.png" alt="Multi-D LC" id="logo">
+          <div id="corner"></div>
+        </div>
+        <div id="middle">
+          <header>
+            <div id="tfheader">
+              <!--<form id="tfnewsearch" method="get" action="http://www.google.com">
+								<input type="text" id="tfq" class="tftextinput searchOurWebsite" name="q" size="21" maxlength="120" value="Search our website">								<input type="submit" value=">" class="tfbutton">							</form>-->
+            </div>
+            <a href="http://gustavus.edu">
+              <div id="banner" onmouseover="lower($(this))" onmouseleave="raise($(this))"
+                style="top: -50px;"> <img src="../images/gac_logo.png" alt="GAC"
+                  id="gac" style="width:76px"> </div>
+            </a> <a href="https://www.uva.nl/en">
+              <div id="bannerUVA" onmouseover="lower($(this))" onmouseleave="raise($(this))">
+                <img src="../images/uva_logo.png" alt="UAV" id="UVA" style="width:76px">
+              </div>
+            </a>
+            <h1><br>
+              Multi-Dimensional Separations</h1>
+            <div style="color:#FDBD2D;float:left;position:relative;top:-68.6px;">
+              A site dedicated to multi-dimensional separations with an emphasis
+              on the liquid phase. </div>
+            <img src="../images/peak.png" alt="peak" class="peak" id="peak" "=""
+              style="left: 28px; z-index: 1; height: 23px; padding-top: 5px; width: 80px; opacity: 1;">
+            <img src="../images/peak2.png" alt="peak" class="peak" id="peak2" "=""
+              style="z-index: -2; opacity: 1; height: 23px; padding-top: 5px; width: 80px; left: -57px;">
+            <script>
+							selected_tab = 5;							setPeak(selected_tab);
+							menuSelect(selected_tab);
+						</script>
+            <menu style="position:relative;top:-36px;">
+              <ul class="cf">
+                <li class="unselectable" onmouseover="menuSelect(0)" onmouseleave="menuSelect(selected_tab);">
+                  <a href="../">Home</a> </li>
+                <li class="unselectable" onmouseover="menuSelect(1)" onmouseleave="menuSelect(selected_tab);">
+                  <a href="../about/about">About</a> </li>
+                <li class="unselectable" onmouseover="menuSelect(2)" onmouseleave="menuSelect(selected_tab);">
+                  <a href="../hplc_resources">Resources</a> </li>
+                <li class="unselectable" onmouseleave="menuSelect(selected_tab);hideLiteratureDropdown();">
+                  <a class="dropdown" id="LiteratureDropdownA" onmouseover="menuSelect(3);showLiteratureDropdown();"
+                    href="../literature/applications-multidlc" style="width:110px">Literature</a>
+                  <ul id="LiteratureDropdownUL">
+                    <li> <a href="../literature/applications-multidlc">Applications
+                        of Multi-Dimensional LC</a> </li>
+                    <li> <a href="../literature/reviews">Reviews</a> </li>
+                    <li> <a href="../literature/top-30">Top 30</a> </li>
+                    <li> <a href="../literature/top-10">Top Ten</a> </li>
+                    <li> <a href="../books">Books</a> </li>
+                  </ul>
+                </li>
+                <li class="unselectable" onmouseover="menuSelect(4)" onmouseleave="menuSelect(selected_tab);">
+                  <a href="../terminology">Terminology</a> </li>
+                <li class="unselectable" onmouseleave="menuSelect(selected_tab);hideToolsDropdown();">
+                  <a class="dropdown" id="ToolsDropdownA" onmouseover="menuSelect(5);showToolsDropdown();"
+                    href="../toolkit/tools" style="width:110px">Tools</a>
+                  <ul id="ToolsDropdownUL">
+                    <li> <a href="../hplcsim/hplcsim.html">Simulator</a> </li>
+                  </ul>
+                </li>
+              </ul>
+              <cap id="column"></cap> </menu>
+            <script>
+							function showLiteratureDropdown(){
+								//console.log("showLiteratureDropdown()");
+								document.getElementById("LiteratureDropdownUL").style.opacity = "0.9";
+								document.getElementById("LiteratureDropdownUL").style.visibility = "visible";
+								document.getElementById("LiteratureDropdownA").className = "dropdownSelected";
+							}
+							function hideLiteratureDropdown(){
+								//console.log("hideLiteratureDropdown()");
+								document.getElementById("LiteratureDropdownUL").style.opacity = "0";
+								document.getElementById("LiteratureDropdownUL").style.visibility = "hidden";
+								document.getElementById("LiteratureDropdownA").className = "dropdown";
+							}
+							function showToolsDropdown(){
+								//console.log("showToolsDropdown()");
+								document.getElementById("ToolsDropdownUL").style.opacity = "0.9";
+								document.getElementById("ToolsDropdownUL").style.visibility = "visible";
+								document.getElementById("ToolsDropdownA").className = "dropdownSelected";
+							}
+							function hideToolsDropdown(){
+								//console.log("hideToolsDropdown()");
+								document.getElementById("ToolsDropdownUL").style.opacity = "0";
+								document.getElementById("ToolsDropdownUL").style.visibility = "hidden";
+								document.getElementById("ToolsDropdownA").className = "dropdown";
+							}
+							hideLiteratureDropdown();
+							hideToolsDropdown();
+						</script> </header>
+          <main>
+            <div id="posts">
+              <h2>HPLC Simulator: About</h2>
+--------------------------------------------------------------------------------<br>
+              <h2>Developed by Thomas J. Lauer and <a href="http://www.multidlc.com/drstoll/"
+                  target="_blank">Dr. Dwight R. Stoll</a></h2>
+              This simulator started life as an Excel spreadsheet in 2008, with
+              features iterated on by <a href="https://chem.umn.edu/profiles/peter-carr"
+                target="_blank">Peter Carr</a> and Dwight Stoll. Then, when he
+              was at the University of Minnesota, Paul Boswell built a Java
+              application based on the original concept, and served that
+              application through the website <a href="http://hplcsimulator.org/"
+                target="_blank">www.hplcsimulator.org</a>. As it has became
+              increasingly difficult to maintain Java applications over the
+              years, in 2016 we decided to reformulate the original simulator
+              into the version you see here, running in a web browser using only
+              Javascript. In recent years, work on this simulator has been
+              supported by the United States National Science Foundation
+              (CHE-1508159), and the Dreyfus Foundation.<br>
+--------------------------------------------------------------------------------<br>
+              <strong style="font-size: 14px;">Explanation of Chromatographic
+                Parameters and Their Calculation:</strong>
+              <div style="font-size: 11px;"> The concepts that form the
+                foundation of the simulator were described in detail <a href="http://pubs.acs.org/doi/abs/10.1021/ed300117b"
+                  target="_blank">previously</a>. In this version we have made
+                some changes, and will describe them here soon. If you have
+                questions, please see the contact information below.</div>
+--------------------------------------------------------------------------------<br>
+              <!--<br><br>--> Click <a href="https://goo.gl/forms/IiAKRl4wTyd4EOna2"
+                target="_blank">HERE</a> to report a bug or error. <br>
+              <br>
+              For any questions, comments, or concerns, contact Dwight Stoll
+              --&gt; dstoll@gustavus.edu<br>
+--------------------------------------------------------------------------------<br>
+              <!--<input type="checkbox" id="showDebuggingLog" onchange="updateShowDebugLog()" checked><a onclick="toggleShowDebuggingLog()">Enable Console Logging?</a><br>-->
+              <br>
+              <a href="../hplcsim"><input value="Back to Simulator"
+type="button"></a><br>
+            </div>
+          </main>
+          <div id="copyright"> Copyright © 2016 Multi-Dimensional Separations -
+            All Rights Reserved </div>
+        </div>
+      </div>
+      <div id="lowerYellowBar" class="bar"></div>
+      <footer></footer>
+    </div>
+    <script>
+		document.onload = load();
+		document.onload = openMenu_ALL();
+		//document.onload = openMenu('general_properties');
+		//document.onload = openMenu('chromatographic_properties');
+		
+		console.log(document.getElementById('content').clientWidth);
+		console.log(window.innerWidth);
+		console.log((window.innerWidth - document.getElementById('content').clientWidth)/2);
+
+		window.onclick = function(event) {
+		  if (!event.target.matches('.dropbutton')) {
+		    var dropdowns = document.getElementsByClassName("dropdown-content");
+		    var i;
+		    for (i = 0; i < dropdowns.length; i++) {
+		      var openDropdown = dropdowns[i];
+		      if (openDropdown.classList.contains('show')) {
+		      	var div = openDropdown.id.replace("dropdown", "switch");
+		      	var arrow = document.getElementById(div).innerHTML.charCodeAt();
+		      	if (arrow == "9650") {
+		      		document.getElementById(div).innerHTML = "&#9660;";
+		      	}
+		        openDropdown.classList.remove('show');
+		      }
+		    }
+		  }
+		}
+
+		$("#dataTable tr").click(function() {
+			var selected = $(this).hasClass("highlight");
+			$("#dataTable tbody tr").removeClass("highlight");
+			$("#dataTable").removeClass();
+			if(!selected){
+				$(this).addClass("highlight");
+				$('#dataTable').addClass($(this).attr("id"));
+			}
+			calculatePeaks();
+		});
+		
+		function switchToTab(tab){
+		  if(tab == "about"){
+		    document.getElementById("about").hidden = false;
+			document.getElementById("content").hidden = true;
+		  } else if(tab == "main"){
+		    document.getElementById("about").hidden = true;
+			document.getElementById("content").hidden = false;
+		  }
+		}
+		
+		function updateDebugLog(){
+			var master = document.getElementById("showDebuggingLog");
+			if(master.checked == true){
+				document.getElementById("debuggingLog").hidden = false;
+			} else {
+				document.getElementById("debuggingLog").hidden = true;
+				document.getElementById("showDebuggingLog_Loading").checked = false;
+				document.getElementById("showDebuggingLog_Other").checked = false;
+			}
+		}
+		
+		function setDebugLog(){
+			var masterOne = document.getElementById("showDebuggingLog_Loading");
+			var masterTwo = document.getElementById("showDebuggingLog_Other");
+			if(masterOne.checked == true){
+				document.getElementById("debuggingLog_Loading").hidden = false;
+			} else {
+				document.getElementById("debuggingLog_Loading").hidden = true;
+			}
+			if(masterTwo.checked == true){
+				document.getElementById("debuggingLog_Other").hidden = false;
+			} else {
+				document.getElementById("debuggingLog_Other").hidden = true;
+			}
+		}
+	</script>
+  </body>
+</html>
