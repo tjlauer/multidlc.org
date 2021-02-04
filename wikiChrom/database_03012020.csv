@@ -1,0 +1,18 @@
+﻿Index,Analyte,Abbreviation,CAS #,Dataset ID,Mechanism,Manufacturer,Brand,Stationary Phase,Pore Size (A),Particle Size (um),A Solvent,B Solvent,Composition (%B),Temperature (C),Retention Factor
+1,acetophenone,AP2,98-86-2,2020_01,RP,Agilent,Zorbax,SB-C18,80,5,Water,ACN,10,40,33.81
+2,acetophenone,AP2,98-86-2,2020_01,RP,Agilent,Zorbax,SB-C18,80,5,Water,ACN,20,40,12.12
+3,acetophenone,AP2,98-86-2,2020_01,RP,Agilent,Zorbax,SB-C18,80,5,Water,ACN,30,40,5.489
+4,acetophenone,AP2,98-86-2,2020_01,RP,Agilent,Zorbax,SB-C18,80,5,Water,ACN,40,40,2.859
+5,acetophenone,AP2,98-86-2,2020_01,RP,Agilent,Zorbax,SB-C18,80,5,Water,ACN,50,40,1.673
+6,acetophenone,AP2,98-86-2,2020_01,RP,Agilent,Zorbax,SB-C18,80,5,Water,ACN,60,40,1.042
+7,acetophenone,AP2,98-86-2,2020_01,RP,Agilent,Zorbax,SB-C18,80,5,Water,ACN,70,40,0.6939
+8,propiophenone,AP3,93-55-0,2020_01,RP,Agilent,Zorbax,SB-C18,80,5,Water,ACN,20,40,32.60
+9,propiophenone,AP3,93-55-0,2020_01,RP,Agilent,Zorbax,SB-C18,80,5,Water,ACN,30,40,12.67
+10,propiophenone,AP3,93-55-0,2020_01,RP,Agilent,Zorbax,SB-C18,80,5,Water,ACN,40,40,5.753
+11,propiophenone,AP3,93-55-0,2020_01,RP,Agilent,Zorbax,SB-C18,80,5,Water,ACN,50,40,3.000
+12,propiophenone,AP3,93-55-0,2020_01,RP,Agilent,Zorbax,SB-C18,80,5,Water,ACN,60,40,1.716
+13,propiophenone,AP3,93-55-0,2020_01,RP,Agilent,Zorbax,SB-C18,80,5,Water,ACN,70,40,1.058
+14,butyrophenone,AP4,495-40-9,2020_01,RP,Agilent,Zorbax,SB-C18,80,5,Water,ACN,30,40,27.10
+15,butyrophenone,AP4,495-40-9,2020_01,RP,Agilent,Zorbax,SB-C18,80,5,Water,ACN,40,40,10.65
+16,butyrophenone,AP4,495-40-9,2020_01,RP,Agilent,Zorbax,SB-C18,80,5,Water,ACN,50,40,4.969
+17,butyrophenone,AP4,495-40-9,2020_01,RP,Agilent,Zorbax,SB-C18,80,5,Water,ACN,60,40,2.625
