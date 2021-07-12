@@ -21,276 +21,314 @@ th, td {
 		<tr>
 			<td style="width:50%;vertical-align:top;">
 				<div id="DIV_General">
-				<p onclick="ToggleHidden('Table_General');" class="SectionHeader">General</p>
-				<table style="border:0px;" id="Table_General" hidden>
-					<tr>
-						<th style="border:0px;">Isocratic or Gradient elution?</th>
-						<td style="border:0px;"><select id="General_ElutionMode" class="Input" onchange="CalculateDispersion();"><option value="Isocratic">Isocratic</option><option value="Gradient">Gradient</option></select></td>
-					</tr>
-					<tr>
-						<th style="border:0px;">Flow rate through column [mL/min]</th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="General_FlowRate" value="0.5" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<th style="border:0px;">Diffusion Coefficient [m<sup>2</sup>/s]</th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="General_DiffusionCoefficient_Coefficient" value="1" style="width:20%" onchange="CalculateDispersion();"/> <strong>* 10^</strong> <input class="number" type="number" step="any" id="General_DiffusionCoefficient_Exponent" value="-10" style="width:20%" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<th style="border:0px;">Mobile Phase Dynamic Viscosity [cP]</th>
-						<td style="border:0px; width: 100px;"><input class="number Input" type="number" step="any" id="PressureDrop_Viscosity" value="1" onchange="CalculateDispersion();"/></td>
-					</tr>
-				</table>
-				<!--<hr>-->
+					<p onclick="ToggleHidden('Table_General');" class="SectionHeader">General</p>
+					<table style="border:0px;" id="Table_General" hidden>
+						<tr>
+							<th style="border:0px;">Isocratic or Gradient elution?</th>
+							<td style="border:0px;"><select id="General_ElutionMode" class="Input" onchange="CalculateDispersion();"><option value="Isocratic">Isocratic</option><option value="Gradient">Gradient</option></select></td>
+						</tr>
+						<tr>
+							<th style="border:0px;">UV Detection?</th>
+							<td style="border:0px;"><select id="General_UV_Detection" class="Input" onchange="CalculateDispersion();"><option value="Yes">Yes</option><option value="No">No</option></select></td>
+						</tr>
+						<tr>
+							<th style="border:0px;">Flow rate through column [mL/min]</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="General_FlowRate" value="0.5" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<th style="border:0px;">Diffusion Coefficient [m<sup>2</sup>/s]</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="General_DiffusionCoefficient_Coefficient" value="1" style="width:20%" onchange="CalculateDispersion();"/> <strong>* 10^</strong> <input class="number" type="number" step="any" id="General_DiffusionCoefficient_Exponent" value="-10" style="width:20%" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<th style="border:0px;">Mobile Phase Dynamic Viscosity [cP]</th>
+							<td style="border:0px; width: 100px;"><input class="number Input" type="number" step="any" id="PressureDrop_Viscosity" value="1" onchange="CalculateDispersion();"/></td>
+						</tr>
+					</table>
+					<!--<hr>-->
 				</div>
 				<div id="DIV_Injection">
-				<p onclick="ToggleHidden('Table_Injection');" class="SectionHeader">Injection (Flow through injector)</p>
-				<table style="border:0px;" id="Table_Injection" hidden>
-					<tr>
-						<th style="border:0px;">Needle seat diameter [µm]</th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="Injection_NeedleSeatDiameter" value="120" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<th style="border:0px;">Needle seat length [mm]</th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="Injection_NeedleSeatLength" value="50" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<th style="border:0px;">V<sub>inj</sub> [µL]</th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="Injection_Volume" value="2" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<th style="border:0px;">θ<sub>inj</sub></th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="Injection_Theta" value="5" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<!--<th style="border:0px;">Var<sub>hydrodynamic</sub> [µL<sup>2</sup>]</th>-->
-						<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">hydrodynamic</sub>[µL<sup>2</sup>]</th>
-						<td style="border:0px;" class="Output" id="Injection_Var_Hydrodynamic">#</td>
-					</tr>
-					<tr>
-						<!--<th style="border:0px;">Var<sub>inj</sub> [µL<sup>2</sup>]</th>-->
-						<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">inj</sub>[µL<sup>2</sup>]</th>
-						<td style="border:0px;" class="Output" id="Injection_Var">#</td>
-					</tr>
-				</table>
-				<!--<hr>-->
+					<p onclick="ToggleHidden('Table_Injection');" class="SectionHeader">Injection (Flow through injector)</p>
+					<table style="border:0px;" id="Table_Injection" hidden>
+						<tr>
+							<th style="border:0px;">Needle seat diameter [µm]</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Injection_NeedleSeatDiameter" value="120" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<th style="border:0px;">Needle seat length [mm]</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Injection_NeedleSeatLength" value="50" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<th style="border:0px;">V<sub>inj</sub> [µL]</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Injection_Volume" value="2" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<th style="border:0px;">θ<sub>inj</sub></th>
+							<!--<td style="border:0px;"><input class="number Input" type="number" step="any" id="Injection_Theta" value="5" onchange="CalculateDispersion();"/></td>-->
+							<td style="border:0px;" class="Output" id="Injection_Theta">#</td>
+						</tr>
+						<tr>
+							<!--<th style="border:0px;">Var<sub>hydrodynamic</sub> [µL<sup>2</sup>]</th>-->
+							<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">hydrodynamic</sub>[µL<sup>2</sup>]</th>
+							<td style="border:0px;" class="Output" id="Injection_Var_Hydrodynamic">#</td>
+						</tr>
+						<tr>
+							<!--<th style="border:0px;">Var<sub>inj</sub> [µL<sup>2</sup>]</th>-->
+							<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">inj</sub>[µL<sup>2</sup>]</th>
+							<td style="border:0px;" class="Output" id="Injection_Var">#</td>
+						</tr>
+					</table>
+					<!--<hr>-->
 				</div>
 				<div id="DIV_Tubing_PreColumn">
-				<p onclick="ToggleHidden('Table_Tubing_PreColumn');" class="SectionHeader">Tubing (Pre-Column)</p>
-				<table style="border:0px;" id="Table_Tubing_PreColumn" hidden>
-					<tr>
-						<th style="border:0px;">Diameter [µm]</th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="Tubing_PreColumn_Diameter" value="120" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<th style="border:0px;">Length [mm]</th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="Tubing_PreColumn_Length" value="400" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<!--<th style="border:0px;">Var<sub>tub,pre-col</sub> [µL<sup>2</sup>]</th>-->
-						<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">tub,pre-col</sub>[µL<sup>2</sup>]</th>
-						<td style="border:0px;" class="Output" id="Tubing_PreColumn_Var">#</td>
-					</tr>
-				</table>
-				<!--<hr>-->
+					<p onclick="ToggleHidden('Table_Tubing_PreColumn');" class="SectionHeader">Tubing (Pre-Column)</p>
+					<table style="border:0px;" id="Table_Tubing_PreColumn" hidden>
+						<tr>
+							<th style="border:0px;">Diameter [µm]</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Tubing_PreColumn_Diameter" value="120" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<th style="border:0px;">Length [mm]</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Tubing_PreColumn_Length" value="400" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<!--<th style="border:0px;">Var<sub>tub,pre-col</sub> [µL<sup>2</sup>]</th>-->
+							<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">tub,pre-col</sub>[µL<sup>2</sup>]</th>
+							<td style="border:0px;" class="Output" id="Tubing_PreColumn_Var">#</td>
+						</tr>
+					</table>
+					<!--<hr>-->
+				</div>
+				<div id="DIV_Tubing_HeatExchanger">
+					<p onclick="ToggleHidden('Table_Tubing_HeatExchanger');" class="SectionHeader">Heat Exchanger</p>
+					<table style="border:0px;" id="Table_Tubing_HeatExchanger" hidden>
+						<tr>
+							<th style="border:0px;">Diameter [µm]</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Tubing_HeatExchanger_Diameter" value="120" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<th style="border:0px;">Length [mm]</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Tubing_HeatExchanger_Length" value="50" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<!--<th style="border:0px;">Var<sub>tub,pre-col</sub> [µL<sup>2</sup>]</th>-->
+							<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">tub,heat exchanger</sub>[µL<sup>2</sup>]</th>
+							<td style="border:0px;" class="Output" id="Tubing_HeatExchanger_Var">#</td>
+						</tr>
+					</table>
+					<!--<hr>-->
 				</div>
 				<div id="DIV_Column">
-				<p onclick="ToggleHidden('Table_Column');" class="SectionHeader">Column</p>
-				<table style="border:0px;" id="Table_Column" hidden>
-					<tr>
-						<th style="border:0px;">Diameter [mm]</th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="Column_Diameter" value="2.1" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<th style="border:0px;">Length [mm]</th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="Column_Length" value="100" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<th style="border:0px;">Total Porosity</th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="Column_TotalPorosity" value="0.5" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<th style="border:0px;">Column Dead Volume [µL]</th>
-						<td style="border:0px;" class="Output" id="Column_DeadVolume">#</td>
-					</tr>
-					<tr>
-						<th style="border:0px;">Particle Size [µm]</th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="Column_ParticleSize" value="5" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<th style="border:0px;">Reduced Plate Height</th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="Column_ReducedPlateHeight" value="2" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<th style="border:0px;">Plate Number</th>
-						<td style="border:0px;" class="Output" id="Column_PlateNumber">#</td>
-					</tr>
-					<tr>
-						<th style="border:0px;">Retention Factor</th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="Column_RetentionFactor" value="2" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<!--<th style="border:0px;">Var<sub>col</sub> [µL<sup>2</sup>]</th>-->
-						<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">col</sub>[µL<sup>2</sup>]</th>
-						<td style="border:0px;" class="Output" id="Column_Var">#</td>
-					</tr>
-				</table>
-				<!--<hr>-->
+					<p onclick="ToggleHidden('Table_Column');" class="SectionHeader">Column</p>
+					<table style="border:0px;" id="Table_Column" hidden>
+						<tr>
+							<th style="border:0px;">Diameter [mm]</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Column_Diameter" value="2.1" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<th style="border:0px;">Length [mm]</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Column_Length" value="100" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<th style="border:0px;">Total Porosity</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Column_TotalPorosity" value="0.5" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<th style="border:0px;">Column Dead Volume [µL]</th>
+							<td style="border:0px;" class="Output" id="Column_DeadVolume">#</td>
+						</tr>
+						<tr>
+							<th style="border:0px;">Particle Size [µm]</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Column_ParticleSize" value="5" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<th style="border:0px;">Reduced Plate Height</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Column_ReducedPlateHeight" value="2" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<th style="border:0px;">Plate Number</th>
+							<td style="border:0px;" class="Output" id="Column_PlateNumber">#</td>
+						</tr>
+						<tr>
+							<th style="border:0px;">Retention Factor</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Column_RetentionFactor" value="1" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<!--<th style="border:0px;">Var<sub>col</sub> [µL<sup>2</sup>]</th>-->
+							<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">col</sub>[µL<sup>2</sup>]</th>
+							<td style="border:0px;" class="Output" id="Column_Var">#</td>
+						</tr>
+					</table>
+					<!--<hr>-->
 				</div>
 				<div id="DIV_Tubing_PostColumn">
-				<p onclick="ToggleHidden('Table_Tubing_PostColumn');" class="SectionHeader">Tubing (Post-Column)</p>
-				<table style="border:0px;" id="Table_Tubing_PostColumn" hidden>
-					<tr>
-						<th style="border:0px;">Diameter [µm]</th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="Tubing_PostColumn_Diameter" value="120" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<th style="border:0px;">Length [mm]</th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="Tubing_PostColumn_Length" value="400" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<!--<th style="border:0px;">Var<sub>tub,post-col</sub> [µL<sup>2</sup>]</th>-->
-						<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">tub,post-col</sub>[µL<sup>2</sup>]</th>
-						<td style="border:0px;" class="Output" id="Tubing_PostColumn_Var">#</td>
-					</tr>
-				</table>
-				<!--<hr>-->
+					<p onclick="ToggleHidden('Table_Tubing_PostColumn');" class="SectionHeader">Tubing (Post-Column)</p>
+					<table style="border:0px;" id="Table_Tubing_PostColumn" hidden>
+						<tr>
+							<th style="border:0px;">Diameter [µm]</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Tubing_PostColumn_Diameter" value="120" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<th style="border:0px;">Length [mm]</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Tubing_PostColumn_Length" value="400" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<!--<th style="border:0px;">Var<sub>tub,post-col</sub> [µL<sup>2</sup>]</th>-->
+							<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">tub,post-col</sub>[µL<sup>2</sup>]</th>
+							<td style="border:0px;" class="Output" id="Tubing_PostColumn_Var">#</td>
+						</tr>
+					</table>
+					<!--<hr>-->
 				</div>
 				<div id="DIV_FlowSplitting">
-				<p onclick="ToggleHidden('Table_FlowSplitting');" class="SectionHeader">Flow Splitting</p>
-				<table style="border:0px;" id="Table_FlowSplitting" hidden>
-					<tr>
-						<th style="border:0px;">Split Ratio (1:X)</th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="FlowSplitting_SplitRatio" value="0" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<th style="border:0px;">Post-Split Flow Rate [mL/min]</th>
-						<td style="border:0px;" class="Output" id="FlowSplitting_PostSplitFlowRate">#</td>
-					</tr>
-				</table>
-				<!--<hr>-->
+					<p onclick="ToggleHidden('Table_FlowSplitting');" class="SectionHeader">Flow Splitting</p>
+					<table style="border:0px;" id="Table_FlowSplitting" hidden>
+						<tr>
+							<th style="border:0px;">Split Ratio (1:X)</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="FlowSplitting_SplitRatio" value="0" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<th style="border:0px;">Post-Split Flow Rate [mL/min]</th>
+							<td style="border:0px;" class="Output" id="FlowSplitting_PostSplitFlowRate">#</td>
+						</tr>
+					</table>
+					<!--<hr>-->
 				</div>
 				<div id="DIV_Tubing_PostSplit">
-				<p onclick="ToggleHidden('Table_Tubing_PostSplit');" class="SectionHeader">Tubing (Post-Split)</p>
-				<table style="border:0px;" id="Table_Tubing_PostSplit" hidden>
-					<tr>
-						<th style="border:0px;">Diameter [µm]</th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="Tubing_PostSplit_Diameter" value="120" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<th style="border:0px;">Length [mm]</th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="Tubing_PostSplit_Length" value="400" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<!--<th style="border:0px;">Var<sub>tub,post-split</sub> [µL<sup>2</sup>]</th>-->
-						<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">tub,post-split</sub>[µL<sup>2</sup>]</th>
-						<td style="border:0px;" class="Output" id="Tubing_PostSplit_Var">#</td>
-					</tr>
-				</table>
-				<!--<hr>-->
+					<p onclick="ToggleHidden('Table_Tubing_PostSplit');" class="SectionHeader">Tubing (Post-Split)</p>
+					<table style="border:0px;" id="Table_Tubing_PostSplit" hidden>
+						<tr>
+							<th style="border:0px;">Diameter [µm]</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Tubing_PostSplit_Diameter" value="120" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<th style="border:0px;">Length [mm]</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Tubing_PostSplit_Length" value="400" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<!--<th style="border:0px;">Var<sub>tub,post-split</sub> [µL<sup>2</sup>]</th>-->
+							<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">tub,post-split</sub>[µL<sup>2</sup>]</th>
+							<td style="border:0px;" class="Output" id="Tubing_PostSplit_Var">#</td>
+						</tr>
+					</table>
+					<!--<hr>-->
 				</div>
 				<div id="DIV_Detector">
-				<p onclick="ToggleHidden('Table_Detector');" class="SectionHeader">Detector</p>
-				<table style="border:0px;" id="Table_Detector" hidden>
-					<tr>
-						<th style="border:0px;">θ<sub>det</sub></th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="Detector_Theta" value="0.5" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<th style="border:0px;">V<sub>cell</sub> [µL]</th>
-						<td style="border:0px;"><input class="number Input" type="number" step="any" id="Detector_CellVolume" value="1" onchange="CalculateDispersion();"/></td>
-					</tr>
-					<tr>
-						<!--<th style="border:0px;">Var<sub>det</sub> [µL<sup>2</sup>]</th>-->
-						<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">det</sub>[µL<sup>2</sup>]</th>
-						<td style="border:0px;" class="Output" id="Detector_Var">#</td>
-					</tr>
-				</table>
-				<!--<hr>-->
+					<p onclick="ToggleHidden('Table_Detector');" class="SectionHeader">Detector</p>
+					<table style="border:0px;" id="Table_Detector" hidden>
+						<tr>
+							<th style="border:0px;">θ<sub>det</sub></th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Detector_Theta" value="0.5" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<th style="border:0px;">V<sub>cell</sub> [µL]</th>
+							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Detector_CellVolume" value="1" onchange="CalculateDispersion();"/></td>
+						</tr>
+						<tr>
+							<!--<th style="border:0px;">Var<sub>det</sub> [µL<sup>2</sup>]</th>-->
+							<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">det</sub>[µL<sup>2</sup>]</th>
+							<td style="border:0px;" class="Output" id="Detector_Var">#</td>
+						</tr>
+					</table>
+					<!--<hr>-->
 				</div>
 			</td>
 			<td style="width:50%;vertical-align:top;">
 				<div id="DIV_PieChart">
-				<p onclick="ToggleHidden('Chart_Variances');" class="SectionHeader">Variance Chart</p>
-				<div id="Chart_Variances" style="margin-top:7px;">
-					[PIE CHART]
-				</div>
-				<!--<hr>-->
+					<p onclick="ToggleHidden('Chart_Variances');" class="SectionHeader">Variance Chart</p>
+					<div id="Chart_Variances" style="margin-top:7px;">
+						[PIE CHART]
+					</div>
+					<!--<hr>-->
 				</div>
 				<div id="DIV_Contributions">
-				<p onclick="ToggleHidden('Table_Contributions');" class="SectionHeader">Variance Table</p>
-				<table style="border:0px;" id="Table_Contributions">
-					<tr>
-						<th style="border:0px;"></th>
-						<th style="border:0px;">Variance [µL<sup>2</sup>]</th>
-						<th style="border:0px;width:20%;">%</th>
-						<th style="border:0px;width:20%;"></th>
-					</tr>
-					<tr onclick="FocusMenu(1);">
-						<th style="border:0px;">Injection</th>
-						<td style="border:0px;" class="Output" id="Contributions_Injection_Var">#</td>
-						<td style="border:0px;" class="Output" id="Contributions_Injection_Percent">#</td>
-						<td style="border:0px;background-color:#4472C4"></th>
-					</tr>
-					<tr onclick="FocusMenu(2);">
-						<th style="border:0px;">Tubing (Pre-Column)</th>
-						<td style="border:0px;" class="Output" id="Contributions_Tubing_PreColumn_Var">#</td>
-						<td style="border:0px;" class="Output" id="Contributions_Tubing_PreColumn_Percent">#</td>
-						<td style="border:0px;background-color:#ED7D31"></th>
-					</tr>
-					<tr onclick="FocusMenu(3);">
-						<th style="border:0px;">Column</th>
-						<td style="border:0px;" class="Output" id="Contributions_Column_Var">#</td>
-						<td style="border:0px;" class="Output" id="Contributions_Column_Percent">#</td>
-						<td style="border:0px;background-color:#A5A5A5"></th>
-					</tr>
-					<tr onclick="FocusMenu(4);">
-						<th style="border:0px;">Tubing (Post-Column)</th>
-						<td style="border:0px;" class="Output" id="Contributions_Tubing_PostColumn_Var">#</td>
-						<td style="border:0px;" class="Output" id="Contributions_Tubing_PostColumn_Percent">#</td>
-						<td style="border:0px;background-color:#FFC000"></th>
-					</tr>
-					<tr onclick="FocusMenu(5);">
-						<th style="border:0px;">Tubing (Post-Split)</th>
-						<td style="border:0px;" class="Output" id="Contributions_Tubing_PostSplit_Var">#</td>
-						<td style="border:0px;" class="Output" id="Contributions_Tubing_PostSplit_Percent">#</td>
-						<td style="border:0px;background-color:#5B9BD5"></th>
-					</tr>
-					<tr onclick="FocusMenu(6);">
-						<th style="border:0px;">Detector</th>
-						<td style="border:0px;" class="Output" id="Contributions_Detector_Var">#</td>
-						<td style="border:0px;" class="Output" id="Contributions_Detector_Percent">#</td>
-						<td style="border:0px;background-color:#70AD47"></th>
-					</tr>
-					<tr style="border-top:2px solid black;">
-						<th style="border-left:0px;border-right:0px;border-bottom:0px;">Total</th>
-						<td style="border-left:0px;border-right:0px;border-bottom:0px;" class="Output" id="Contributions_Total_Var">#</td>
-						<td style="border-left:0px;border-right:0px;border-bottom:0px;" class="Output" id="Contributions_Total_Percent">#</td>
-						<td style="border:0px;"></th>
-					</tr>
-				</table>
-				<!--<hr>-->
+					<p onclick="ToggleHidden('Table_Contributions');" class="SectionHeader">Variance Table</p>
+					<table style="border:0px;" id="Table_Contributions">
+						<tr>
+							<th style="border:0px;"></th>
+							<th style="border:0px;">Variance [µL<sup>2</sup>]</th>
+							<th style="border:0px;width:20%;">%</th>
+							<th style="border:0px;width:20%;"></th>
+						</tr>
+						<tr onclick="FocusMenu(1);">
+							<th style="border:0px;">Injection</th>
+							<td style="border:0px;" class="Output" id="Contributions_Injection_Var">#</td>
+							<td style="border:0px;" class="Output" id="Contributions_Injection_Percent">#</td>
+							<td style="border:0px;background-color:#4472C4"></th>
+						</tr>
+						<tr onclick="FocusMenu(2);">
+							<th style="border:0px;">Tubing (Pre-Column)</th>
+							<td style="border:0px;" class="Output" id="Contributions_Tubing_PreColumn_Var">#</td>
+							<td style="border:0px;" class="Output" id="Contributions_Tubing_PreColumn_Percent">#</td>
+							<td style="border:0px;background-color:#ED7D31"></th>
+						</tr>
+						<tr onclick="FocusMenu(3);">
+							<th style="border:0px;">Heat Exchanger</th>
+							<td style="border:0px;" class="Output" id="Contributions_Tubing_HeatExchanger_Var">#</td>
+							<td style="border:0px;" class="Output" id="Contributions_Tubing_HeatExchanger_Percent">#</td>
+							<td style="border:0px;background-color:#A5A5A5"></th>
+						</tr>
+						<tr onclick="FocusMenu(4);">
+							<th style="border:0px;">Column</th>
+							<td style="border:0px;" class="Output" id="Contributions_Column_Var">#</td>
+							<td style="border:0px;" class="Output" id="Contributions_Column_Percent">#</td>
+							<td style="border:0px;background-color:#FFC000"></th>
+						</tr>
+						<tr onclick="FocusMenu(5);">
+							<th style="border:0px;">Tubing (Post-Column)</th>
+							<td style="border:0px;" class="Output" id="Contributions_Tubing_PostColumn_Var">#</td>
+							<td style="border:0px;" class="Output" id="Contributions_Tubing_PostColumn_Percent">#</td>
+							<td style="border:0px;background-color:#5B9BD5"></th>
+						</tr>
+						<tr onclick="FocusMenu(6);">
+							<th style="border:0px;">Tubing (Post-Split)</th>
+							<td style="border:0px;" class="Output" id="Contributions_Tubing_PostSplit_Var">#</td>
+							<td style="border:0px;" class="Output" id="Contributions_Tubing_PostSplit_Percent">#</td>
+							<td style="border:0px;background-color:#70AD47"></th>
+						</tr>
+						<tr onclick="FocusMenu(7);">
+							<th style="border:0px;">Detector</th>
+							<td style="border:0px;" class="Output" id="Contributions_Detector_Var">#</td>
+							<td style="border:0px;" class="Output" id="Contributions_Detector_Percent">#</td>
+							<td style="border:0px;background-color:#264478"></th>
+						</tr>
+						<tr style="border-top:2px solid black;">
+							<th style="border-left:0px;border-right:0px;border-bottom:0px;">Total</th>
+							<td style="border-left:0px;border-right:0px;border-bottom:0px;" class="Output" id="Contributions_Total_Var">#</td>
+							<td style="border-left:0px;border-right:0px;border-bottom:0px;" class="Output" id="Contributions_Total_Percent">#</td>
+							<td style="border:0px;"></th>
+						</tr>
+					</table>
+					<!--<hr>-->
 				</div>
 				<div id="DIV_PressureDrop">
-				<p onclick="ToggleHidden('Table_PressureDrop');" class="SectionHeader">Pressure Drop</p>
-				<table style="border:0px;" id="Table_PressureDrop">
-					<tr onclick="FocusMenu(2);">
-						<th style="border:0px;">Pre-Column Tubing [bar]</th>
-						<td style="border:0px;" class="Output" id="PressureDrop_PreColumnTubing">#</td>
-					</tr>
-					<tr onclick="FocusMenu(4);">
-						<th style="border:0px;">Post-Column Tubing [bar]</th>
-						<td style="border:0px;" class="Output" id="PressureDrop_PostColumnTubing">#</td>
-					</tr>
-					<tr onclick="FocusMenu(5);">
-						<th style="border:0px;">Post-Split Tubing [bar]</th>
-						<td style="border:0px;" class="Output" id="PressureDrop_PostSplitTubing">#</td>
-					</tr>
-					<tr style="border-top:2px solid black;">
-						<th style="border-left:0px;border-right:0px;border-bottom:0px;">Total Tubing Pressure Drop [bar]</th>
-						<td style="border-left:0px;border-right:0px;border-bottom:0px;" class="Output" id="PressureDrop_TubingTotal">#</td>
-					</tr>
-				</table>
-				<!--<hr>-->
+					<p onclick="ToggleHidden('Table_PressureDrop');" class="SectionHeader">Pressure Drop</p>
+					<table style="border:0px;" id="Table_PressureDrop">
+						<tr onclick="FocusMenu(1);">
+							<th style="border:0px;">Needle Seat Capillary [bar]</th>
+							<td style="border:0px;" class="Output" id="PressureDrop_Injection">#</td>
+						</tr>
+						<tr onclick="FocusMenu(2);">
+							<th style="border:0px;">Pre-Column Tubing [bar]</th>
+							<td style="border:0px;" class="Output" id="PressureDrop_PreColumnTubing">#</td>
+						</tr>
+						<tr onclick="FocusMenu(3);">
+							<th style="border:0px;">Heat Exchanger [bar]</th>
+							<td style="border:0px;" class="Output" id="PressureDrop_HeatExchangerTubing">#</td>
+						</tr>
+						<tr onclick="FocusMenu(5);">
+							<th style="border:0px;">Post-Column Tubing [bar]</th>
+							<td style="border:0px;" class="Output" id="PressureDrop_PostColumnTubing">#</td>
+						</tr>
+						<tr onclick="FocusMenu(6);">
+							<th style="border:0px;">Post-Split Tubing [bar]</th>
+							<td style="border:0px;" class="Output" id="PressureDrop_PostSplitTubing">#</td>
+						</tr>
+						<tr style="border-top:2px solid black;">
+							<th style="border-left:0px;border-right:0px;border-bottom:0px;">Total Tubing Pressure Drop [bar]</th>
+							<td style="border-left:0px;border-right:0px;border-bottom:0px;" class="Output" id="PressureDrop_TubingTotal">#</td>
+						</tr>
+					</table>
+					<!--<hr>-->
 				</div>
 			</td>
 		</tr>
@@ -308,6 +346,16 @@ th, td {
 			"Value": {
 				"Type": "select",
 				"Default": "Isocratic",
+				"Min": NaN,
+				"Max": NaN
+			}
+		},
+		"General_UV_Detection": {
+			"Class": "Input",
+			"Tooltip": "",
+			"Value": {
+				"Type": "select",
+				"Default": "Yes",
 				"Min": NaN,
 				"Max": NaN
 			}
@@ -382,16 +430,6 @@ th, td {
 				"Max": NaN
 			}
 		},
-		"Injection_Theta": {
-			"Class": "Input",
-			"Tooltip": "This value is about 1 for injection volumes less than 2 uL. For volumes between 2 and 10 uL, the value increases linearly with volume. For volumes larger than 10 uL, the value is about 8.",
-			"Value": {
-				"Type": "number",
-				"Default": 1,
-				"Min": 0,
-				"Max": NaN
-			}
-		},
 		"Tubing_PreColumn_Diameter": {
 			"Class": "Input",
 			"Tooltip": "",
@@ -408,6 +446,26 @@ th, td {
 			"Value": {
 				"Type": "number",
 				"Default": 400,
+				"Min": 0,
+				"Max": NaN
+			}
+		},
+		"Tubing_HeatExchanger_Diameter": {
+			"Class": "Input",
+			"Tooltip": "",
+			"Value": {
+				"Type": "number",
+				"Default": 120,
+				"Min": 0,
+				"Max": NaN
+			}
+		},
+		"Tubing_HeatExchanger_Length": {
+			"Class": "Input",
+			"Tooltip": "",
+			"Value": {
+				"Type": "number",
+				"Default": 50,
 				"Min": 0,
 				"Max": NaN
 			}
@@ -542,6 +600,17 @@ th, td {
 				"Max": NaN
 			}
 		},
+
+
+
+		"Injection_Theta": {
+			"Class": "Output",
+			"Tooltip": "This value is about 1 for injection volumes less than 2 uL. For volumes between 2 and 10 uL, the value increases linearly with volume. For volumes larger than 10 uL, the value is about 8.",
+			"DisplayRounding": {
+				"Type": "Decimals",
+				"Value": 2
+			}
+		},
 		"Injection_Var_Hydrodynamic": {
 			"Class": "Output",
 			"Tooltip": "",
@@ -559,6 +628,14 @@ th, td {
 			}
 		},
 		"Tubing_PreColumn_Var": {
+			"Class": "Output",
+			"Tooltip": "",
+			"DisplayRounding": {
+				"Type": "Decimals",
+				"Value": 2
+			}
+		},
+		"Tubing_HeatExchanger_Var": {
 			"Class": "Output",
 			"Tooltip": "",
 			"DisplayRounding": {
@@ -622,6 +699,9 @@ th, td {
 				"Value": 2
 			}
 		},
+
+
+
 		"Contributions_Injection_Var": {
 			"Class": "Output",
 			"Tooltip": "",
@@ -647,6 +727,22 @@ th, td {
 			}
 		},
 		"Contributions_Tubing_PreColumn_Percent": {
+			"Class": "Output",
+			"Tooltip": "",
+			"DisplayRounding": {
+				"Type": "Decimals",
+				"Value": 2
+			}
+		},
+		"Contributions_Tubing_HeatExchanger_Var": {
+			"Class": "Output",
+			"Tooltip": "",
+			"DisplayRounding": {
+				"Type": "Decimals",
+				"Value": 2
+			}
+		},
+		"Contributions_Tubing_HeatExchanger_Percent": {
 			"Class": "Output",
 			"Tooltip": "",
 			"DisplayRounding": {
@@ -734,7 +830,26 @@ th, td {
 				"Value": 2
 			}
 		},
+
+
+
+		"PressureDrop_Injection": {
+			"Class": "Output",
+			"Tooltip": "",
+			"DisplayRounding": {
+				"Type": "Decimals",
+				"Value": 2
+			}
+		},
 		"PressureDrop_PreColumnTubing": {
+			"Class": "Output",
+			"Tooltip": "",
+			"DisplayRounding": {
+				"Type": "Decimals",
+				"Value": 2
+			}
+		},
+		"PressureDrop_HeatExchangerTubing": {
 			"Class": "Output",
 			"Tooltip": "",
 			"DisplayRounding": {
@@ -823,6 +938,7 @@ th, td {
 		drawChart(
 			variables.Injection_Var,
 			variables.Tubing_PreColumn_Var,
+			variables.Tubing_HeatExchanger_Var,
 			variables.Column_Var,
 			variables.Tubing_PostColumn_Var,
 			variables.Tubing_PostSplit_Var,
@@ -833,7 +949,6 @@ th, td {
 		//LogVariablesToConsole_v2(variables_Inputs, variables_Other, variables_Outputs, variables_Contributions_Var, variables_Contributions_Percent);
 		//LogVariablesToConsole_v3(variables_Inputs, variables_Other, variables_Outputs, variables_Contributions_Var, variables_Contributions_Percent);
 		LogVariablesToConsole_v4(variables_Inputs, variables_Other, variables_Outputs, variables_Contributions_Var, variables_Contributions_Percent);
-
 	}
 
 	function CalcBackpressure(Length,Diameter,Viscosity,FlowRate){
@@ -842,7 +957,12 @@ th, td {
 
 	function CalcVariance(Length,Diameter,DiffusionCoefficient,FlowRate){
 		// Calculate the variance introduced a given tube's dimensions. (Part #, Eq. ##)
-		return ((Math.pow(Math.PI,2)*Math.pow((Length/1000),2)*Math.pow((Diameter/1000000),4))/(48+(192*Math.PI*(Length/1000)*DiffusionCoefficient/(FlowRate/60/1000000))))*1000000000000000000;
+		//return ((Math.pow(Math.PI,2)*Math.pow((Length/1000),2)*Math.pow((Diameter/1000000),4))/(48+(192*Math.PI*(Length/1000)*DiffusionCoefficient/(FlowRate/60/1000000))))*1000000000000000000;
+		//return ((Math.pow(Math.PI,2)*Math.pow((Length/1000),2)*Math.pow((Diameter/1000000),4))/(48+(384*Math.PI*(Length/1000)*DiffusionCoefficient/(FlowRate/60/1000000))))*1000000000000000000;
+		var numerator = (Math.pow(Math.PI,2)*Math.pow((Length/1000),2)*Math.pow((Diameter/1000000),4));
+		var denominator = (48+(384*Math.PI*(Length/1000)*DiffusionCoefficient/(FlowRate/60/1000000)));
+		var variance = (numerator / denominator) * Math.pow(10,18);
+		return variance;
 	}
 
 	function CalculateDispersion(){
@@ -851,14 +971,27 @@ th, td {
 		// Calculate the Diffusion Coefficient by calculating "[COEFFICIENT]*10^[EXPONENT]"
 		variables.DiffusionCoefficient = variables.General_DiffusionCoefficient_Coefficient * Math.pow(10, variables.General_DiffusionCoefficient_Exponent);
 
+		if(variables.Injection_Volume > 4){
+			variables.Injection_Theta = (Math.pow(variables.Injection_Volume,2)/(3.1+Math.pow(variables.Injection_Volume,2)/9.6));
+		} else if(variables.Injection_Volume < 1){
+			variables.Injection_Theta = 1.1;
+		} else {
+			variables.Injection_Theta = (Math.pow(variables.Injection_Volume,2)/(1/1.1+((variables.Injection_Volume-1)/(4-1))*(4.766-0.909)));
+		}
+
 		// Calculate the Hydrodynamic Variance introduced by the Injector. (Part #, Eq. ##)
 		variables.Injection_Var_Hydrodynamic = CalcVariance(variables.Injection_NeedleSeatLength,variables.Injection_NeedleSeatDiameter,variables.DiffusionCoefficient,variables.General_FlowRate);
 		// Calculate the Variance introduced by the Injector. (Part #, Eq. ##)
-		variables.Injection_Var = (1/variables.Injection_Theta)*Math.pow(variables.Injection_Volume,2)+variables.Injection_Var_Hydrodynamic;
+		variables.Injection_Var = ((1/variables.Injection_Theta)*Math.pow(variables.Injection_Volume,2))+variables.Injection_Var_Hydrodynamic;
+		variables.PressureDrop_Injection = CalcBackpressure(variables.Injection_NeedleSeatLength,variables.Injection_NeedleSeatDiameter,variables.PressureDrop_Viscosity,variables.General_FlowRate);
 
 		// Calculate the Variance introduced by the Pre-Column Tubing. (Part #, Eq. ##)
 		variables.Tubing_PreColumn_Var = CalcVariance(variables.Tubing_PreColumn_Length,variables.Tubing_PreColumn_Diameter,variables.DiffusionCoefficient,variables.General_FlowRate);
 		variables.PressureDrop_PreColumnTubing = CalcBackpressure(variables.Tubing_PreColumn_Length,variables.Tubing_PreColumn_Diameter,variables.PressureDrop_Viscosity,variables.General_FlowRate);
+
+		// Calculate the Variance introduced by the Heat Exchanger. (Part #, Eq. ##)
+		variables.Tubing_HeatExchanger_Var = CalcVariance(variables.Tubing_HeatExchanger_Length,variables.Tubing_HeatExchanger_Diameter,variables.DiffusionCoefficient,variables.General_FlowRate);
+		variables.PressureDrop_HeatExchangerTubing = CalcBackpressure(variables.Tubing_HeatExchanger_Length,variables.Tubing_HeatExchanger_Diameter,variables.PressureDrop_Viscosity,variables.General_FlowRate);
 
 		// Calculate the Dead Volume inside of the Column. (Part #, Eq. ##)
 		variables.Column_DeadVolume = Math.PI*Math.pow((variables.Column_Diameter/2/10),2)*(variables.Column_Length/10)*variables.Column_TotalPorosity*1000;
@@ -899,12 +1032,13 @@ th, td {
 		}
 
 		// Calculate the Total Variance introduced by the System. (Part #, Eq. ##)
-		variables.TotalVariance = variables.Injection_Var + variables.Tubing_PreColumn_Var + variables.Column_Var + variables.Tubing_PostColumn_Var + variables.Tubing_PostSplit_Var + variables.Detector_Var;
+		variables.TotalVariance = variables.Injection_Var + variables.Tubing_PreColumn_Var + variables.Tubing_HeatExchanger_Var + variables.Column_Var + variables.Tubing_PostColumn_Var + variables.Tubing_PostSplit_Var + variables.Detector_Var;
 
-		variables.PressureDrop_TubingTotal = variables.PressureDrop_PreColumnTubing + variables.PressureDrop_PostColumnTubing + variables.PressureDrop_PostSplitTubing;
+		variables.PressureDrop_TubingTotal = variables.PressureDrop_Injection + variables.PressureDrop_PreColumnTubing + variables.PressureDrop_HeatExchangerTubing + variables.PressureDrop_PostColumnTubing + variables.PressureDrop_PostSplitTubing;
 
 		variables.Contributions_Injection_Var = variables.Injection_Var;
 		variables.Contributions_Tubing_PreColumn_Var = variables.Tubing_PreColumn_Var;
+		variables.Contributions_Tubing_HeatExchanger_Var = variables.Tubing_HeatExchanger_Var;
 		variables.Contributions_Column_Var = variables.Column_Var;
 		variables.Contributions_Tubing_PostColumn_Var = variables.Tubing_PostColumn_Var;
 		variables.Contributions_Tubing_PostSplit_Var = variables.Tubing_PostSplit_Var;
@@ -913,6 +1047,7 @@ th, td {
 
 		variables.Contributions_Injection_Percent = (variables.Injection_Var/variables.TotalVariance)*100;
 		variables.Contributions_Tubing_PreColumn_Percent = (variables.Tubing_PreColumn_Var/variables.TotalVariance)*100;
+		variables.Contributions_Tubing_HeatExchanger_Percent = (variables.Tubing_HeatExchanger_Var/variables.TotalVariance)*100;
 		variables.Contributions_Column_Percent = (variables.Column_Var/variables.TotalVariance)*100;
 		variables.Contributions_Tubing_PostColumn_Percent = (variables.Tubing_PostColumn_Var/variables.TotalVariance)*100;
 		variables.Contributions_Tubing_PostSplit_Percent = (variables.Tubing_PostSplit_Var/variables.TotalVariance)*100;
@@ -943,7 +1078,7 @@ th, td {
 	//}
 
 	// Draw the chart and set the chart values
-	function drawChart(Injection,Tubing_PreColumn,Column,Tubing_PostColumn,Tubing_PostSplit,Detector) {
+	function drawChart(Injection,Tubing_PreColumn,Tubing_HeatExchanger,Column,Tubing_PostColumn,Tubing_PostSplit,Detector) {
 		
 		//console.log(Injection);
 		//console.log(Tubing_PreColumn);
@@ -971,6 +1106,7 @@ th, td {
 		['Source', 'Variance'],
 		['Injection', Injection],
 		['Tubing, Pre-Column', Tubing_PreColumn],
+		['Heat Exchanger', Tubing_HeatExchanger],
 		['Column', Column],
 		['Tubing, Post-Column', Tubing_PostColumn],
 		['Tubing, Post-Split', Tubing_PostSplit],
@@ -983,7 +1119,7 @@ th, td {
 		//var options = {'title':'My Average Day', 'width':550, 'height':400};
 		//var options = {'title':'My Average Day', 'width':chartWidth, 'height':chartHeight};
 		var options = {};
-		options.colors = ['#4472C4', '#ED7D31', '#A5A5A5', '#FFC000', '#5B9BD5', '#70AD47'];
+		options.colors = ['#4472C4', '#ED7D31', '#A5A5A5', '#FFC000', '#5B9BD5', '#70AD47', '#264478'];
 		//options.chartArea = {'left':0,'top':0,'width':chartWidth,'height':chartHeight};
 		options.chartArea = {'width':chartWidth,'height':chartHeight};
 		options.width = document.getElementById("Chart_Variances").clientWidth;
@@ -1038,6 +1174,7 @@ th, td {
 		document.getElementById("Table_General").hidden = true;
 		document.getElementById("Table_Injection").hidden = true;
 		document.getElementById("Table_Tubing_PreColumn").hidden = true;
+		document.getElementById("Table_Tubing_HeatExchanger").hidden = true;
 		document.getElementById("Table_Column").hidden = true;
 		document.getElementById("Table_Tubing_PostColumn").hidden = true;
 		document.getElementById("Table_FlowSplitting").hidden = true;
@@ -1058,19 +1195,23 @@ th, td {
 					document.getElementById("Table_Tubing_PreColumn").hidden = false;
 					break;
 				case 3:
+					//console.log("Heat Exchanger");
+					document.getElementById("Table_Tubing_HeatExchanger").hidden = false;
+					break;
+				case 4:
 					//console.log("Column");
 					document.getElementById("Table_Column").hidden = false;
 					break;
-				case 4:
+				case 5:
 					//console.log("Tubing, Post-Column");
 					document.getElementById("Table_Tubing_PostColumn").hidden = false;
 					break;
-				case 5:
+				case 6:
 					//console.log("Tubing, Post-Split");
 					document.getElementById("Table_FlowSplitting").hidden = false;
 					document.getElementById("Table_Tubing_PostSplit").hidden = false;
 					break;
-				case 6:
+				case 7:
 					//console.log("Detector");
 					document.getElementById("Table_Detector").hidden = false;
 					break;
@@ -1393,27 +1534,34 @@ th, td {
 		variables_All = ConcatJSON(variables_All, variables_Contributions_Var);
 		variables_All = ConcatJSON(variables_All, variables_Contributions_Percent);
 
+		//console.groupCollapsed(GetDateString());
 		console.groupCollapsed(GetDateString());
 			
 			console.groupCollapsed("Inputs");
-				console.group("General"); console.table(JSON_KeyIncludes(variables_Inputs, "General_")); console.groupEnd();
+				//console.log(variables_Inputs);
+				//console.group("General"); console.table(JSON_KeyIncludes(variables_Inputs, "General_")); console.groupEnd();
+				console.group("General"); console.table(ConcatJSON(JSON_KeyIncludes(variables_Inputs, "General_"),JSON_KeyIncludes(variables_Inputs, "PressureDrop_"))); console.groupEnd();
 				console.group("Injection"); console.table(JSON_KeyIncludes(variables_Inputs, "Injection_")); console.groupEnd();
 				console.group("Pre-Column Tubing"); console.table(JSON_KeyIncludes(variables_Inputs, "Tubing_PreColumn_")); console.groupEnd();
+				console.group("Heat Exchanger"); console.table(JSON_KeyIncludes(variables_Inputs, "Tubing_HeatExchanger_")); console.groupEnd();
 				console.group("Column"); console.table(JSON_KeyNotIncludes(JSON_KeyIncludes(variables_Inputs, "Column_"),"Tubing_")); console.groupEnd();
 				console.group("Post-Column Tubing"); console.table(JSON_KeyIncludes(variables_Inputs, "Tubing_PostColumn_")); console.groupEnd();
 				console.group("Flow Splitting"); console.table(JSON_KeyIncludes(variables_Inputs, "FlowSplitting_")); console.groupEnd();
 				console.group("Post-Split Tubing"); console.table(JSON_KeyIncludes(variables_Inputs, "Tubing_PostSplit_")); console.groupEnd();
 				console.group("Detector"); console.table(JSON_KeyIncludes(variables_Inputs, "Detector_")); console.groupEnd();
-				console.group("Pressure Drop"); console.table(JSON_KeyIncludes(variables_Inputs, "PressureDrop_")); console.groupEnd();
+				//console.group("Pressure Drop"); console.table(JSON_KeyIncludes(variables_Inputs, "PressureDrop_")); console.groupEnd();
 			console.groupEnd();
 			
 			console.groupCollapsed("Intermediate Values");
+				//console.log(variables_Other);
 				console.table(variables_Other);
 			console.groupEnd();
 
 			console.groupCollapsed("Outputs");
+				//console.log(variables_Outputs);
 				console.group("Injection"); console.table(JSON_KeyIncludes(variables_Outputs, "Injection_")); console.groupEnd();
 				console.group("Pre-Column Tubing"); console.table(JSON_KeyIncludes(variables_Outputs, "Tubing_PreColumn_")); console.groupEnd();
+				console.group("Heat Exchanger"); console.table(JSON_KeyIncludes(variables_Outputs, "Tubing_HeatExchanger_")); console.groupEnd();
 				console.group("Column"); console.table(JSON_KeyNotIncludes(JSON_KeyIncludes(variables_Outputs, "Column_"),"Tubing_")); console.groupEnd();
 				console.group("Post-Column Tubing"); console.table(JSON_KeyIncludes(variables_Outputs, "Tubing_PostColumn_")); console.groupEnd();
 				console.group("Flow Splitting"); console.table(JSON_KeyIncludes(variables_Outputs, "FlowSplitting_")); console.groupEnd();
@@ -1423,17 +1571,13 @@ th, td {
 			console.groupEnd();
 
 			console.groupCollapsed("Variance Table");
-				//console.group("Value"); console.table((variables_Contributions_Var)); console.groupEnd();
-				//console.group("Percentage"); console.table((variables_Contributions_Percent)); console.groupEnd();
+				//console.log(variables_Contributions_Var);
+				//console.log(variables_Contributions_Percent);
 				console.table((variables_Contributions_Var));
 				console.table((variables_Contributions_Percent));
 			console.groupEnd();
 
 			console.log(variables_All);
-			//console.groupCollapsed("All Variables");
-			//	console.table(variables_All);
-			//	console.log(variables_All);
-			//console.groupEnd();
 
 		console.groupEnd();
 	}
