@@ -1,0 +1,132 @@
+
+/*=========================================
+    Primary Color
+=========================================*/
+/* Header CSS */
+.header-top-info-1 .social li a i:hover, 
+.header-top-info-2 .social li a i:hover, 
+.header-top-info-3 .social li a i:hover, 
+.header-top-info-4 .social li a i:hover, 
+.header-top-info-5 .social li a i:hover, 
+.header-top-info-6 .social li a i:hover,
+.header-top-info-8 .social li a i:hover
+{
+    background: #04d1f9;
+}
+a.spyropress-button,
+a.spyropress-button:hover, .navbar-default .navbar-nav > li > a.spyropress-button:hover {
+	background: #04d1f9 !important;
+}
+.header_spyropress_dark .info_details .icon i, .header_spyropress_light .info_details .icon i,
+.header_webstrap_dark .info_details .icon i, .header_webstrap_light .info_details .icon i ,
+.header_nifty_dark .info_details .icon i, .header_nifty_light .info_details .icon i  {
+    color: #04d1f9;
+}
+.header-contact i {
+    color: #04d1f9;
+}
+span.searchbox-icon:hover, .searchbox-open .searchbox-submit {
+    background: #04d1f9;
+}
+
+/* Menu CSS */
+.nav-center, 
+.nav-magzee, 
+.nav-fabify {
+	background: #04d1f9 !important;
+}
+.navbar-brand::first-letter {
+	color: #04d1f9 !important;
+}
+.nav-specia .navbar-nav > li.active > a, 
+.nav-specia .navbar-nav > li.active > a:hover, 
+.nav-center .navbar-nav > li.active > a, 
+.nav-center .navbar-nav > li.active > a:hover, 
+.dropdown-menu > .active > a {
+    background: #04d1f9 !important;
+}
+.nav-spyropress .navbar-nav > .active > a, .nav-spyropress .navbar-nav > .active > a:hover {
+	border-top: solid 3px #04d1f9 !important;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+    background: #04d1f9 !important;
+}
+
+/* Typography */
+blockquote { 
+    border-left: 5px solid #04d1f9 !important;
+}
+em, cite, q { 
+	color: #04d1f9;
+}
+s, strike, del { 
+	color: #04d1f9; 
+}
+h1 span, h2 span, h3 span, h4 span, h5 span, h6 span, h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+    color: #04d1f9;
+}
+
+/* --------------------------------------
+=========================================
+    Secondary Color
+=========================================
+-----------------------------------------*/
+/* Top Bar */
+.header-top-info-5, .header-top-info-6 {
+	 background: #011132;
+}
+/* Header Cart & Header */
+
+a.specia-button {
+	border: solid 2px #011132 !important;
+	color: #011132 !important;
+}
+a.specia-button:hover, .navbar-default .navbar-nav > li > a.specia-button:hover {
+	background: #011132 !important;
+	color: #ffffff !important;
+}
+.header_spyropress_light .info_details a {
+    color: #011132;
+}
+.header_spyropress_dark {
+	background: rgba(1, 17, 50, 0.7);
+}
+.header_nifty_dark {
+    background: #011132;
+}
+
+/* Menu CSS */
+.navbar-brand {
+	color: #011132 !important;
+}
+.nav-spyropress {
+	background: #011132 !important;
+}
+
+/* Footer Copyright Section */
+.footer-copyright {
+    background: #011132;
+}
+.top-scroll {
+    border-color: #04d1f9;
+    color: #04d1f9;
+}
+
+/* Typography */
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+	color: #011132;
+}
+blockquote cite, blockquote small { 
+	color: #011132;}
+
+	/* Tablesorter Section = important */
+ select {width: auto; display: inline;} 
+	body img {display: inline}
+	
+	
