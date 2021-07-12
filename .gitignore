@@ -1,8 +1,8 @@
 .htaccess
 .html~
 .vs/
-/megatable/wp-content/
-/megatable/wp-includes/
-/chromSimLite/
-/wikiChrom/
-/wikiChrom [ARCHIVED]/
+/megatable/wp-content/*
+/megatable/wp-includes/*
+/chromSimLite/*
+/wikiChrom/*
+/wikiChrom [ARCHIVED]/*
