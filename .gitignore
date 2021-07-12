@@ -2,6 +2,7 @@
 .html~
 .vs/
 .idea/
+**/megatable/
 **/megatable/wp-content/
 **/megatable/wp-includes/
 **/megatable/dbconfig.php
