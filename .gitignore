@@ -1,3 +1,5 @@
 .htaccess
 .html~
 .vs/
+/megatable/wp-content/
+/megatable/wp-includes/
