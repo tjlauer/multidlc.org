@@ -1,6 +1,7 @@
 <?php
 	$local_root = 'http://' . $_SERVER['SERVER_NAME'];	
-	$selected_tab = 3;
+	$selected_tab = 5;
+	$tab_title = "Dispersion Calculator";
 	include($_SERVER['DOCUMENT_ROOT']. '/scaffold/header.php');
 ?>
 
@@ -13,7 +14,12 @@ th, td {
 <main onload="">
 <div id="description">
 	<h1 id="page-title">Dispersion Calculator</h1>
-	<p>This calculator is based off of findings in <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">THIS PAPER</a>.</p>
+	<p>This calculator is based off of theory discussed in the following articles: 
+		<a href="https://www.chromatographyonline.com/view/where-has-my-efficiency-gone-impacts-of-extracolumn-peak-broadening-on-performance-part-i-basic-concepts" target="_blank">Part 1</a>, 
+		<a href="https://www.chromatographyonline.com/view/where-has-my-efficiency-gone-impacts-of-extracolumn-peak-broadening-on-performance-part-ii-sample-injection" target="_blank">Part 2</a>, 
+		<a href="https://www.chromatographyonline.com/view/where-has-my-efficiency-gone-impacts-of-extracolumn-peak-broadening-on-performance-part-iii-tubing-and-detectors" target="_blank">Part 3</a>, and 
+		<a href="https://www.chromatographyonline.com/view/where-has-my-efficiency-gone-impacts-of-extracolumn-peak-broadening-on-performance-part-iv-gradient-elution-flow-splitting-and-a-holistic-view" target="_blank">Part 4</a>.
+	</p>
 	<hr></hr>
 </div>
 <div id="content">
@@ -44,7 +50,6 @@ th, td {
 							<td style="border:0px; width: 100px;"><input class="number Input" type="number" step="any" id="PressureDrop_Viscosity" value="1" onchange="CalculateDispersion();"/></td>
 						</tr>
 					</table>
-					<!--<hr>-->
 				</div>
 				<div id="DIV_Injection">
 					<p onclick="ToggleHidden('Table_Injection');" class="SectionHeader">Injection (Flow through injector)</p>
@@ -63,21 +68,17 @@ th, td {
 						</tr>
 						<tr>
 							<th style="border:0px;">θ<sub>inj</sub></th>
-							<!--<td style="border:0px;"><input class="number Input" type="number" step="any" id="Injection_Theta" value="5" onchange="CalculateDispersion();"/></td>-->
 							<td style="border:0px;" class="Output" id="Injection_Theta">#</td>
 						</tr>
 						<tr>
-							<!--<th style="border:0px;">Var<sub>hydrodynamic</sub> [µL<sup>2</sup>]</th>-->
 							<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">hydrodynamic</sub>[µL<sup>2</sup>]</th>
 							<td style="border:0px;" class="Output" id="Injection_Var_Hydrodynamic">#</td>
 						</tr>
 						<tr>
-							<!--<th style="border:0px;">Var<sub>inj</sub> [µL<sup>2</sup>]</th>-->
 							<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">inj</sub>[µL<sup>2</sup>]</th>
 							<td style="border:0px;" class="Output" id="Injection_Var">#</td>
 						</tr>
 					</table>
-					<!--<hr>-->
 				</div>
 				<div id="DIV_Tubing_PreColumn">
 					<p onclick="ToggleHidden('Table_Tubing_PreColumn');" class="SectionHeader">Tubing (Pre-Column)</p>
@@ -91,12 +92,10 @@ th, td {
 							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Tubing_PreColumn_Length" value="400" onchange="CalculateDispersion();"/></td>
 						</tr>
 						<tr>
-							<!--<th style="border:0px;">Var<sub>tub,pre-col</sub> [µL<sup>2</sup>]</th>-->
 							<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">tub,pre-col</sub>[µL<sup>2</sup>]</th>
 							<td style="border:0px;" class="Output" id="Tubing_PreColumn_Var">#</td>
 						</tr>
 					</table>
-					<!--<hr>-->
 				</div>
 				<div id="DIV_Tubing_HeatExchanger">
 					<p onclick="ToggleHidden('Table_Tubing_HeatExchanger');" class="SectionHeader">Heat Exchanger</p>
@@ -110,12 +109,10 @@ th, td {
 							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Tubing_HeatExchanger_Length" value="50" onchange="CalculateDispersion();"/></td>
 						</tr>
 						<tr>
-							<!--<th style="border:0px;">Var<sub>tub,pre-col</sub> [µL<sup>2</sup>]</th>-->
 							<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">tub,heat exchanger</sub>[µL<sup>2</sup>]</th>
 							<td style="border:0px;" class="Output" id="Tubing_HeatExchanger_Var">#</td>
 						</tr>
 					</table>
-					<!--<hr>-->
 				</div>
 				<div id="DIV_Column">
 					<p onclick="ToggleHidden('Table_Column');" class="SectionHeader">Column</p>
@@ -149,16 +146,14 @@ th, td {
 							<td style="border:0px;" class="Output" id="Column_PlateNumber">#</td>
 						</tr>
 						<tr>
-							<th style="border:0px;">Retention Factor</th>
+							<th style="border:0px;">Retention Factor (k or k<sub>e</sub>)</th>
 							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Column_RetentionFactor" value="1" onchange="CalculateDispersion();"/></td>
 						</tr>
 						<tr>
-							<!--<th style="border:0px;">Var<sub>col</sub> [µL<sup>2</sup>]</th>-->
 							<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">col</sub>[µL<sup>2</sup>]</th>
 							<td style="border:0px;" class="Output" id="Column_Var">#</td>
 						</tr>
 					</table>
-					<!--<hr>-->
 				</div>
 				<div id="DIV_Tubing_PostColumn">
 					<p onclick="ToggleHidden('Table_Tubing_PostColumn');" class="SectionHeader">Tubing (Post-Column)</p>
@@ -172,12 +167,10 @@ th, td {
 							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Tubing_PostColumn_Length" value="400" onchange="CalculateDispersion();"/></td>
 						</tr>
 						<tr>
-							<!--<th style="border:0px;">Var<sub>tub,post-col</sub> [µL<sup>2</sup>]</th>-->
 							<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">tub,post-col</sub>[µL<sup>2</sup>]</th>
 							<td style="border:0px;" class="Output" id="Tubing_PostColumn_Var">#</td>
 						</tr>
 					</table>
-					<!--<hr>-->
 				</div>
 				<div id="DIV_FlowSplitting">
 					<p onclick="ToggleHidden('Table_FlowSplitting');" class="SectionHeader">Flow Splitting</p>
@@ -191,7 +184,6 @@ th, td {
 							<td style="border:0px;" class="Output" id="FlowSplitting_PostSplitFlowRate">#</td>
 						</tr>
 					</table>
-					<!--<hr>-->
 				</div>
 				<div id="DIV_Tubing_PostSplit">
 					<p onclick="ToggleHidden('Table_Tubing_PostSplit');" class="SectionHeader">Tubing (Post-Split)</p>
@@ -205,12 +197,10 @@ th, td {
 							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Tubing_PostSplit_Length" value="400" onchange="CalculateDispersion();"/></td>
 						</tr>
 						<tr>
-							<!--<th style="border:0px;">Var<sub>tub,post-split</sub> [µL<sup>2</sup>]</th>-->
 							<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">tub,post-split</sub>[µL<sup>2</sup>]</th>
 							<td style="border:0px;" class="Output" id="Tubing_PostSplit_Var">#</td>
 						</tr>
 					</table>
-					<!--<hr>-->
 				</div>
 				<div id="DIV_Detector">
 					<p onclick="ToggleHidden('Table_Detector');" class="SectionHeader">Detector</p>
@@ -224,12 +214,10 @@ th, td {
 							<td style="border:0px;"><input class="number Input" type="number" step="any" id="Detector_CellVolume" value="1" onchange="CalculateDispersion();"/></td>
 						</tr>
 						<tr>
-							<!--<th style="border:0px;">Var<sub>det</sub> [µL<sup>2</sup>]</th>-->
 							<th style="border:0px;">σ<sup>2</sup><sub style="display: inline-block; transform: translate(-5.86px,1px);">det</sub>[µL<sup>2</sup>]</th>
 							<td style="border:0px;" class="Output" id="Detector_Var">#</td>
 						</tr>
 					</table>
-					<!--<hr>-->
 				</div>
 			</td>
 			<td style="width:50%;vertical-align:top;">
@@ -238,67 +226,77 @@ th, td {
 					<div id="Chart_Variances" style="margin-top:7px;">
 						[PIE CHART]
 					</div>
-					<!--<hr>-->
 				</div>
 				<div id="DIV_Contributions">
 					<p onclick="ToggleHidden('Table_Contributions');" class="SectionHeader">Variance Table</p>
 					<table style="border:0px;" id="Table_Contributions">
 						<tr>
 							<th style="border:0px;"></th>
-							<th style="border:0px;">Variance [µL<sup>2</sup>]</th>
-							<th style="border:0px;width:20%;">%</th>
+							<th style="border:0px;text-align:center;">Variance [µL<sup>2</sup>]</th>
+							<th style="border:0px;text-align:center;width:20%;">%</th>
 							<th style="border:0px;width:20%;"></th>
 						</tr>
 						<tr onclick="FocusMenu(1);">
 							<th style="border:0px;">Injection</th>
-							<td style="border:0px;" class="Output" id="Contributions_Injection_Var">#</td>
-							<td style="border:0px;" class="Output" id="Contributions_Injection_Percent">#</td>
-							<td style="border:0px;background-color:#4472C4"></th>
-						</tr>
+							<td style="border:0px;text-align:center;" class="Output" id="Contributions_Injection_Var">#</td>
+							<td style="border:0px;text-align:center;" class="Output" id="Contributions_Injection_Percent">#</td>
+                            <td id="colors_Injection" style="border:0px;background-color:#000000"></td>
+                        </tr>
 						<tr onclick="FocusMenu(2);">
 							<th style="border:0px;">Tubing (Pre-Column)</th>
-							<td style="border:0px;" class="Output" id="Contributions_Tubing_PreColumn_Var">#</td>
-							<td style="border:0px;" class="Output" id="Contributions_Tubing_PreColumn_Percent">#</td>
-							<td style="border:0px;background-color:#ED7D31"></th>
+							<td style="border:0px;text-align:center;" class="Output" id="Contributions_Tubing_PreColumn_Var">#</td>
+							<td style="border:0px;text-align:center;" class="Output" id="Contributions_Tubing_PreColumn_Percent">#</td>
+							<td id="colors_Tubing_PreColumn" style="border:0px;background-color:#000000"></th>
 						</tr>
 						<tr onclick="FocusMenu(3);">
 							<th style="border:0px;">Heat Exchanger</th>
-							<td style="border:0px;" class="Output" id="Contributions_Tubing_HeatExchanger_Var">#</td>
-							<td style="border:0px;" class="Output" id="Contributions_Tubing_HeatExchanger_Percent">#</td>
-							<td style="border:0px;background-color:#A5A5A5"></th>
+							<td style="border:0px;text-align:center;" class="Output" id="Contributions_Tubing_HeatExchanger_Var">#</td>
+							<td style="border:0px;text-align:center;" class="Output" id="Contributions_Tubing_HeatExchanger_Percent">#</td>
+							<td id="colors_HeatExchanger" style="border:0px;background-color:#000000"></th>
 						</tr>
 						<tr onclick="FocusMenu(4);">
 							<th style="border:0px;">Column</th>
-							<td style="border:0px;" class="Output" id="Contributions_Column_Var">#</td>
-							<td style="border:0px;" class="Output" id="Contributions_Column_Percent">#</td>
-							<td style="border:0px;background-color:#FFC000"></th>
+							<td style="border:0px;text-align:center;" class="Output" id="Contributions_Column_Var">#</td>
+							<td style="border:0px;text-align:center;" class="Output" id="Contributions_Column_Percent">#</td>
+							<td id="colors_Column" style="border:0px;background-color:#000000"></th>
 						</tr>
 						<tr onclick="FocusMenu(5);">
 							<th style="border:0px;">Tubing (Post-Column)</th>
-							<td style="border:0px;" class="Output" id="Contributions_Tubing_PostColumn_Var">#</td>
-							<td style="border:0px;" class="Output" id="Contributions_Tubing_PostColumn_Percent">#</td>
-							<td style="border:0px;background-color:#5B9BD5"></th>
+							<td style="border:0px;text-align:center;" class="Output" id="Contributions_Tubing_PostColumn_Var">#</td>
+							<td style="border:0px;text-align:center;" class="Output" id="Contributions_Tubing_PostColumn_Percent">#</td>
+							<td id="colors_Tubing_PostColumn" style="border:0px;background-color:#000000"></th>
 						</tr>
 						<tr onclick="FocusMenu(6);">
 							<th style="border:0px;">Tubing (Post-Split)</th>
-							<td style="border:0px;" class="Output" id="Contributions_Tubing_PostSplit_Var">#</td>
-							<td style="border:0px;" class="Output" id="Contributions_Tubing_PostSplit_Percent">#</td>
-							<td style="border:0px;background-color:#70AD47"></th>
+							<td style="border:0px;text-align:center;" class="Output" id="Contributions_Tubing_PostSplit_Var">#</td>
+							<td style="border:0px;text-align:center;" class="Output" id="Contributions_Tubing_PostSplit_Percent">#</td>
+							<td id="colors_Tubing_PostSplit" style="border:0px;background-color:#000000"></th>
 						</tr>
 						<tr onclick="FocusMenu(7);">
 							<th style="border:0px;">Detector</th>
-							<td style="border:0px;" class="Output" id="Contributions_Detector_Var">#</td>
-							<td style="border:0px;" class="Output" id="Contributions_Detector_Percent">#</td>
-							<td style="border:0px;background-color:#264478"></th>
+							<td style="border:0px;text-align:center;" class="Output" id="Contributions_Detector_Var">#</td>
+							<td style="border:0px;text-align:center;" class="Output" id="Contributions_Detector_Percent">#</td>
+							<td id="colors_Detector" style="border:0px;background-color:#000000"></th>
 						</tr>
 						<tr style="border-top:2px solid black;">
-							<th style="border-left:0px;border-right:0px;border-bottom:0px;">Total</th>
-							<td style="border-left:0px;border-right:0px;border-bottom:0px;" class="Output" id="Contributions_Total_Var">#</td>
-							<td style="border-left:0px;border-right:0px;border-bottom:0px;" class="Output" id="Contributions_Total_Percent">#</td>
-							<td style="border:0px;"></th>
+							<th style="border-left:0px;border-right:0px;">Total</th>
+							<td style="border-left:0px;border-right:0px;text-align:center;" class="Output" id="Contributions_Total_Var">#</td>
+							<td style="border-left:0px;border-right:0px;text-align:center;" class="Output" id="Contributions_Total_Percent">#</td>
+							<td style="border-left:0px;border-right:0px;"></th>
 						</tr>
 					</table>
-					<!--<hr>-->
+				</div>
+				<div id="DIV_EfficiencyLoss">
+					<table style="width:55%;margin-top:7px;">
+						<tr>
+							<th style="border:0px;">Apparent Plate Number</th>
+							<td style="border:0px;" class="Output" id="Column_ApparentEfficiency">#</td>
+						</tr>
+						<tr id="Column_EfficiencyLoss_Row">
+							<th style="border:0px;">Efficiency Loss [%]</th>
+							<td style="border:0px;" class="Output" id="Column_EfficiencyLoss">#</td>
+						</tr>
+					</table>
 				</div>
 				<div id="DIV_PressureDrop">
 					<p onclick="ToggleHidden('Table_PressureDrop');" class="SectionHeader">Pressure Drop</p>
@@ -328,7 +326,6 @@ th, td {
 							<td style="border-left:0px;border-right:0px;border-bottom:0px;" class="Output" id="PressureDrop_TubingTotal">#</td>
 						</tr>
 					</table>
-					<!--<hr>-->
 				</div>
 			</td>
 		</tr>
@@ -339,10 +336,10 @@ th, td {
 <!-- This script tag creates the JSON object containing all of the metadata for individual elements -->
 <!-- Examples of metadata included tooltip text, number if decimals/sigfigs to display, min/max values, etc. -->
 <script>
-	let metadata = {
+	const metadata = {
 		"General_ElutionMode": {
 			"Class": "Input",
-			"Tooltip": "",
+			"Tooltip": "This calculator assumes that when using gradient elution the initial retention of analysis during the separation is very high, so that pre-column sources of dispersion are completely eliminated.",
 			"Value": {
 				"Type": "select",
 				"Default": "Isocratic",
@@ -362,17 +359,17 @@ th, td {
 		},
 		"General_FlowRate": {
 			"Class": "Input",
-			"Tooltip": "Volumetric flow rate through the column.",
+			"Tooltip": "", //Volumetric flow rate through the column.
 			"Value": {
 				"Type": "number",
-				"Default": 0.5,
+				"Default": 1,
 				"Min": 0,
 				"Max": NaN
 			}
 		},
 		"General_DiffusionCoefficient_Coefficient": {
 			"Class": "Input",
-			"Tooltip": "Analyte Diffusion Coefficient in Mobile Phase (Dm)",
+			"Tooltip": "", //Analyte Diffusion Coefficient in Mobile Phase (Dm)
 			"Value": {
 				"Type": "number",
 				"Default": 1,
@@ -382,7 +379,7 @@ th, td {
 		},
 		"General_DiffusionCoefficient_Exponent": {
 			"Class": "Input",
-			"Tooltip": "Analyte Diffusion Coefficient in Mobile Phase (Dm)",
+			"Tooltip": "", //Analyte Diffusion Coefficient in Mobile Phase (Dm)
 			"Value": {
 				"Type": "number",
 				"Default": -10,
@@ -402,10 +399,10 @@ th, td {
 		},
 		"Injection_NeedleSeatDiameter": {
 			"Class": "Input",
-			"Tooltip": "Standard needle seat capillaries are typically 120 um i.d.; low dispersion seat capillaries are typically 75 micron i.d.",
+			"Tooltip": "Standard needle seat capillaries are typically 120 µm i.d.; low dispersion seat capillaries are typically 75 µm i.d.",
 			"Value": {
 				"Type": "number",
-				"Default": 120,
+				"Default": 75,
 				"Min": 0,
 				"Max": NaN
 			}
@@ -425,7 +422,7 @@ th, td {
 			"Tooltip": "",
 			"Value": {
 				"Type": "number",
-				"Default": 2,
+				"Default": 0.5,
 				"Min": 0,
 				"Max": NaN
 			}
@@ -435,7 +432,7 @@ th, td {
 			"Tooltip": "",
 			"Value": {
 				"Type": "number",
-				"Default": 120,
+				"Default": 75,
 				"Min": 0,
 				"Max": NaN
 			}
@@ -452,20 +449,20 @@ th, td {
 		},
 		"Tubing_HeatExchanger_Diameter": {
 			"Class": "Input",
-			"Tooltip": "",
+			"Tooltip": "Standard heat exchanger capillaries are typically about 250 mm x 120 µm i.d.; low dispersion heat exchanger capillaries are typically about 250 mm x 75 µm i.d.",
 			"Value": {
 				"Type": "number",
-				"Default": 120,
+				"Default": 75,
 				"Min": 0,
 				"Max": NaN
 			}
 		},
 		"Tubing_HeatExchanger_Length": {
 			"Class": "Input",
-			"Tooltip": "",
+			"Tooltip": "Standard heat exchanger capillaries are typically about 250 mm x 120 µm i.d.; low dispersion heat exchanger capillaries are typically about 250 mm x 75 µm i.d.",
 			"Value": {
 				"Type": "number",
-				"Default": 50,
+				"Default": 250,
 				"Min": 0,
 				"Max": NaN
 			}
@@ -485,7 +482,7 @@ th, td {
 			"Tooltip": "",
 			"Value": {
 				"Type": "number",
-				"Default": 100,
+				"Default": 50, //10,
 				"Min": 0,
 				"Max": NaN
 			}
@@ -505,7 +502,7 @@ th, td {
 			"Tooltip": "",
 			"Value": {
 				"Type": "number",
-				"Default": 5,
+				"Default": 1.8,
 				"Min": 0,
 				"Max": NaN
 			}
@@ -522,10 +519,10 @@ th, td {
 		},
 		"Column_RetentionFactor": {
 			"Class": "Input",
-			"Tooltip": "",
+			"Tooltip": "When using gradient elution, k<sub>e</sub> is used, which is the local retention factor at the column exit. The range of k<sub>e</sub> for most gradient separations is 1-3.",
 			"Value": {
 				"Type": "number",
-				"Default": 1,
+				"Default": 2,
 				"Min": 0,
 				"Max": NaN
 			}
@@ -535,7 +532,7 @@ th, td {
 			"Tooltip": "",
 			"Value": {
 				"Type": "number",
-				"Default": 120,
+				"Default": 75,
 				"Min": 0,
 				"Max": NaN
 			}
@@ -552,10 +549,10 @@ th, td {
 		},
 		"FlowSplitting_SplitRatio": {
 			"Class": "Input",
-			"Tooltip": "",
+			"Tooltip": "1:X, e.g. X=1 for a  50% split = 1:1-ratio; for no split, X=0",
 			"Value": {
 				"Type": "number",
-				"Default": 0,
+				"Default": 1,
 				"Min": 0,
 				"Max": NaN
 			}
@@ -565,7 +562,7 @@ th, td {
 			"Tooltip": "",
 			"Value": {
 				"Type": "number",
-				"Default": 120,
+				"Default": 75,
 				"Min": 0,
 				"Max": NaN
 			}
@@ -575,7 +572,7 @@ th, td {
 			"Tooltip": "",
 			"Value": {
 				"Type": "number",
-				"Default": 400,
+				"Default": 200, //400,
 				"Min": 0,
 				"Max": NaN
 			}
@@ -595,7 +592,7 @@ th, td {
 			"Tooltip": "",
 			"Value": {
 				"Type": "number",
-				"Default": 1,
+				"Default": 0.5,
 				"Min": 0,
 				"Max": NaN
 			}
@@ -605,7 +602,7 @@ th, td {
 
 		"Injection_Theta": {
 			"Class": "Output",
-			"Tooltip": "This value is about 1 for injection volumes less than 2 uL. For volumes between 2 and 10 uL, the value increases linearly with volume. For volumes larger than 10 uL, the value is about 8.",
+			"Tooltip": "This value is about 1 for injection volumes less than 1 µL. For volumes between 1 and 10 µL, the value increases linearly with volume. For volumes larger than 10 µL, the value is about 8.",
 			"DisplayRounding": {
 				"Type": "Decimals",
 				"Value": 2
@@ -707,7 +704,7 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		},
 		"Contributions_Injection_Percent": {
@@ -715,7 +712,7 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		},
 		"Contributions_Tubing_PreColumn_Var": {
@@ -723,7 +720,7 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		},
 		"Contributions_Tubing_PreColumn_Percent": {
@@ -731,7 +728,7 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		},
 		"Contributions_Tubing_HeatExchanger_Var": {
@@ -739,7 +736,7 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		},
 		"Contributions_Tubing_HeatExchanger_Percent": {
@@ -747,7 +744,7 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		},
 		"Contributions_Column_Var": {
@@ -755,7 +752,7 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		},
 		"Contributions_Column_Percent": {
@@ -763,7 +760,7 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		},
 		"Contributions_Tubing_PostColumn_Var": {
@@ -771,7 +768,7 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		},
 		"Contributions_Tubing_PostColumn_Percent": {
@@ -779,7 +776,7 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		},
 		"Contributions_Tubing_PostSplit_Var": {
@@ -787,7 +784,7 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		},
 		"Contributions_Tubing_PostSplit_Percent": {
@@ -795,7 +792,7 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		},
 		"Contributions_Detector_Var": {
@@ -803,7 +800,7 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		},
 		"Contributions_Detector_Percent": {
@@ -811,7 +808,7 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		},
 		"Contributions_Total_Var": {
@@ -819,7 +816,7 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		},
 		"Contributions_Total_Percent": {
@@ -827,7 +824,26 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
+			}
+		},
+
+
+
+		"Column_ApparentEfficiency": {
+			"Class": "Output",
+			"Tooltip": "",
+			"DisplayRounding": {
+				"Type": "Decimals",
+				"Value": 0
+			}
+		},
+		"Column_EfficiencyLoss": {
+			"Class": "Output",
+			"Tooltip": "",
+			"DisplayRounding": {
+				"Type": "Decimals",
+				"Value": 1
 			}
 		},
 
@@ -838,7 +854,7 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		},
 		"PressureDrop_PreColumnTubing": {
@@ -846,7 +862,7 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		},
 		"PressureDrop_HeatExchangerTubing": {
@@ -854,7 +870,7 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		},
 		"PressureDrop_PostColumnTubing": {
@@ -862,7 +878,7 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		},
 		"PressureDrop_PostSplitTubing": {
@@ -870,19 +886,43 @@ th, td {
 			"Tooltip": "",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		},
 		"PressureDrop_TubingTotal": {
 			"Class": "Output",
-			"Tooltip": "The pressure is calculated for three independent tubing zones: broken into three parts: 1) Pre-column tubing; 2) Tubing between the column outlet and the split point; and 3) Tubing between the post-column split",
+			"Tooltip": "The pressure is calculated for three independent tubing zones: broken into five parts: 1) Needle seat capillary; 2) Pre-column tubing; 3) Heat exchanger; 4) Tubing between the column outlet and the split point; and 5) Tubing between the post-column split point and the detector.",
 			"DisplayRounding": {
 				"Type": "Decimals",
-				"Value": 2
+				"Value": 1
 			}
 		}
 	};
+
+	/*// Original Colors
+	const colors = {
+		"Injection": "#4472C4",
+		"Tubing_PreColumn": "#ED7D31",
+		"HeatExchanger": "#A5A5A5",
+		"Column": "#FFC000",
+		"Tubing_PostColumn": "#5B9BD5",
+		"Tubing_PostSplit": "#70AD47",
+		"Detector": "#264478"
+	};*/
+
+	// New Colors
+	const colors = {
+		"Injection": "#70AD47",
+		"Tubing_PreColumn": "#ED7D31",
+		"HeatExchanger": "#9671E1",
+		"Column": "#FFC000",
+		"Tubing_PostColumn": "#5B9BD5",
+		"Tubing_PostSplit": "#B55392",
+		"Detector": "#A6A6A6",
+		"EfficiencyLossBackground_Midpoint": 25
+	};
 </script>
+
 
 <!-- This script tag contains all of the code for the dispersion calculations -->
 <script>
@@ -935,20 +975,19 @@ th, td {
 			}
 		}
 
+		EfficiencyLossBackground(variables.Column_EfficiencyLoss);
+
 		drawChart(
-			variables.Injection_Var,
-			variables.Tubing_PreColumn_Var,
-			variables.Tubing_HeatExchanger_Var,
-			variables.Column_Var,
-			variables.Tubing_PostColumn_Var,
-			variables.Tubing_PostSplit_Var,
-			variables.Detector_Var
+			variables.Contributions_Injection_Var,
+			variables.Contributions_Tubing_PreColumn_Var,
+			variables.Contributions_Tubing_HeatExchanger_Var,
+			variables.Contributions_Column_Var,
+			variables.Contributions_Tubing_PostColumn_Var,
+			variables.Contributions_Tubing_PostSplit_Var,
+			variables.Contributions_Detector_Var
 		);
 
-		//LogVariablesToConsole_v1(variables_Inputs, variables_Other, variables_Outputs, variables_Contributions_Var, variables_Contributions_Percent);
-		//LogVariablesToConsole_v2(variables_Inputs, variables_Other, variables_Outputs, variables_Contributions_Var, variables_Contributions_Percent);
-		//LogVariablesToConsole_v3(variables_Inputs, variables_Other, variables_Outputs, variables_Contributions_Var, variables_Contributions_Percent);
-		LogVariablesToConsole_v4(variables_Inputs, variables_Other, variables_Outputs, variables_Contributions_Var, variables_Contributions_Percent);
+		LogVariablesToConsole(variables_Inputs, variables_Other, variables_Outputs, variables_Contributions_Var, variables_Contributions_Percent);
 	}
 
 	function CalcBackpressure(Length,Diameter,Viscosity,FlowRate){
@@ -957,7 +996,6 @@ th, td {
 
 	function CalcVariance(Length,Diameter,DiffusionCoefficient,FlowRate){
 		// Calculate the variance introduced a given tube's dimensions. (Part #, Eq. ##)
-		//return ((Math.pow(Math.PI,2)*Math.pow((Length/1000),2)*Math.pow((Diameter/1000000),4))/(48+(192*Math.PI*(Length/1000)*DiffusionCoefficient/(FlowRate/60/1000000))))*1000000000000000000;
 		//return ((Math.pow(Math.PI,2)*Math.pow((Length/1000),2)*Math.pow((Diameter/1000000),4))/(48+(384*Math.PI*(Length/1000)*DiffusionCoefficient/(FlowRate/60/1000000))))*1000000000000000000;
 		var numerator = (Math.pow(Math.PI,2)*Math.pow((Length/1000),2)*Math.pow((Diameter/1000000),4));
 		var denominator = (48+(384*Math.PI*(Length/1000)*DiffusionCoefficient/(FlowRate/60/1000000)));
@@ -1016,19 +1054,14 @@ th, td {
 
 		// Set Injection_Var and Tubing_PreColumn_Var to 0 if using Gradient Elution Mode.
 		if(variables.General_ElutionMode == "Gradient"){
-			//document.getElementById("Injection_Var_Hydrodynamic").parentElement.hidden = true;
-			//document.getElementById("Injection_Var").parentElement.hidden = true;
-			//document.getElementById("Tubing_PreColumn_Var").parentElement.hidden = true;
-			//document.getElementById("Table_Contributions").children[0].children[1].hidden = true;
-			//document.getElementById("Table_Contributions").children[0].children[2].hidden = true;
 			variables.Injection_Var = 0;
 			variables.Tubing_PreColumn_Var = 0;
-		} else {
-			//document.getElementById("Injection_Var_Hydrodynamic").parentElement.hidden = false;
-			//document.getElementById("Injection_Var").parentElement.hidden = false;
-			//document.getElementById("Tubing_PreColumn_Var").parentElement.hidden = false;
-			//document.getElementById("Table_Contributions").children[0].children[1].hidden = false;
-			//document.getElementById("Table_Contributions").children[0].children[2].hidden = false;
+			variables.Tubing_HeatExchanger_Var = 0;
+		}
+
+		// Set Detector_Var to 0 if NOT using UV detection.
+		if(variables.General_UV_Detection == "No"){
+			variables.Detector_Var = 0;
 		}
 
 		// Calculate the Total Variance introduced by the System. (Part #, Eq. ##)
@@ -1036,30 +1069,38 @@ th, td {
 
 		variables.PressureDrop_TubingTotal = variables.PressureDrop_Injection + variables.PressureDrop_PreColumnTubing + variables.PressureDrop_HeatExchangerTubing + variables.PressureDrop_PostColumnTubing + variables.PressureDrop_PostSplitTubing;
 
-		variables.Contributions_Injection_Var = variables.Injection_Var;
-		variables.Contributions_Tubing_PreColumn_Var = variables.Tubing_PreColumn_Var;
-		variables.Contributions_Tubing_HeatExchanger_Var = variables.Tubing_HeatExchanger_Var;
-		variables.Contributions_Column_Var = variables.Column_Var;
-		variables.Contributions_Tubing_PostColumn_Var = variables.Tubing_PostColumn_Var;
+		variables.Contributions_Correction_Factor = Math.pow((variables.FlowSplitting_PostSplitFlowRate / variables.General_FlowRate),2);
+
+		variables.Contributions_Injection_Var = variables.Injection_Var * variables.Contributions_Correction_Factor;
+		variables.Contributions_Tubing_PreColumn_Var = variables.Tubing_PreColumn_Var * variables.Contributions_Correction_Factor;
+		variables.Contributions_Tubing_HeatExchanger_Var = variables.Tubing_HeatExchanger_Var * variables.Contributions_Correction_Factor;
+		variables.Contributions_Column_Var = variables.Column_Var * variables.Contributions_Correction_Factor;
+		variables.Contributions_Tubing_PostColumn_Var = variables.Tubing_PostColumn_Var * variables.Contributions_Correction_Factor;
 		variables.Contributions_Tubing_PostSplit_Var = variables.Tubing_PostSplit_Var;
 		variables.Contributions_Detector_Var = variables.Detector_Var;
-		variables.Contributions_Total_Var = variables.TotalVariance;
 
-		variables.Contributions_Injection_Percent = (variables.Injection_Var/variables.TotalVariance)*100;
-		variables.Contributions_Tubing_PreColumn_Percent = (variables.Tubing_PreColumn_Var/variables.TotalVariance)*100;
-		variables.Contributions_Tubing_HeatExchanger_Percent = (variables.Tubing_HeatExchanger_Var/variables.TotalVariance)*100;
-		variables.Contributions_Column_Percent = (variables.Column_Var/variables.TotalVariance)*100;
-		variables.Contributions_Tubing_PostColumn_Percent = (variables.Tubing_PostColumn_Var/variables.TotalVariance)*100;
-		variables.Contributions_Tubing_PostSplit_Percent = (variables.Tubing_PostSplit_Var/variables.TotalVariance)*100;
-		variables.Contributions_Detector_Percent = (variables.Detector_Var/variables.TotalVariance)*100;
-		variables.Contributions_Total_Percent = (variables.TotalVariance/variables.TotalVariance)*100;
+		variables.Contributions_Total_Var = 
+			variables.Contributions_Injection_Var + 
+			variables.Contributions_Tubing_PreColumn_Var + 
+			variables.Contributions_Tubing_HeatExchanger_Var + 
+			variables.Contributions_Column_Var + 
+			variables.Contributions_Tubing_PostColumn_Var + 
+			variables.Contributions_Tubing_PostSplit_Var + 
+			variables.Contributions_Detector_Var;
 
+		variables.Column_ApparentEfficiency = variables.Column_PlateNumber * (variables.Contributions_Column_Var / variables.Contributions_Total_Var);
+		variables.Column_EfficiencyLoss = 100*((variables.Column_PlateNumber - variables.Column_ApparentEfficiency) / variables.Column_PlateNumber);
 
-		//console.log(variables);
+		variables.Contributions_Injection_Percent = (variables.Contributions_Injection_Var/variables.Contributions_Total_Var)*100;
+		variables.Contributions_Tubing_PreColumn_Percent = (variables.Contributions_Tubing_PreColumn_Var/variables.Contributions_Total_Var)*100;
+		variables.Contributions_Tubing_HeatExchanger_Percent = (variables.Contributions_Tubing_HeatExchanger_Var/variables.Contributions_Total_Var)*100;
+		variables.Contributions_Column_Percent = (variables.Contributions_Column_Var/variables.Contributions_Total_Var)*100;
+		variables.Contributions_Tubing_PostColumn_Percent = (variables.Contributions_Tubing_PostColumn_Var/variables.Contributions_Total_Var)*100;
+		variables.Contributions_Tubing_PostSplit_Percent = (variables.Contributions_Tubing_PostSplit_Var/variables.Contributions_Total_Var)*100;
+		variables.Contributions_Detector_Percent = (variables.Contributions_Detector_Var/variables.Contributions_Total_Var)*100;
+		variables.Contributions_Total_Percent = (variables.Contributions_Total_Var/variables.Contributions_Total_Var)*100;
+
 		SetOutputs(variables);
-
-		//var variablesOrdered = SortJSON(variables);
-		//console.clear(); console.table(variablesOrdered);
 	}
 </script>
 
@@ -1072,35 +1113,10 @@ th, td {
 	google.charts.load('current', {'packages':['corechart']});
 	google.charts.setOnLoadCallback(CalculateDispersion);
 
-	//function drawChart_init(){
-	//	//drawChart(1,1,1,1,1,1);
-	//	CalculateDispersion();
-	//}
-
 	// Draw the chart and set the chart values
 	function drawChart(Injection,Tubing_PreColumn,Tubing_HeatExchanger,Column,Tubing_PostColumn,Tubing_PostSplit,Detector) {
-		
-		//console.log(Injection);
-		//console.log(Tubing_PreColumn);
-		//console.log(Column);
-		//console.log(Tubing_PostColumn);
-		//console.log(Tubing_PostSplit);
-		//console.log(Detector);
-
 		var chartWidth = document.getElementById("Chart_Variances").clientWidth * 1.0;
 		var chartHeight = document.getElementById("Chart_Variances").clientHeight * 1.0;
-
-		/*
-		var data = google.visualization.arrayToDataTable([
-		['Source', 'Variance'],
-		['Injection', Injection],
-		['Tubing, Pre-Column', Tubing_PreColumn],
-		['Column', Column],
-		['Tubing, Post-Column', Tubing_PostColumn],
-		['Tubing, Post-Split', Tubing_PostSplit],
-		['Detector', Detector]
-		]);
-		*/
 
 		var data = google.visualization.arrayToDataTable([
 		['Source', 'Variance'],
@@ -1113,53 +1129,26 @@ th, td {
 		['Detector', Detector]
 		]);
 
-		//console.log(data);
-		
-		// Optional; add a title and set the width and height of the chart
-		//var options = {'title':'My Average Day', 'width':550, 'height':400};
-		//var options = {'title':'My Average Day', 'width':chartWidth, 'height':chartHeight};
 		var options = {};
-		options.colors = ['#4472C4', '#ED7D31', '#A5A5A5', '#FFC000', '#5B9BD5', '#70AD47', '#264478'];
-		//options.chartArea = {'left':0,'top':0,'width':chartWidth,'height':chartHeight};
+		options.colors = [colors.Injection, colors.Tubing_PreColumn, colors.HeatExchanger, colors.Column, colors.Tubing_PostColumn, colors.Tubing_PostSplit, colors.Detector];
 		options.chartArea = {'width':chartWidth,'height':chartHeight};
 		options.width = document.getElementById("Chart_Variances").clientWidth;
 		options.height = document.getElementById("Chart_Variances").clientHeight;
-		//options.legend = {position: 'labeled'};
-		//options.legend = {'position': 'right', 'maxLines': 6};
 		options.legend = {position: 'none'};
-		//options.legend.textStyle: {color: 'blue', fontSize: 16};
 		options.pieSliceText = 'label';
 		options.pieStartAngle = 0;
 		options.tooltip = {'trigger': 'none'};
-
-		//https://developers.google.com/chart/interactive/docs/animation#Transition_Behavior
-		//options.animation = {
-		//	'startup': true,
-		//	'duration': 1000,
-		//	'easing': 'inAndOut'
-		//};
 
 		// Display the chart inside the <div> element with id="Chart_Variances"
 		var chart = new google.visualization.PieChart(document.getElementById('Chart_Variances'));
 
 		// The select handler. Call the chart's getSelection() method
 		function selectHandler() {
-			//var selection = chart.getSelection(); //console.log(selection);
-			//var selectedItem = selection[0]; //console.log(selectedItem);
-			//var selectedItemRow = selectedItem.row; //console.log(selectedItemRow);
-
 			if(chart.getSelection().length == 0){
 				FocusMenu(-1);
 			} else {
 				FocusMenu(chart.getSelection()[0].row + 1);
 			}
-
-			
-			
-			//if (selectedItem) {
-			//	var value = data.getValue(selectedItem.row, selectedItem.column);
-			//	alert('The user selected ' + value);
-			//}
 		}
 
 		// Listen for the 'select' event, and call my function selectHandler() when
@@ -1183,36 +1172,28 @@ th, td {
 
 		switch(selectedItemRow) {
 				case 0:
-					//console.log("General");
 					document.getElementById("Table_General").hidden = false;
 					break;
 				case 1:
-					//console.log("Injection");
 					document.getElementById("Table_Injection").hidden = false;
 					break;
 				case 2:
-					//console.log("Tubing, Pre-Column");
 					document.getElementById("Table_Tubing_PreColumn").hidden = false;
 					break;
 				case 3:
-					//console.log("Heat Exchanger");
 					document.getElementById("Table_Tubing_HeatExchanger").hidden = false;
 					break;
 				case 4:
-					//console.log("Column");
 					document.getElementById("Table_Column").hidden = false;
 					break;
 				case 5:
-					//console.log("Tubing, Post-Column");
 					document.getElementById("Table_Tubing_PostColumn").hidden = false;
 					break;
 				case 6:
-					//console.log("Tubing, Post-Split");
 					document.getElementById("Table_FlowSplitting").hidden = false;
 					document.getElementById("Table_Tubing_PostSplit").hidden = false;
 					break;
 				case 7:
-					//console.log("Detector");
 					document.getElementById("Table_Detector").hidden = false;
 					break;
 			}
@@ -1270,36 +1251,22 @@ th, td {
 	}
 
 	function createTooltip(ele, eleID){
-		//console.log("createTooltip");
-		
-		//var tooltipElement = document.createElement("A");
 		var tooltipElement = document.createElement("P");
 		tooltipElement.id = "tooltip_"+eleID;
 		tooltipElement.style.position = "absolute"; //https://www.w3schools.com/jsref/prop_style_position.asp
-		//tooltipElement.style.position = "relative"; //https://www.w3schools.com/jsref/prop_style_position.asp
-		//tooltipElement.style.left
-		//tooltipElement.style.width = (ele.clientWidth - 10) + "px";
 		tooltipElement.style.width = (ele.parentElement.clientWidth - 10) + "px";
 		tooltipElement.style.bottom = "20px";
 		tooltipElement.style.padding = "5px";
-		//tooltipElement.style.textAlign = "center";
 		tooltipElement.style.borderRadius = "6px";
 		tooltipElement.style.backgroundColor = "black";
 		tooltipElement.style.color = "white";
-		//tooltipElement.innerHTML = "TOOLTIP<br>TEXT";
 		tooltipElement.innerHTML = metadata[eleID].Tooltip;
 		tooltipElement.style.zIndex = "1";
 
 		ele.appendChild(tooltipElement);
-
-		//var eleParent = ele.parentElement;
-		//eleParent.appendChild(tooltipElement);
-		//eleParent.insertBefore(tooltipElement, eleParent.childNodes[0]);
-		
 	}
 
 	function deleteTooltip(eleID){
-		//console.log("deleteTooltip");
 		document.getElementById("tooltip_"+eleID).remove();
 	}
 
@@ -1318,12 +1285,10 @@ th, td {
 
 	function PageStyling_DIV_PieChart(){
 		var ele = {};
-		ele["Chart_Variances"] = document.getElementById("Chart_Variances"); //PageStyling_GetElement("Chart_Variances");
-
-		ele["Chart_Variances"].style.width = "100%"; //PageStyling_GetElement("Chart_Variances");
-		ele["Chart_Variances"].style.height = ele["Chart_Variances"].clientWidth + "px"; //PageStyling_GetElement("Chart_Variances");
-
-		ele["Chart_Variances"].style.backgroundColor = "black"; //PageStyling_GetElement("Chart_Variances");
+		ele["Chart_Variances"] = document.getElementById("Chart_Variances");
+		ele["Chart_Variances"].style.width = "100%";
+		ele["Chart_Variances"].style.height = ele["Chart_Variances"].clientWidth + "px";
+		ele["Chart_Variances"].style.backgroundColor = "black";
 	}
 
 	function PageStyling_SectionHeaders(){
@@ -1345,6 +1310,24 @@ th, td {
 		document.getElementById(ID).hidden = !document.getElementById(ID).hidden;
 	}
 
+	function EfficiencyLossBackground(percentLost){
+		let midpoint = colors.EfficiencyLossBackground_Midpoint;
+		if(percentLost >= midpoint){
+			var Red = "FF";
+			//var Green = Math.round(((50-(percentLost-50))/50)*255).toString(16).toUpperCase();
+			var Green = (255-Math.round(((percentLost-midpoint)/(100-midpoint))*255)).toString(16).toUpperCase();
+			if(Green.length < 2){ Green = "0"+Green; }
+		} else {
+			var Green = "FF";
+			var Red = Math.round((percentLost/midpoint)*255).toString(16).toUpperCase();
+			if(Red.length < 2){ Red = "0"+Red; }
+		}
+		document.getElementById("Column_EfficiencyLoss_Row").style.backgroundColor = ("#"+Red+Green+"00");
+	}
+</script>
+
+<!-- This script tag contains all of the code for JSON object manipulation -->
+<script>
 	function SortJSON(unordered){
 		const ordered = Object.keys(unordered).sort().reduce(
 			(obj, key) => {
@@ -1384,96 +1367,11 @@ th, td {
 		}
 		return objNew;
 	}
+</script>
 
-	function LogVariablesToConsole_v1(variables_Inputs, variables_Other, variables_Outputs, variables_Contributions_Var, variables_Contributions_Percent){
-		var variables_Inputs_Sorted = variables_Inputs; //SortJSON(variables_Inputs);
-		var variables_Outputs_Sorted = variables_Outputs; //SortJSON(variables_Outputs);
-		var variables_Inputs_NEW = {};
-		var variables_Outputs_NEW = {};
-
-		variables_Inputs_NEW = ConcatJSON(variables_Inputs_NEW, JSON_KeyIncludes(variables_Inputs_Sorted, "General_"));
-		variables_Inputs_NEW = ConcatJSON(variables_Inputs_NEW, JSON_KeyIncludes(variables_Inputs_Sorted, "Injection_"));
-		variables_Inputs_NEW = ConcatJSON(variables_Inputs_NEW, JSON_KeyIncludes(variables_Inputs_Sorted, "Tubing_PreColumn_"));
-		variables_Inputs_NEW = ConcatJSON(variables_Inputs_NEW, JSON_KeyIncludes(variables_Inputs_Sorted, "Column_"));
-		variables_Inputs_NEW = ConcatJSON(variables_Inputs_NEW, JSON_KeyIncludes(variables_Inputs_Sorted, "Tubing_PostColumn_"));
-		variables_Inputs_NEW = ConcatJSON(variables_Inputs_NEW, JSON_KeyIncludes(variables_Inputs_Sorted, "FlowSplitting_"));
-		variables_Inputs_NEW = ConcatJSON(variables_Inputs_NEW, JSON_KeyIncludes(variables_Inputs_Sorted, "Tubing_PostSplit_"));
-		variables_Inputs_NEW = ConcatJSON(variables_Inputs_NEW, JSON_KeyIncludes(variables_Inputs_Sorted, "Detector_"));
-		variables_Inputs_NEW = ConcatJSON(variables_Inputs_NEW, JSON_KeyIncludes(variables_Inputs_Sorted, "PressureDrop_"));
-
-		variables_Outputs_NEW = ConcatJSON(variables_Outputs_NEW, JSON_KeyIncludes(variables_Outputs_Sorted, "Injection_"));
-		variables_Outputs_NEW = ConcatJSON(variables_Outputs_NEW, JSON_KeyIncludes(variables_Outputs_Sorted, "Tubing_PreColumn_"));
-		variables_Outputs_NEW = ConcatJSON(variables_Outputs_NEW, JSON_KeyIncludes(variables_Outputs_Sorted, "Column_"));
-		variables_Outputs_NEW = ConcatJSON(variables_Outputs_NEW, JSON_KeyIncludes(variables_Outputs_Sorted, "Tubing_PostColumn_"));
-		variables_Outputs_NEW = ConcatJSON(variables_Outputs_NEW, JSON_KeyIncludes(variables_Outputs_Sorted, "FlowSplitting_"));
-		variables_Outputs_NEW = ConcatJSON(variables_Outputs_NEW, JSON_KeyIncludes(variables_Outputs_Sorted, "Tubing_PostSplit_"));
-		variables_Outputs_NEW = ConcatJSON(variables_Outputs_NEW, JSON_KeyIncludes(variables_Outputs_Sorted, "Detector_"));
-		variables_Outputs_NEW = ConcatJSON(variables_Outputs_NEW, JSON_KeyIncludes(variables_Outputs_Sorted, "PressureDrop_"));
-
-		//var variables_Contributions = ConcatJSON(variables_Contributions_Var, variables_Contributions_Percent);
-
-		//console.clear();
-		//console.groupCollapsed("Variables");
-		//console.warn("variables_Inputs = "); console.table((variables_Inputs_NEW));
-		//console.log("\n\n\n"); console.warn("variables_Other = "); console.table((variables_Other));
-		//console.log("\n\n\n"); console.warn("variables_Outputs = "); console.table((variables_Outputs_NEW));
-		////console.log("\n\n\n"); console.warn("variables_Contributions = "); console.table((variables_Contributions_Var)); console.table((variables_Contributions_Percent));
-		//console.log("\n\n\n"); console.warn("variables_Contributions = "); console.table((variables_Contributions));
-		//console.groupEnd();
-
-		console.clear();
-		console.groupCollapsed("Inputs"); console.table((variables_Inputs_NEW)); console.groupEnd();
-		console.groupCollapsed("Intermediate Values"); console.table((variables_Other)); console.groupEnd();
-		console.groupCollapsed("Outputs"); console.table((variables_Outputs_NEW)); console.groupEnd();
-		console.groupCollapsed("Contributions"); console.table((variables_Contributions)); console.groupEnd();
-	}
-
-	function LogVariablesToConsole_v2(variables_Inputs, variables_Other, variables_Outputs, variables_Contributions_Var, variables_Contributions_Percent){
-		console.clear();
-
-		var d = new Date();
-		var d_string = d.toString();
-
-		console.groupCollapsed(d_string);
-			
-			console.groupCollapsed("Inputs");
-				console.table(JSON_KeyIncludes(variables_Inputs, "General_"));
-				console.table(JSON_KeyIncludes(variables_Inputs, "Injection_"));
-				console.table(JSON_KeyIncludes(variables_Inputs, "Tubing_PreColumn_"));
-				console.table(JSON_KeyNotIncludes(JSON_KeyIncludes(variables_Inputs, "Column_"),"Tubing_"));
-				console.table(JSON_KeyIncludes(variables_Inputs, "Tubing_PostColumn_"));
-				console.table(JSON_KeyIncludes(variables_Inputs, "FlowSplitting_"));
-				console.table(JSON_KeyIncludes(variables_Inputs, "Tubing_PostSplit_"));
-				console.table(JSON_KeyIncludes(variables_Inputs, "Detector_"));
-				console.table(JSON_KeyIncludes(variables_Inputs, "PressureDrop_"));
-			console.groupEnd();
-			
-			console.groupCollapsed("Intermediate Values");
-				console.table(variables_Other);
-			console.groupEnd();
-
-			console.groupCollapsed("Outputs");
-				console.table(JSON_KeyIncludes(variables_Outputs, "Injection_"));
-				console.table(JSON_KeyIncludes(variables_Outputs, "Tubing_PreColumn_"));
-				console.table(JSON_KeyNotIncludes(JSON_KeyIncludes(variables_Outputs, "Column_"),"Tubing_"));
-				console.table(JSON_KeyIncludes(variables_Outputs, "Tubing_PostColumn_"));
-				console.table(JSON_KeyIncludes(variables_Outputs, "FlowSplitting_"));
-				console.table(JSON_KeyIncludes(variables_Outputs, "Tubing_PostSplit_"));
-				console.table(JSON_KeyIncludes(variables_Outputs, "Detector_"));
-				console.table(JSON_KeyIncludes(variables_Outputs, "PressureDrop_"));
-			console.groupEnd();
-
-			console.groupCollapsed("Contributions");
-				console.table((variables_Contributions_Var));
-				console.table((variables_Contributions_Percent));
-			console.groupEnd();
-
-		console.groupEnd();
-	}
-
-	function LogVariablesToConsole_v3(variables_Inputs, variables_Other, variables_Outputs, variables_Contributions_Var, variables_Contributions_Percent){
-		//console.clear();
-
+<!-- This script tag contains all of the code for fancy console logs -->
+<script>
+	function LogVariablesToConsole(variables_Inputs, variables_Other, variables_Outputs, variables_Contributions_Var, variables_Contributions_Percent){
 		var variables_All = {};
 		variables_All = ConcatJSON(variables_All, variables_Inputs);
 		variables_All = ConcatJSON(variables_All, variables_Other);
@@ -1484,62 +1382,6 @@ th, td {
 		console.groupCollapsed(GetDateString());
 			
 			console.groupCollapsed("Inputs");
-				console.groupCollapsed("General"); console.table(JSON_KeyIncludes(variables_Inputs, "General_")); console.groupEnd();
-				console.groupCollapsed("Injection"); console.table(JSON_KeyIncludes(variables_Inputs, "Injection_")); console.groupEnd();
-				console.groupCollapsed("Pre-Column Tubing"); console.table(JSON_KeyIncludes(variables_Inputs, "Tubing_PreColumn_")); console.groupEnd();
-				console.groupCollapsed("Column"); console.table(JSON_KeyNotIncludes(JSON_KeyIncludes(variables_Inputs, "Column_"),"Tubing_")); console.groupEnd();
-				console.groupCollapsed("Post-Column Tubing"); console.table(JSON_KeyIncludes(variables_Inputs, "Tubing_PostColumn_")); console.groupEnd();
-				console.groupCollapsed("Flow Splitting"); console.table(JSON_KeyIncludes(variables_Inputs, "FlowSplitting_")); console.groupEnd();
-				console.groupCollapsed("Post-Split Tubing"); console.table(JSON_KeyIncludes(variables_Inputs, "Tubing_PostSplit_")); console.groupEnd();
-				console.groupCollapsed("Detector"); console.table(JSON_KeyIncludes(variables_Inputs, "Detector_")); console.groupEnd();
-				console.groupCollapsed("Pressure Drop"); console.table(JSON_KeyIncludes(variables_Inputs, "PressureDrop_")); console.groupEnd();
-			console.groupEnd();
-			
-			console.groupCollapsed("Intermediate Values");
-				console.table(variables_Other);
-			console.groupEnd();
-
-			console.groupCollapsed("Outputs");
-				console.groupCollapsed("Injection"); console.table(JSON_KeyIncludes(variables_Outputs, "Injection_")); console.groupEnd();
-				console.groupCollapsed("Pre-Column Tubing"); console.table(JSON_KeyIncludes(variables_Outputs, "Tubing_PreColumn_")); console.groupEnd();
-				console.groupCollapsed("Column"); console.table(JSON_KeyNotIncludes(JSON_KeyIncludes(variables_Outputs, "Column_"),"Tubing_")); console.groupEnd();
-				console.groupCollapsed("Post-Column Tubing"); console.table(JSON_KeyIncludes(variables_Outputs, "Tubing_PostColumn_")); console.groupEnd();
-				console.groupCollapsed("Flow Splitting"); console.table(JSON_KeyIncludes(variables_Outputs, "FlowSplitting_")); console.groupEnd();
-				console.groupCollapsed("Post-Split Tubing"); console.table(JSON_KeyIncludes(variables_Outputs, "Tubing_PostSplit_")); console.groupEnd();
-				console.groupCollapsed("Detector"); console.table(JSON_KeyIncludes(variables_Outputs, "Detector_")); console.groupEnd();
-				console.groupCollapsed("Pressure Drop"); console.table(JSON_KeyIncludes(variables_Outputs, "PressureDrop_")); console.groupEnd();
-			console.groupEnd();
-
-			console.groupCollapsed("Variance Table");
-				console.groupCollapsed("Value"); console.table((variables_Contributions_Var)); console.groupEnd();
-				console.groupCollapsed("Percentage"); console.table((variables_Contributions_Percent)); console.groupEnd();
-			console.groupEnd();
-
-			console.log(variables_All);
-			//console.groupCollapsed("All Variables");
-			//	console.table(variables_All);
-			//	console.log(variables_All);
-			//console.groupEnd();
-
-		console.groupEnd();
-	}
-
-	function LogVariablesToConsole_v4(variables_Inputs, variables_Other, variables_Outputs, variables_Contributions_Var, variables_Contributions_Percent){
-		//console.clear();
-
-		var variables_All = {};
-		variables_All = ConcatJSON(variables_All, variables_Inputs);
-		variables_All = ConcatJSON(variables_All, variables_Other);
-		variables_All = ConcatJSON(variables_All, variables_Outputs);
-		variables_All = ConcatJSON(variables_All, variables_Contributions_Var);
-		variables_All = ConcatJSON(variables_All, variables_Contributions_Percent);
-
-		//console.groupCollapsed(GetDateString());
-		console.groupCollapsed(GetDateString());
-			
-			console.groupCollapsed("Inputs");
-				//console.log(variables_Inputs);
-				//console.group("General"); console.table(JSON_KeyIncludes(variables_Inputs, "General_")); console.groupEnd();
 				console.group("General"); console.table(ConcatJSON(JSON_KeyIncludes(variables_Inputs, "General_"),JSON_KeyIncludes(variables_Inputs, "PressureDrop_"))); console.groupEnd();
 				console.group("Injection"); console.table(JSON_KeyIncludes(variables_Inputs, "Injection_")); console.groupEnd();
 				console.group("Pre-Column Tubing"); console.table(JSON_KeyIncludes(variables_Inputs, "Tubing_PreColumn_")); console.groupEnd();
@@ -1549,16 +1391,13 @@ th, td {
 				console.group("Flow Splitting"); console.table(JSON_KeyIncludes(variables_Inputs, "FlowSplitting_")); console.groupEnd();
 				console.group("Post-Split Tubing"); console.table(JSON_KeyIncludes(variables_Inputs, "Tubing_PostSplit_")); console.groupEnd();
 				console.group("Detector"); console.table(JSON_KeyIncludes(variables_Inputs, "Detector_")); console.groupEnd();
-				//console.group("Pressure Drop"); console.table(JSON_KeyIncludes(variables_Inputs, "PressureDrop_")); console.groupEnd();
 			console.groupEnd();
 			
 			console.groupCollapsed("Intermediate Values");
-				//console.log(variables_Other);
 				console.table(variables_Other);
 			console.groupEnd();
 
 			console.groupCollapsed("Outputs");
-				//console.log(variables_Outputs);
 				console.group("Injection"); console.table(JSON_KeyIncludes(variables_Outputs, "Injection_")); console.groupEnd();
 				console.group("Pre-Column Tubing"); console.table(JSON_KeyIncludes(variables_Outputs, "Tubing_PreColumn_")); console.groupEnd();
 				console.group("Heat Exchanger"); console.table(JSON_KeyIncludes(variables_Outputs, "Tubing_HeatExchanger_")); console.groupEnd();
@@ -1571,8 +1410,6 @@ th, td {
 			console.groupEnd();
 
 			console.groupCollapsed("Variance Table");
-				//console.log(variables_Contributions_Var);
-				//console.log(variables_Contributions_Percent);
 				console.table((variables_Contributions_Var));
 				console.table((variables_Contributions_Percent));
 			console.groupEnd();
@@ -1585,15 +1422,11 @@ th, td {
 
 <!-- This script tag contains all of the code that is executed once when the page is first loaded -->
 <script>
-	//console.clear();
-
-	// Set input values to defaults defined in metadata
 	SetInputsToDefaults();
-
 	for(key in metadata){ AssignTooltipToElement(key); }
-
 	PageStyling_SectionHeaders()
 	PageStyling_DIV_PieChart();
+	for(key in colors){ document.getElementById("colors_"+key).style.backgroundColor = colors[key]; }
 </script>
 
 <?php
