@@ -1,6 +1,7 @@
 .htaccess
 .html~
 .vs/
+.idea/
 **/megatable/wp-content/
 **/megatable/wp-includes/
 **/megatable/dbconfig.php
