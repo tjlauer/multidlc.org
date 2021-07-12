@@ -3,6 +3,7 @@
 .vs/
 **/megatable/wp-content/
 **/megatable/wp-includes/
+**/megatable/dbconfig.php
 **/chromSimLite/
 **/wikiChrom/
 **/wikiChrom_ARCHIVED/
