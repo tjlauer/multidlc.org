@@ -1,5 +1,9 @@
-<?php   $local_root = 'http://' . $_SERVER['SERVER_NAME'];  
-  $selected_tab = 0;  include($_SERVER['DOCUMENT_ROOT']. '/scaffold/header_columnInventory.php');
+<?php
+	$local_root = 'http://' . $_SERVER['SERVER_NAME'];
+	$selected_tab = 5;
+	$tab_title = "HPLC Simulator";
+	//include($_SERVER['DOCUMENT_ROOT']. '/scaffold/header_columnInventory.php');
+	include($_SERVER['DOCUMENT_ROOT']. '/scaffold/header.php');
 ?>
 
 <html>

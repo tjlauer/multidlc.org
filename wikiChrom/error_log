@@ -1,6 +1,0 @@
-[27-Feb-2020 21:38:33 UTC] PHP Warning:  fopen(/home4/multidl1/public_html/wikiChrom/retention.csv): failed to open stream: No such file or directory in /home4/multidl1/public_html/wikiChrom/grabdata.php on line 28
-[27-Feb-2020 21:38:33 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in /home4/multidl1/public_html/wikiChrom/grabdata.php on line 31
-[27-Feb-2020 21:38:33 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in /home4/multidl1/public_html/wikiChrom/grabdata.php on line 34
-[27-Feb-2020 21:38:33 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in /home4/multidl1/public_html/wikiChrom/grabdata.php on line 31
-[27-Feb-2020 21:38:33 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in /home4/multidl1/public_html/wikiChrom/grabdata.php on line 34
-[27-Feb-2020 21:38:33 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /home4/multidl1/public_html/wikiChrom/grabdata.php on line 62

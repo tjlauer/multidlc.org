@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Chromatographic Optimization</title>
+		<link rel="stylesheet" type="text/css" href="../index2.css">
+		<link rel="stylesheet" type="text/css" href="selection_calc.css">
+		<link rel="icon" href="../images/mini-icon.png">
+		<link rel="shortcut icon" href="../images/mini-icon.png">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+		<script type="text/javascript" src="chromatographicOptimization.js"></script>
+		<script type="text/javascript" src="../master-js.js"></script>
+	</head>
+	<body>
+		<div id="everything">
+			<div class="bar"></div>
+			<div id="topYellowBar" class="bar"></div>
+			<div style="min-width:1060px">
+				<div id="left-books">
+					<a href="../index.html"><img src="../images/icon.png" alt="Multi-D LC" id="logo"></img></a>
+					<div id="corner"></div>
+				</div>
+				<div id="middle-pressure">
+					<header>
+						<div id="tfheader">
+							<form id="tfnewsearch" method="get" action="http://www.google.com">
+								<input type="text" id="tfq" class="tftextinput" name="q" size="21" maxlength="120" value="Search our website">
+								<input type="submit" value=">" class="tfbutton">
+							</form>
+							<div class="tfclear"></div>
+						</div>
+						<a href="http://gustavus.edu">
+						<div id="banner" onmouseover="lower($(this))" onmouseleave="raise($(this))">
+							<img src="../images/gac_logo.png" alt="GAC" id="gac" style="width:76px"></img>
+						</div> </a>
+						<h1></br>Multi-Dimensional Separations</h1>
+
+						<div style="color:#FDBD2D;float:left;">
+							A site dedicated to multi-dimensional separations with an emphasis on the liquid phase.
+						</div>
+
+						<img src="../images/peak.png" alt="peak" class="peak" id="peak1" style="right:-430px"></img>
+						<img src="../images/peak2.png" alt="peak" class="peak" id="peak2" style="right:-205px"></img></br></br></br>
+						<menu>
+							<cap id="column"></cap>
+							<ul class="cf">
+								<li class="unselectable" onmouseover="scrollOverHome()" onmouseleave="scrollOverToolkit()">
+									<a href="../index.html">Home</a>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverAbout()" onmouseleave="scrollOverToolkit()">
+									<a href="../about/about.html">About</a>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverBooks()" onmouseleave="scrollOverToolkit()">
+									<a href="../books.html">Books</a>
+								</li>
+								<li id="column" class="unselectable" onmouseover="scrollOverLiterature()" onmouseleave="scrollOverToolkit()">
+									<a class="dropdown" href="pressure_prediction.html" style="width:110px">Literature</a>
+									<ul>
+										<li>
+											<a href="../literature/applications-multidlc.html" style="font-size:10px;">Applications of Multi-Dimensional LC</a>
+										</li>
+										<li>
+											<a href="../literature/reviews.html">Reviews</a>
+										</li>
+										<li>
+											<a href="../literature/top-30.html">Top 30</a>
+										</li>
+										<li>
+											<a href="../literature/top-10.html">Top Ten</a>
+										</li>
+									</ul>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverTerminology()" onmouseleave="scrollOverToolkit()">
+									<a href="../terminology.html">Terminology</a>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverToolkit()" onmouseleave="scrollOverToolkit()">
+									<a href="toolkit.html">Tools</a>
+								</li>
+							</ul>
+							<cap id="column"></cap>
+						</menu>
+					</header>
+
+					<main>
+						<div id="description">
+							<h1 id="page-title">Chromatographic Optimization</h1>
+							<p>
+								Choose the desired conditions for liquid chromatography in order to optimize analysis time, plate number, column length, and flow rate.
+							</p>
+							<hr>
+							</hr>
+						</div>
+						<div id="content">
+							<div id='selection-calculator'>
+								<form onsubmit="return readDataS();">
+									<table id='calculator'>
+										<tr>
+											<td colspan='3'><h2>Inputs</h2></td>
+										</tr>
+										<tr>
+											<td class="label">Particle Size (&mu;m)</td>
+											<td class="input">
+											<input class="number" type="number" step="any" id="size_input" name="size_input" value="1.7"/>
+											</td>
+
+											<td class="space">     </td>
+
+											<td class="label">Maximum u<sub>e</sub> Value (cm/s)</td>
+											<td class="input">
+											<input class="number" type="number" step="any" id="ue_input" name="size_input" value="3"/>
+											</td>
+											
+										</tr>
+										<tr>
+											<td class="label">Maximum Length (cm)</td>
+											<td class="input">
+											<input class="number" type="number" step="any" id="length_input" name="size_input" value="15"/>
+											</td>
+
+											<td class="space">     </td>
+
+											<td class="label">Temperature (&deg;C)</td>
+											<td class="input">
+											<input class="number" type="number" step="any" id="temp_input" name="size_input" value="40"/>
+											</td>
+											
+										</tr>
+										<tr>
+											<td class="label">Molecular Weight (g/mol)</td>
+											<td class="input">
+											<input class="number" type="number" step="any" id="mw_input" name="size_input" value="200"/>
+											</td>
+
+											<td class="space">     </td>
+
+											<td class="label">van Deemter A</td>
+											<td class="input">
+											<input class="number" type="number" step="any" id="a_input" name="size_input" value="1"/>
+											</td>
+											
+										</tr>
+										<tr>
+											<td>Organic Solvent</td>
+											<td id="organic_solvent_dropdown" class="dropdown_div">
+												<button type="button" id="solvent_b" onclick="show('solvent_b')" class="dropbutton">
+													<div id='solvent_b_text' class='dropname'>Acetonitrile</div>
+													<div id='solvent_b_switch' class="switch">&#9660;</div>
+												</button>
+												<div id="solvent_b_dropdown" class="dropdown-content">
+													<a onclick="select_option('Acetonitrile', 'solvent_b')">Acetonitrile</a>
+													<a onclick="select_option('Methanol', 'solvent_b')">Methanol</a>
+												</div>
+											</td>
+
+											<td class="space">     </td>
+											
+											<td class="label">van Deemter B</td>
+											<td class="input">
+											<input class="number" type="number" step="any" id="b_input" name="size_input" value="5"/>
+											</td>
+											
+										</tr>
+										<tr>
+											<td class="label">Percent Organic Solvent (decimal between 0 and 1)</td>
+											<td class="input">
+											<input class="number" type="number" step="any" id="percent_input" name="size_input" min="0" max="1" value="0.5"/>
+											</td>
+
+											<td class="space">     </td>
+
+											<td class="label">van Deemter C</td>
+											<td class="input">
+											<input class="number" type="number" step="any" id="c_input" name="size_input" value="0.05"/>
+											</td>
+											
+										</tr>
+										<tr>
+											<td class="label">&epsilon;<sub>e</sub></td>
+											<td class="input">
+											<input class="number" type="number" step="any" id="epe_input" name="size_input" min="0" max="1" value="0.38"/>
+											</td>
+
+											<td class="space">     </td>
+
+											<td class="label">&epsilon;<sub>i</sub></td>
+											<td class="input">
+											<input class="number" type="number" step="any" id="epi_input" name="size_input" min="0" max="1" value="0.2"/>
+											</td>
+										</tr>
+										<tr>
+											<td class="label">Maximum Pressure (bar)</td>
+											<td class="input">
+											<input class="number" type="number" step="any" id="max_pressure" name="size_input" value="600"/>
+											</td>
+
+											<td class="space">     </td>
+
+											<td class="label">Column Diameter (mm)</td>
+											<td class="input">
+											<input class="number" type="number" step="any" id="particle_diameter" name="size_input" value="3"/>
+											</td>
+										</tr>
+										<tr>
+											<td class="space">
+											</td>
+											<td class="space">
+											</td>
+										</tr>
+										<tr><td id="button_container" colspan="5">
+											<button type="button" class="submit" onclick="readDataS()">Submit</button>
+										</td></tr>
+										<tr>
+											<td colspan='3'><h2>Output</h2></td>
+										</tr>
+										<tr>
+											<td class = "label">Diffusion Coefficient (cm<sup>2</sup>/s)</td>
+											<!--<td class = "output">-->
+											<td>
+											<input type = "text" id="diff_coeff" name="diff_coeff"/>
+											</td>
+										</tr>	
+									</table>
+								</form>
+								<table>
+								<!--<table id="graph-table" style="border:none">-->
+								<tr>
+								
+								<td>
+								<div id="graph" style='height:500px; width:675px' style="margin-left: 25px;">
+								</div>
+								</td>
+								<td>
+								<img id="color-bar" display: inline; style='height:250px;' style = "width: 15px; margin-right: 10px; margin-bottom: 0.5em;" src="../images/ColorBar.jpg"/>
+								</td>
+								
+								</tr>
+								</table>
+								<!--</tr>
+									<tr>
+										<div id="graph" style='height:500px;' style="width: 90%; margin-left: 1%;">
+										</div>
+										<div <img id="color-bar" style='height:250px;' style = "width:7%; margin-right:1%;" src="../images/ColorBar.jpg"/>
+										</div>
+									</tr>-->
+
+								<div id="readme">
+									<a id="readme-link" href="readme/HPLC_model.html">Stuck? Click Here for the README</a>
+								</div>
+							</div>
+							<hr>
+							</hr>
+							<div id="return">
+								<a id='return' href='toolkit.html'>Return to toolkit</a>
+							</div>
+						</div>
+					</main>
+					<div id="copyright">
+						Copyright &copy; 2016 Multi-Dimensional Separations - All Rights Reserved
+					</div>
+				</div>
+			</div>
+			<div id="lowerYellowBar" class="bar"></div>
+			<footer></footer>
+		</div>
+		<script>
+			document.onload = readDataS();
+
+			function show(id) {
+				var arrow = document.getElementById(id + "_switch").innerHTML.charCodeAt();
+				if (arrow == "9660") {
+					document.getElementById(id + "_switch").innerHTML = "&#9650;";
+				} else {
+					document.getElementById(id + "_switch").innerHTML = "&#9660;";
+				}
+				document.getElementById(id+"_dropdown").classList.toggle("show");
+			}
+
+
+			function select_option(selected, menu) {
+				document.getElementById(menu + "_text").innerHTML = selected;
+			}
+
+			window.onclick = function(event) {
+			  if (!event.target.matches('.dropbutton')) {
+			    var dropdowns = document.getElementsByClassName("dropdown-content");
+			    var i;
+			    for (i = 0; i < dropdowns.length; i++) {
+			      var openDropdown = dropdowns[i];
+			      if (openDropdown.classList.contains('show')) {
+			      	var div = openDropdown.id.replace("dropdown", "switch");
+			      	var arrow = document.getElementById(div).innerHTML.charCodeAt();
+			      	if (arrow == "9650") {
+			      		document.getElementById(div).innerHTML = "&#9660;";
+			      	}
+			        openDropdown.classList.remove('show');
+			      }
+			    }
+			  }
+			}
+		
+			function readDataS() {
+				var size = document.getElementById('size_input').value;
+				var Ue_value = document.getElementById('ue_input').value;
+				var Length_value = document.getElementById('length_input').value;
+				var Temp = document.getElementById('temp_input').value;
+				var MW_value = document.getElementById('mw_input').value;
+				var A_value = document.getElementById('a_input').value;
+				var B_value = document.getElementById('b_input').value;
+				var C_value = document.getElementById('c_input').value;
+				var organic_type = document.getElementById('solvent_b_text').innerHTML;
+				var percent_B = document.getElementById('percent_input').value;
+				var epsilon_e = document.getElementById('epe_input').value;
+				var epsilon_i = document.getElementById('epi_input').value;
+				var max_pressure = document.getElementById('max_pressure').value;
+				var particle_dia = document.getElementById('particle_diameter').value;
+				document.getElementById("diff_coeff").value = main(size, Ue_value, Length_value, A_value, B_value, C_value, organic_type, percent_B, MW_value, Temp, epsilon_e, epsilon_i, max_pressure, particle_dia);
+
+				//main(size, Ue_value, Length_value, A_value, B_value, C_value, organic_type, percent_B, MW_value, Temp, epsilon_e, epsilon_i, max_pressure, particle_dia);
+				return false; 
+
+			}
+		</script>
+	</body>
+</html>

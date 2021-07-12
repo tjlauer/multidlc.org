@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Reviews</title>
+		<link rel="stylesheet" type="text/css" href="../index2.css">
+		<link rel="icon" href="../images/mini-icon.png">
+		<link rel="shortcut icon" href="../images/mini-icon.png">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+		<script type="text/javascript" src="../master-js.js"></script>
+	</head>
+	<body>
+		<div id="everything">
+			<div class="bar"></div>
+			<div id="topYellowBar" class="bar"></div>
+			<div style="min-width:1060px">
+				<div id="left-terminology">
+					<a href="../index.html"><img src="../images/icon.png" alt="Multi-D LC" id="logo"></img></a>
+					<div id="corner"></div>
+				</div>
+				<div id="middle-terminology">
+					<header>
+						<div id="tfheader">
+							<form id="tfnewsearch" method="get" action="http://www.google.com">
+								<input type="text" id="tfq" class="tftextinput" name="q" size="21" maxlength="120" value="Search our website">
+								<input type="submit" value=">" class="tfbutton">
+							</form>
+							<div class="tfclear"></div>
+						</div>
+						<a href="http://gustavus.edu">
+						<div id="banner" onmouseover="lower($(this))" onmouseleave="raise($(this))">
+							<img src="../images/gac_logo.png" alt="GAC" id="gac" style="width:76px"></img>
+						</div> </a>
+						<h1></br>Multi-Dimensional Separations</h1>
+
+						<div style="color:#FDBD2D;float:left;">
+							A site dedicated to multi-dimensional separations with an emphasis on the liquid phase.
+						</div>
+
+						<img src="../images/peak.png" alt="peak" class="peak" id="peak1" style="right:-196px"></img>
+						<img src="../images/peak2.png" alt="peak" class="peak" id="peak2" style="right:29px"></img>
+						<menu>
+							<cap id="column"></cap>
+							<ul class="cf">
+								<li class="unselectable" onmouseover="scrollOverHome()" onmouseleave="scrollOverLiterature()">
+									<a href="../index.html">Home</a>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverAbout()" onmouseleave="scrollOverLiterature()">
+									<a href="../about/about.html">About</a>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverBooks()" onmouseleave="scrollOverLiterature()">
+									<a href="../books.html">Books</a>
+								</li>
+								<li id="column" class="unselectable" onmouseover="scrollOverLiterature()" onmouseleave="scrollOverLiterature()">
+									<a class="dropdown" href="reviews.html" style="width:110px">Literature</a>
+									<ul>
+										<li>
+											<a href="applications-multidlc.html" style="font-size:10px;">Applications of Multi-Dimensional LC</a>
+										</li>
+										<li>
+											<a href="reviews.html">Reviews</a>
+										</li>
+										<li>
+											<a href="top-30.html">Top 30</a>
+										</li>
+										<li>
+											<a href="top-10.html">Top Ten</a>
+										</li>
+									</ul>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverTerminology()" onmouseleave="scrollOverLiterature()">
+									<a href="../terminology.html">Terminology</a>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverToolkit()" onmouseleave="scrollOverLiterature()">
+									<a href="../toolkit/toolkit.html">Tools</a>
+								</li>
+							</ul>
+							<cap id="column"></cap>
+						</menu>
+					</header>
+					<main>
+						<div id="description">
+							<h1 id="page-title">Reviews</h1>
+						<hr>
+						</hr>
+						</div>
+						<div id="content">
+							<strong class="interest"><p>General Interest</p></strong>
+					<ol class="reviews">
+						<li>D.R. Stoll, X. Li, X. Wang, P.W. Carr, S.E.G. Porter, S.C. Rutan, <a href="http://www.sciencedirect.com/science/article/pii/S0021967307013921">Fast, comprehensive two-dimensional liquid chromatography</a>, <i>J. Chromatogr.,</i> A. 1168 (2007) 3–43.</li>
+						<li>D.R. Stoll, <a href="http://link.springer.com/article/10.1007%2Fs00216-010-3659-y">Recent progress in online, comprehensive two-dimensional high-performance liquid chromatography for non-proteomic applications</a>, <i>Anal. Bioanal. Chem.</i> 397 (2010) 979–986.</li>
+						<li>F. Bedani, P.J. Schoenmakers, H.G. Janssen, <a href="http://onlinelibrary.wiley.com/doi/10.1002/jssc.201200070/abstract">Theories to support method development in comprehensive two-dimensional liquid chromatography – A review</a>, <i>J. Sep. Sci.</i> 35 (2012) 1697-1711.</li>
+						<li>D. Li, C. Jakob, O. Schmitz, <a href="http://rd.springer.com/article/10.1007/s00216-014-8179-8">Practical considerations in comprehensive two-dimensional liquid chromatography systems (LCxLC) with reversed-phases in both dimensions</a>, <i>Anal. Bioanal. Chem.</i> (2014), doi:10.1007/s00216-014-8179-8.</li>
+
+					</ol>
+					<strong class="interest"><p>Bioanalysis</p></strong>
+					<ol class="reviews">
+						<li>D.R. Stoll, <a href="http://dx.doi.org/10.4155/bio.09.131">Guidelines for bioanalytical 2D chromatography method development and implementation</a>, <i>Bioanalysis 2</i> (2010) 105–122.</li>
+						<li>N. Cassiano, J. Barreiro, R. Oliveira, Q. Cass, <a href="http://dx.doi.org/10.4155/bio.12.226">Direct bioanalytical sample injection with 2D LC–MS</a>, <i>Bioanalysis 4</i> (2012) 2737–2756.</li>
+						<li>D.R. Stoll, <a href="http://www.future-science.com/doi/10.4155/bio.15.223">Recent advances in 2D-LC for bioanalysis</a>, <i>Bioanalysis 7</i> (2015) 3125-3142.</li>
+					</ol>
+					<strong class="interest"><p>Polymers</p></strong>
+					<ol class="reviews">
+						<li>Schoenmakers, P., Aarnoutse, P., 2014. <a href="http://pubs.acs.org/doi/abs/10.1021/ac301162b">Multi-Dimensional Separations of Polymers</a>. <i>Analytical Chemistry 86</i>, 6172–6179.</li>
+					</ol>
+					<strong class="interest"><p>Pharmaceutical Analysis</p></strong><br />
+					<ol class="reviews">
+						<li>Zhang, K., Wang, J., Tsang, M., Wigman, L., Chetwyn, N., 2013. <a href="http://www.americanpharmaceuticalreview.com/Featured-Articles/151949-Two-Dimensional-HPLC-in-Pharmaceutical-Analysis/">Two-dimensional HPLC in pharmaceutical analysis</a>. <i>American Pharmaceutical Review.</i></li>
+					</ol>
+					<strong class="interest"><p>Proteomics</p></strong>
+					<ol class="reviews">
+						<li>F. Bedani, H.-G. Janssen, Using two-dimensional liquid chromatography to separate complex mixtures of peptides., LC-GC Europe 22 (2009) 248, 250–252, 254–255.</li>
+						<li>Zhang, X., Fang, A., Riley, C.P., Wang, M., Regnier, F.E., Buck, C., 2010. <a href="http://www.sciencedirect.com/science/article/pii/S0003267010001613">Multi-dimensional liquid chromatography in proteomics—A review</a>. <i>Anal. Chem. Acta</i> 664, 101–113.</li>
+					</ol>
+						</div>
+					</main>
+					<div id="copyright">
+						Copyright &copy 2016 Multi-Dimensional Separations - All Rights Reserved
+					</div>
+				</div>
+
+			</div>
+
+			<div id="lowerYellowBar" class="bar"></div>
+			<footer></footer>
+		</div>
+	</body>
+</html>

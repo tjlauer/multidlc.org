@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="readme.css">
+</head>
+
+<body>
+<h1> Chromatographic Optimization </h1>
+
+<p> This graphing tool allows for the optimization of certain conditions in liquid chromatography. These include analysis time, plate number, column length, and flow rate. The diffusion coefficient is also calculated in units of square centimeters per second.</p>
+
+<hr> </hr>
+
+<h2> Function </h2>
+<p>There are several limitations hindering performance of liquid chromatography today. Many people have started to develop graphical means of portraying HPLC capabilities within a working range of parameters. In the past, it has been difficult to idealize the big picture impact of changing specific parameters. This plot gives a more effective way of determining the most efficient chromatographic path for each individual environment. This graph specifically plots column length, measured in centimeters (vertical) against flow rate, measured in cubic centimers per second (horizontal). The different types of curves on the plot allow one to optimize parameters such as time and plate number in a given pressure system. Constant pressure is shown along the down-sloping hyperbola, giving the user the ability to focus on maximizing theoretical plate count within a given analysis time, while also staying within the possible pressure values. Theoretical plate number is represented by the colorful contour curves and constant analysis time values with the dotted lines.</p>
+
+<hr> </hr>
+
+<h2>Usage</h2>
+<strong> Navigating the Calculator</strong>
+
+<p> To produce the graph corresponding to the characteristics of interest, fill in the following fields and click submit: </p>
+
+<p> The <b>"Particle Size"</b> field should contain the particle size in microns. </p>
+<p> The <b> "Maximum Length"</b> field should contain the desired maximum for the y axis (column length) in cm. </p>
+<p>The <b>"Molecular Weight"</b> field should contain the molecular weight of the organic solvent in g/mol.</p>
+<p>The <b>"Organic Solvent"</b> field should contain the type of organic solvent used (either methanol or acetonitrile)</p>
+<p>The <b>"Percent of Organic Solvent"</b> field should contain the amount of the mobile phase that is taken up by your organic solvent. This should be input as a decimal between 0 and 1. </p>
+<p> The <b> "&#949<sub>e</sub>" </b> field pertains to interstitial porosity. It is a ratio representing the space between the pores of each particle and should be between 0 and 1.</p>
+<p>The <b>"Maximum u<sub>e</sub> Value"</b> field should contain the desired maximum for the interstitial velocity of the system in cm/s.</p>
+<p> The <b>"Temperature"</b> field should contain the temperature in Celsius. This value should be between 0 and 100 degrees Celsius. </p>
+<p>The fields corresponding to <b>"van Deemter A", "van Deemter B", and "van Deemter C"</b> should contain the desired van Deemter equation coefficients. </p>
+<p> The <b> "&#949<sub>i</sub>" </b> field pertains to intraparticle porosity. It is a fraction representing the number of pores within an individual particle.</p>
+<p>The <b>"Maximum Pressure"</b> field should contain the amount of pressure (in bar) that the desired chromatographic system works under. It is the pressure limit, per se.</p>
+<p>The <b>"Column Diameter"</b> field should contain the desired column diameter in centimeters.</p>
+
+<p> At any point, any one of the fields can be changed and the criteria for your column resubmitted. 
+The page must be refreshed to clear all of the fields and reset to default. </p>
+
+<p> The <b>"Diffusion Coefficient"</b> is calculated using the input parameters and given in units of square centimeters per second.</p>
+<br/>
+
+<strong> Reading the Graph </strong>
+
+<p> This chromatographic optimization plot gives Flow Rate in milliliters per minute on the x-axis and Column Length in centimeters on the y-axis.</p>
+
+<p> There are three different kinds of lines plotted on the graph: </p>
+<pre><p><b>Constant Time Lines,</b> which correspond to specific values of t0 from 1 to 80 seconds. They are straight lines with intercept values of zero. Each point on one of those lines corresponds to a<br/> combination of length and flow rate that produce the given time (t<sub>0</sub>) value. </p></pre>
+<pre><p><b>Constant Pressure Curve,</b> which portrays the constant pressure isobar that is characteristic of the given maximum pressure for the system. Conditions below and to the left of the hyberbola<br/> are achievable combinations of length and velocity for systems with the specified pressure limitations. It is not possible to operate to the right of or above the isobar. </p></pre>
+<pre><p><b>Constant Plate Number Contours,</b> which represent constant values of N ranging from 1000 to 30,000. Spacing increases by 1000 plate divisions up to N=10000, and then additionally by 5000 up<br/> to 30,000 plates. The van Deemter equation is used to relate theoretical plate height and velocity.Plate number is then found as a function of column length and mobile phase velocity<br/> and corresponds to the third (z) dimension. What is plotted thenis the surface of the plate number graph as contours, a two-dimensional graph. </p></pre>
+
+<hr> </hr>
+
+<h2>Calculations</h2>
+
+<p><i>The calculations shown below were used to find the diffusion coefficient in square centimeters per second. MW refers to molecular weight in g/mol, N refers to Avogadro's number (6.022140857 * 10<sup>23</sup>), and &rho; refers to the density of the solvent (0.783 g/cm<sup>3</sup> for Acetonitrile and 0.792 g/cm<sup>3</sup> for Methanol). T refers to temperature in Kelvin, &#951; refers to viscosity, and r refers to the solute molecule radius. Boltzmann's Constant is 1.38064852 * 10<sup>-23</sup> m<sup>2</sup>kgs<sup>-2</sup>k<sup>-1</sup>.</i></p>
+
+<p><pre><span class="front"><b>Molecule Radius</b> = ((3 * MW) / (4 * &#928; * &#951; * &rho;)) <sup>1/3</sup></span></p></pre><br/><br/>
+
+<p><pre><span class="front"><b>Diffusion Coefficient</b> = (Boltzmann's Constant * T) / (6 * &#928; * &#951; * r)</span></p></pre><br/><br/>
+
+<p><i>The following calculations were used to calculate the length (y) values for every curve on the graph. Values of interstitial velocity, up to the maximum desired value were used in each type of calculation. Then velocity was converted into flow rate, in order to produce the desired axes for the optimization plot. Each of the combinations of the calculated flow rate and length were plotted, leading to each of three types of curves to be shown on the same graph. The calculations for each type of<br/>curve are explained below.</i></p>
+
+<strong>Constant Time</strong>
+<p>To create the straight, dotted black lines representing constant values of t<sub>0</sub>, a variable lambda had to be calculated. This corresponds to a measure of porosity. It was found through the equations shown below and using the inputs of &#949<sub>e</sub><br/> and &#949<sub>i</sub> :</p>
+
+<pre><p><span class="front"><b>&#949<sub>t</sub></b> = &#949<sub>e</sub> + &#949<sub>i</sub> * (1 - &#949<sub>e</sub>)</span></p></pre><br/><br/>
+
+<pre><p><span class="front"><b>&#955</b> = &#949<sub>e</sub> / &#949<sub>t</sub></span></p></pre><br/><br/>
+
+<p>To calculate the values for length that would be plotted, a set number of equally spaced values of interstitial velocity (u<sub>e</sub>) were used. The time (t) values used consisted of 1s, 2s, 5s, 10s, 20s, 40s, and 80s. Lambda was used as calculated above.<br/> Length was calculated using the following equation for each combination of u<sub>e</sub> and t<sub>0</sub>:</p>
+
+<p><pre><span class="front"><b>Length</b> = t * &#955 * u<sub>e</span></p></pre><br/><br/>
+
+
+<p><strong>Using Plate Number</strong></p>
+<p>The very colorful contours on the graph correspond to that of constant values of N (plate number). A number of variables needed to be calculated before determining length. %B denotes percentage of organic solvent in the mobile phase and T<br/> denotes Temperature in Kelvin. There are two equations specific to organic solvent.</p>
+<p>These calculations are shown below for acetonitrile: </p>
+
+<pre><p><span class="front"><b>Association parameter</b> = (1 * %B) + (2.6 * (1 - %B)</span></p></pre><br/><br/>
+
+<pre><p><span class="front"><b>Viscosity</b> = exp (16.42 + (-6.244 * %B) + (-0.08816 * T) + (-5.874 * %B<sup>2</sup>) + (0.04594 * %B * T) + (0.0001099 * T<sup>2</sup>) + (0.3916 * %B<sup>3</sup>) + (0.01237 * %B<sup>2</sup> * T) + (-0.00007465 * %B * T<sup>2</sup>)</span></p></pre><br/><br/>
+
+<p><span class = "front">These are the equivalent calculations for methanol:</span></p><br/><br/>
+
+<p><pre><span class="front"><b>Association parameter</b> = (1.9 * %B) + (2.6 * (1 - %B)</span></p></pre><br/><br/>
+
+<p><pre><span class="front"><b>Viscosity</b> = exp (22.2831197882253 + (-2.3695685602611 * %B) + (-0.125282811501898 * T) + (-11.5345747523277 * %B<sup>2</sup>) + (0.0517314164107194 * %B * T)+ (0.000167866399076663 * T<sup>2</sup>)<br/> + (0.0280262988444658 * %B<sup>3</sup>) + (0.0277168799128358 * %B<sup>2</sup> * T)+ (-0.000114766698586637 * %B * T<sup>2</sup>))</span></p></pre><br/><br/>
+
+<p><span class = "front">The equations shown below were used for each of the solvents, using the values as calculated above for association parameter (&#934;) and viscosity (&#951;). The first two were found using input parameter and produced just one value. The next three were<br/> found for a consistently-spaced set of velocity (u<sub>e</sub>) values. The last was utilized with the set of plate heights, as well as the desired values for N (plate number) between 1000 and 30,000. Note: MW denotes molecular weight, d<sub>P</sub> denotes partical size, and v denotes velocity.</span></p><br/><br/>
+
+<pre><p><span class="front"><b>M</b> = ((1 - %B) * 18) + (%B * MW)</span></pre></p><br/><br/><br/><br/>
+
+<p><pre><span class="front"><b>Dm</b> = (0.000000074 * T * (&#934; * M)<sup>0.5</sup> / (&#951; * (MW<sup>0.6</sup>)</span></pre></p><br/><br/>
+
+<pre><p><span class="front"><b>V</b> = (v * d<sub>P</sub>) / Dm</span></p></pre><br/><br/>
+
+<pre><p><span class="front"><b>Reduced Plate Height (h)</b> = A + (B / V) + (C * V)</span></p></pre><br/><br/>
+
+<pre><p><span class="front"><b>Plate Height (H)</b> = h * d<sub>P</sub></span></p></pre><br/><br/>
+
+<pre><p><span class="front"><b>Length</b> = N * H</span></p></pre><br/><br/>
+
+
+<p><strong>Constant Pressure</strong></p>
+<p> To calculate the values pertaining to the constant pressure isobar, the input for the maximum pressure was used. P denotes pressure. Viscosity (&#951;) was calculated as above and the same, constantly spaced values of u<sub>e</sub> were used as in the constant time calculations.<br/> The particle size input was also utilized in the following equation to calculate the length values: </p>
+
+<pre><p><span class="front"><b>Length</b> = (P * d<sub>P</sub><sup>2</sup>) / (500 * &#951; * v)</span></p></pre><br/><br/>
+
+<p><strong>Conversion to Flow Rate</strong></p>
+<p>In order to produce the desired graph, which plots column length (in centimeters) against flow rate (in milliliters per minute), each of the interstitial velocity values used in calculations throughout the process, had to be converted into their equivalent flow rate. Flow rate is a more commonly used and therefore, more beneficial to be the horizontal axis on this optimizaiton plot. Particle diameter is denoted by D<sub>p</sub>. This conversion calculation is demonstrated below:</p>
+
+<pre><p><span class="front"><b>Flow Rate</b> = &#928; * (0.5 * D<sub>p</sub><sup>2</sup>) * u<sub>e</sub> * &#949<sub>e</sub> * 60</span></p></pre><br/><br/>
+
+<p>The graph was made using plotly (<a href="https://plot.ly/javascript.">https://plot.ly</a>), an open-source graphing library for javascript. </p>
+
+<hr></hr>
+<h2>Source</h2>
+&#34;Graphical Method for Choosing Optimized Conditions Given a Pump Pressure and a Particle Diameter in Liquid Chromatography.&#34; Groskreutz, S. R. and Weber, S. G. Analytical Chemistry, 2016, 88, 11742-11749.
+
+
+<hr></hr>
+<h2>Information</h2>
+
+<p> If you have any questions, comments or concerns, please contact Dr. Dwight Stoll at multidlc@multidlc.com or dstoll@gustavus.edu </p>
+
+<hr></hr>
+<h2>License</h2>
+
+<p> Copyright &copy; 2016 Multi-Dimensional Separations - All Rights Reserved </p>
+<a href="../selection_calc.html">Return to Chromatographic Optimization</a>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+<!-- SHTML Wrapper - 404 Not Found -->
+<!--#exec cgi="/cgi-sys/fourohfour.cgi" -->
+<!-- 
+         <!--#echo var="REMOTE_ADDR" --><!--#echo var="HTTP_USER_AGENT" --><!--#echo var="HTTP_HOST" -->                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+--> 

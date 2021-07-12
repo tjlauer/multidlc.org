@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pressure Prediction Calculator</title>
+		<link rel="stylesheet" type="text/css" href="toolkit_css.css">
+		<meta charset="utf-8"/>
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	</head>
+
+	<body onLoad=readData();>
+		<div id='wrapper'>
+			<div id='header'>
+				<h1>Multi-Dimensional Separations</h1>
+				<sub>A site dedicated to multi-dimensional separations, with an emphasis on the liquid phase.</sub>
+			</div>
+			<div id='menu'>
+				<ul>
+					<li>
+						<a href=''>Home</a>
+					</li>
+					<li>
+						<a href=''>About</a>
+					</li>
+					<li>
+						<a href=''>Books</a>
+					</li>
+					<li>
+						<a href=''>Instrumentation</a>
+					</li>
+					<li>
+						<a href=''>Terminology</a>
+					</li>
+					<li>
+						<a href=''>Toolkit</a>
+					</li>
+				</ul>
+			</div>
+			<div id='content'>
+				<div id='description'>
+					<h3>Pressure Prediction Calculator</h3>
+					<p>
+						Fill in the empty fields and press calculate to make a pressure
+						<br />
+						prediction plot for your column
+					</p>
+				</div>
+				<form onsubmit="return readData()">
+				<table id='calculator'>
+					<tr>
+						<td class="label">Length (m)</td>
+						<td class="input">
+						<input class="number" type="text" id="length_input" name="length_input" required/>
+						</td>
+					</tr>
+					<tr>
+						<td class="label">Diameter (micron)</td>
+						<td class="input">
+						<input class="number" type="number" id="diameter_input" name="diameter_input" required/>
+						</td>
+					</tr>
+					<tr>
+						<td class="label">Composition (scale ACN/water)</td>
+						<td class="input">
+						<input class="number" type="text" id="composition_input" name="composition_input" required/>
+						</td>
+					</tr>
+					<tr>
+						<td class="label">Temperature (C)</td>
+						<td class="input">
+						<input class="number" type="number" id="temperature_input" name="temperature_input" required/>
+						</td>
+					</tr>
+					<tr>
+						<td class="label" colspan='2'>
+							<input id='ambient_input' type='checkbox'>Include Laminar Flow at Ambient Pressure</input>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<input type='submit' value='Submit'/></td>
+					</tr>
+				</table>
+				</form>
+				<a class='return' href='../index_toolkit.html'>Return to toolkit</a>
+			</div>
+			<div id="graph" style="height:500px;width:598px"></div>
+			<div id='footer'>
+				<sub>Copyright &amp; copy 2016 Multi-Dimensional Separations - All Rights Reserved</sub>
+			</div>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		
+		function readData() {
+			var length = document.getElementById('length_input').value;
+			var diameter = document.getElementById('diameter_input').value;
+			var composition = document.getElementById('composition_input').value;
+			var temperature = document.getElementById('temperature_input').value;
+			var ambience = document.getElementById('ambient_input').checked;
+
+			plotData(calcPressure(parseFloat(length), parseFloat(diameter), parseFloat(composition), parseFloat(temperature)), ambience);
+			return false;
+		}
+
+		function convTemp(temp) {
+			//this function converts Celcius to Kelvin
+			return temp + 273.15;
+		}
+
+		function convDiameter(diameter) {
+			//this function converts microns to centimeters
+			return diameter / 10000;
+		}
+
+		function calcDensity(comp) {
+			//this function calculates the density of the solvent based
+			//on its composition
+
+			//=(-0.0784*comp^2-0.1423*comp+1.0013)*1000
+			return (-0.0784 * Math.pow(comp, 2) - 0.1423 * comp + 1.0013) * 1000;
+		}
+
+		function calcVelocity(diameter, flow) {
+			//this function calculates the velocity of the mobile phase based
+			//the diameter and the flow rate of the solvent
+			//return flow / ((diameter / 2) ^ 2 * 3.1415926535897) / 60;
+			var pt1 = Math.pow((diameter / 2), 2);
+			return flow / (pt1 * 3.1415926535897 * 60);
+		}
+
+		function calcViscosity(temp, comp, pressure) {
+			//this function calculates the viscosity of the solvent in the column
+			//based on temperature(K) and solvent composition
+
+			var var12 = 0.0000004821 * Math.pow(pressure, 2) + -0.002168 * pressure;
+			var var1 = var12 + 16.41;
+			var var2 = (-0.0000007406 * Math.pow(pressure, 2) + 0.00444 * pressure + -6.199) * comp;
+			var var3 = (-0.000000002772 * Math.pow(pressure, 2) + 0.00001193 * pressure + -0.08809) * temp;
+			var var4 = (0.000001044 * Math.pow(pressure, 2) + -0.002009 * pressure + -5.88) * Math.pow(comp, 2);
+			var var5 = (0.000000002536 * Math.pow(pressure, 2) + -0.00001911 * pressure + 0.04568) * comp * temp;
+			var var6 = (0.000000000004 * Math.pow(pressure, 2) + -0.00000001588 * pressure + 0.0001098) * Math.pow(temp, 2);
+			var var7 = (-0.0000004567 * Math.pow(pressure, 2) + 0.0006429 * pressure + 0.3917) * Math.pow(comp, 3);
+			var var8 = (-0.000000001098 * Math.pow(pressure, 2) + 0.00000337 * pressure + 0.01239) * temp * Math.pow(comp, 2);
+			var var9 = (-0.000000000004045 * Math.pow(pressure, 2) + 0.00000002375 * pressure + -0.00007427) * comp * Math.pow(temp, 2);
+			var add = var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8 + var9;
+			return Math.exp(add);
+		}
+
+		function parseData(input) {
+			//Takes a string and splits it into a list.  The values are then put
+			//into a dictionary such that any value with an even index is the key and
+			//a value with an odd index is the value retreived with the key
+			//Used to organize the values retrieved from the text file in the following order
+			//key: Reynold's number and value:Global FF
+			var dict = {};
+			var list = input.split(" ");
+			var i = 0;
+			var key = true;
+			while (i < list.length) {
+				var keyVal;
+				if (key) {
+					keyVal = list[i];
+					key = false;
+				} else {
+					dict[keyVal] = list[i];
+					key = true;
+				}
+				i++;
+			}
+			return dict;
+		}
+
+		function getReynolds() {
+			//retrieves a string from the text file "reynolds_number.txt" and returns the
+			//string on that file.  This particular file contains Reynold's numbers from
+			//35 to 4000 and their corresponding global FF values
+			var reyNumData;
+			var read = new XMLHttpRequest();
+			read.overrideMimeType('text/plain');
+			read.onreadystatechange = function() {
+				if (read.readyState == 4) {
+					if (read.status == 200) {
+						reyNumData = read.responseText;
+					}
+				}
+			};
+			read.open("GET", "reynolds_number.txt", false);
+			read.send();
+			return reyNumData;
+		}
+
+		function closest(num, arr) {
+			var mid;
+			var lo = 0;
+			var hi = arr.length - 1;
+			while (hi - lo > 1) {
+				mid = Math.floor((lo + hi) / 2);
+				if (arr[mid] < num) {
+					lo = mid;
+				} else {
+					hi = mid;
+				}
+			}
+			if (num - arr[lo] <= arr[hi] - num) {
+				return arr[lo];
+			}
+			return arr[hi];
+		}
+
+		function calcPressure(length, diameter_micron, composition, temperature_c) {
+			//constants throughout calculations
+			var density = calcDensity(composition);
+			var temperature_k = convTemp(temperature_c);
+			var diameter_cm = convDiameter(diameter_micron);
+			var reynolds = parseData(getReynolds());
+			var keys = Object.keys(reynolds);
+			var pressure = 0;
+
+			//used to calculate viscosity for each iteration, requires initial pressure of 0
+			var old_viscosity = 1000;
+			var viscosity = 0;
+
+			//variables to be returned and graphed
+			var counter = 0;
+			var x_vals = [];
+			var lam_ambi_pressure = [];
+			var turb_pressure = [];
+			var lam_act_pressure = [];
+
+			//each iteration of the while loop represents the calculation of one point on the
+			//final graph for each line in the plot
+			var flow = 0.200297;
+			while (flow <= 5.0) {
+				x_vals[counter] = flow;
+				var whileCount = 0;
+				while (Math.abs(old_viscosity - viscosity) > 0.0001) {
+					whileCount++;
+					if (whileCount > 100) {
+						alert("stuck in infinite loop at " + flow + " mL/s");
+						exit();
+					}
+					//calculating velocity
+					var velocity = calcVelocity(diameter_cm, flow);
+
+					//calculating viscosity
+					old_viscosity = viscosity;
+					viscosity = calcViscosity(temperature_k, composition, pressure);
+
+					//determining FF by calculating the Reynold's number for the column and finding
+					//the FF corresponding to the closest Reynold's number in a table of values
+					//						rey =$Q$3*(F6/60/100/100/100)*($P$3/100)/((($P$3/100/2)^2*3.1415926535897)*M6/1000);
+					var pt1 = flow / 60000000;
+					var pt2 = diameter_cm / 100;
+					var pt3 = Math.pow(diameter_cm / 200, 2) * 3.1415926535897;
+					var pt4 = viscosity / 1000;
+					var rey = density * pt1 * pt2 / (pt3 * pt4);
+					var closest_rey = closest(Math.round(rey), keys);
+					var ff_global = reynolds[closest_rey];
+
+					//determining the pressure of the column
+					//pressure = P6*$J$3*((G6/100)^2)*$Q$3/(100000*2*($K$3/1000000))
+					pt1 = Math.pow((velocity / 100), 2);
+					pt2 = (diameter_micron / 1000000) * 100000 * 2;
+					pressure = ff_global * length * pt1 * density / pt2
+
+					//add point to ambient pressure plot
+					if (old_viscosity == 0) {
+						//lam_ambi_pressure[counter] =128*$J$3*M6/1000*F6/60/100/100/100/3.1415926535897/(($P$3/100)^4)/100000;
+						pt1 = viscosity / 1000;
+						pt3 = Math.pow((diameter_cm / 100), 4);
+						pt2 = flow / (60000000 * 3.1415926535897 * 100000 * pt3);
+						lam_ambi_pressure[counter] = 128 * length * pt1 * pt2;
+					}
+				}
+				//add point to actual pressure plot
+				//lam_act_pressure[counter]=128*$J$3*AD6/1000*F6/60/100/100/100/3.1415926535897/(($P$3/100)^4)/100000;
+				pt1 = viscosity / 1000;
+				pt3 = Math.pow((diameter_cm / 100), 4);
+				pt2 = flow / (188495559.2 * 100000 * pt3);
+				lam_act_pressure[counter] = 128 * length * pt1 * pt2;
+
+				//add point to turbulent pressure
+				turb_pressure[counter] = pressure;
+
+				//reset variables
+				pressure = 0;
+				old_viscosity = 1000;
+				viscosity = 0;
+
+				//increase counters
+				whileCount = 0;
+				counter++;
+				flow += 0.000799;
+			}
+			return [x_vals, lam_ambi_pressure, lam_act_pressure, turb_pressure];
+		}
+
+		function plotData(data, check) {
+			var turbulent = {
+				name : 'Turbulent flow',
+				x : data[0],
+				y : data[3],
+				mode : 'markers',
+				hoverinfo:'x+y',
+				marker : {
+					size : '5',
+					color : '#aa5585',
+				},
+				type : 'scatter'
+			};
+			var amb_visc;
+			
+			if(check){
+				amb_visc = {
+				name : 'Laminar flow (Viscosity at ambient pressure)',
+				x : data[0],
+				y : data[1],
+				mode : 'markers',
+				hoverinfo:'x+y',
+				marker : {
+					size : '5',
+					color : '#556595',
+				},
+				type : 'scatter'
+			};
+			} else {
+			amb_visc = {
+				name : 'Laminar flow (Viscosity at ambient pressure)',
+				x : data[0],
+				y : data[1],
+				mode : 'markers',
+				hoverinfo:'x+y',
+				visible : 'legendonly',
+				marker : {
+					size : '5',
+					color : '#556595',
+				},
+				type : 'scatter'
+			};
+			}
+
+			var final_visc = {
+				name : 'Laminar flow (Viscosity at actual pressure)',
+				x : data[0],
+				y : data[2],
+				mode : 'markers',
+				hoverinfo:'x+y',
+				marker : {
+					size : '5',
+					color : '#d4a66a',
+				},
+				type : 'scatter'
+			};
+			
+			Plotly.newPlot('graph', [turbulent, amb_visc, final_visc], {
+				title : 'Pressure Prediction Plot',
+				xaxis : {
+					title : 'Flow (mL/min)',
+					range : [0, 5.5],
+					legend : {
+						x : 0,
+						y : 0
+					},
+					titlefont : {
+						family : 'Courier New, monospace',
+						size : 18,
+						color : '#7f7f7f'
+					}
+				},
+				yaxis : {
+					title : 'Pressure (bar)',
+					range : [0, 500],
+					titlefont : {
+						family : 'Courier New, monospace',
+						size : 18,
+						color : '#7f7f7f'
+					}
+				}
+			});
+		}
+	</script>
+</html>

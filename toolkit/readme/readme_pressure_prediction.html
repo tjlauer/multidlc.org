@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="readme.css">
+</head>
+<body>
+<h1>Pressure Prediction Calculator</h1>
+
+<p>This calculator allows laminar flow and turbulent flow of a particular solvent composition through
+a certain volume of piping to be plotted, <br />providing insight into the cause of irregular pressure readouts
+in HPLC tubing</p>
+
+<hr> </hr>
+<hr> </hr>
+
+<h2>Function</h2>
+<p>Often times in HPLC, very narrow tubing is used in the instrument. Although HPLC systems are generally assumed to behave according to<br />
+Laminar Flow Theory under optimal conditions, occasionally instruments will exhibit pressures much higher than those predicted by this theory.<br>  
+However, the unexpectedly high pressure does correspond to pressures predicted assuming that the mobile phase in the column behaves <br />
+according to the turbulent flow model.  This calculator allows the user to compare the pressures of their tubing under both Turbulent and <br />
+Laminar flow conditions in order to better understand the behavior of their tubing under the specific conditions of their experiment as <br />
+the flow rate is increased.</p>
+<hr></hr>
+
+<h2>Usage</h2>
+<strong>Navigating the Calculator</strong>
+
+<p>To determine the pressure of your tubing, fill in the following four fields and 
+click submit:</p> 
+<pre><p>The <b>"Length"</b> field should contain the length of the HPLC tubing in meters.</p></pre>
+<pre><p>The <b>"Diameter"</b> field should contain the diameter in microns of the inside of the tubing.</p></pre>
+<pre><p>The <b>"Composition"</b> field should contain the composition your mobile phase on a 0-1 scale indicating the the ratio <br />
+of acetonitrile to water in the solution.</p></pre>
+<pre><p>The <b>"Temperature"</b> field contains the temperature of the liquid phase in degrees Celcius.</p></pre>
+
+<p>Before submitting, you also have the option to check a box that will include the laminar flow of the tubing at an ambient pressure <br/>
+on the graph.  Without checking this box, the ambient flow option will be hidden on the 
+<br/>graph, but still acessable by clicking on the <b>"Laminar Flow (ambient pressure)"</b> icon in the legend of the graph.  The text of the 
+<br/>legend object should darken and another line should appear in blue on the graph.  It should be noted that any of the plots can be 
+<br/>hidden or shown in the same way.</p>
+
+<p>At any point, any one of the fields can be changed and the criteria for your tubing resubmitted.
+The page must be<br/> refreshed to clear all of the fields and reset to default.  However, 
+successfully running the calculator does not require that this <br/>happen at any point.</p>
+
+<strong>Reading the graph</strong>
+
+<p>The pressure prediction graph plots points with Flow (mL/min) on the x-axis and Pressure (bar) on the y-axis</p>
+
+<p>There are three lines plotted on the graph:</p>
+<pre><p><b>Turbulent flow</b>, which plots the pressure predicted for a length of tubing under input conditions that is experiencing turbulent flow.</p></pre>
+<pre><p><b>Laminar flow (Viscosity at actual pressure)</b>, which plots the pressure predicted for tubing that is acting under laminar flow.</p></pre>
+<pre><p><b>Laminar flow (Viscosity at ambient pressure)</b> is hidden unless requested, and plots the pressure prediction for tubing acting under
+laminar flow if the viscosity of the liquid phase is not dependent on pressure.</p></pre>
+
+<p>Once graphed, you can hover over the points on the graph to determine pressure at the corresponding
+flow rate, as the data will<br/> appear as a flag next to your cursor.</p>
+
+<p>Using this graph, the pressure of tubing at a particular flow rate can be compared under turbulent and laminar conditions to help 
+determine the cause<br/> of unexpected pressure readings, particularly in narrow tubing where unexpected pressures may be the result of
+turbulent flow in narrow tubing.</p>
+<hr></hr>
+<h2>Calculations</h2>
+<p><i>The calculations below were used to calculate the pressure for each point on the plot</i></p>
+
+<strong>Setup</strong>
+<p>A number of calculations and conversions had to take place before the pressure of each point could be calculated.<br/>
+The input temperature was converted into Kelvin and the input tubing diameter was converted from microns into centimeters, <br/>
+as both were needed to determine the final pressure.  The density of the mobile phase was determined using the composition of the mobile phase<br/>
+and the calculation is shown below:</p>
+
+<pre><p><b>&rho;</b> = <i>A<sub>1</sub>P<sup>2</sup> + A<sub>2</sub>P + A<sub>3</sub> + (B<sub>1</sub>P<sup>2</sup> + B<sub>2</sub>P + B<sub>3</sub>)&Phi; + (C<sub>1</sub>P<sup>2</sup> + C<sub>2</sub>P + C<sub>3</sub>)T + 
+	(D<sub>1</sub>P<sup>2</sup> + D<sub>2</sub>P + D<sub>3</sub>)&Phi;<sup>2</sup> +(E<sub>1</sub>P<sup>2</sup> + E<sub>2</sub>P + E<sub>3</sub>)&Phi;T + (F<sub>1</sub>P<sup>2</sup> + F<sub>2</sub>P + F<sub>3</sub>)T<sup>2</sup>
+</i></pre></p>
+	
+<p>In this equation, </p>
+<p><pre><b>P</b> = pressure in bar</pre></p></p>
+<p><pre><b>T</b> = temperature in K</pre></p></p>
+<p><pre><b>&Phi;</b> = volume fraction of ACN on 0-1 scale</pre></p></p>
+	
+<table class="variables">
+	<thead>
+		<td class="blank"> </td>
+		<td>A</td>
+		<td>B</td>
+		<td>C</td>
+		<td>D</td>
+		<td>E</td>
+		<td>F</td>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="side-head">1</td>
+			<td>-8.84*10<sup>-8</sup></td>
+			<td>5.06*10<sup>-8</sup></td>
+			<td>4.98*10<sup>-10</sup></td>
+			<td>-1.57*10<sup>-8</sup></td>
+			<td>-1.63*10<sup>-10</sup></td>
+			<td>-7.29*10<sup>-13</sup></td>
+		</tr>
+		<tr>
+			<td class="side-head">2</td>
+			<td>1.15*10<sup>-4</sup></td>
+			<td>-1.75*10<sup>-4</sup></td>
+			<td>-3.18*10<sup>-7</sup></td>
+			<td>2.75*10<sup>-5</sup></td>
+			<td>6.07*10<sup>-7</sup></td>
+			<td>2.66*10<sup>-10</sup></td>
+		</tr>
+		<tr>
+			<td class="side-head">3</td>
+			<td>9.63*10<sup>-1</sup></td>
+			<td>1.96*10<sup>-2</sup></td>
+			<td>7.17*10<sup>-4</sup></td>
+			<td>-5.57*10<sup>-2</sup></td>
+			<td>-6.37*10<sup>-4</sup></td>
+			<td>-1.95*10<sup>-6</sup></td>
+		</tr>
+	</tbody>
+</table>
+
+<strong>Determining Turbulent Flow</strong>
+<p>Because the viscosity of a fluid is dependant on the pressure of the system, and because an increase in viscosity in the tubing<br/>
+causes an increase in the pressure, the viscosity was calculated several times to ensure that the viscosity and pressure determined were<br/>
+both relevant to a real world scenario</p>
+<p>First, the velocity of the mobile phase was calculated using from the diameter of the tubing in centimeters (cm) and the flow rate for <br/>that particular point using the equation below:</p>
+<pre><p><span class="front"><b>velocity</b> = </span><table id="velocity-equation">
+	<tr class="num">
+		<td>flow</td>
+	</tr>
+	<tr class="denom">
+		<td>(diameter/2)<sup>2</sup>*&Pi;*60</td>
+	</tr>
+</table></p></pre>
+<p>Second, the viscosity was calculated using the input temperature in K, the mobile phase composition and the pressure according to the following equation:</p>
+<pre><p><b>ln(&eta;)</b> = A<sub>1</sub>P<sup>2</sup>+A<sub>2</sub>P + A<sub>3</sub> + (B<sub>1</sub>P<sup>2</sup>+B<sub>2</sub>P + B<sub>3</sub>)&Phi; + (C<sub>1</sub>P<sup>2</sup>+C<sub>2</sub>P + C<sub>3</sub>)T + (D<sub>1</sub>P<sup>2</sup>+D<sub>2</sub>P + D<sub>3</sub>)&Phi;<sup>2</sup> +
+	(E<sub>1</sub>P<sup>2</sup>+E<sub>2</sub>P + E<sub>3</sub>)&Phi;T + (F<sub>1</sub>P<sup>2</sup>+F<sub>2</sub>P + F<sub>3</sub>)T<sup>2</sup> + (G<sub>1</sub>P<sup>2</sup>+G<sub>2</sub>P + G<sub>3</sub>)&Phi;<sup>3</sup> +(H<sub>1</sub>P<sup>2</sup>+H<sub>2</sub>P + H<sub>3</sub>)&Phi;<sup>2</sup>T + (I<sub>1</sub>P<sup>2</sup>+I<sub>2</sub>P + I<sub>3</sub>)&Phi;T<sup>2</sup>
+	</p></pre>
+
+<table class="variables">
+	<thead>
+		<td class="blank"> </td>
+		<td>A</td>
+		<td>B</td>
+		<td>C</td>
+		<td>D</td>
+		<td>E</td>
+		<td>F</td>
+		<td>G</td>
+		<td>H</td>
+		<td>I</td>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="side-head">1</td>
+			<td>4.82*10<sup>-7</sup></td>
+			<td>-7.41*10<sup>-7</sup></td>
+			<td>-2.77*10<sup>-9</sup></td>
+			<td>1.04*10<sup>-6</sup></td>
+			<td>2.54*10<sup>-9</sup></td>
+			<td>4.00*10<sup>-12</sup></td>
+			<td>-4.57*10<sup>-7</sup></td>
+			<td>-1.10*10<sup>-9</sup></td>
+			<td>-4.05*10<sup>-12</sup></td>
+		</tr>
+		<tr>
+			<td class="side-head">2</td>
+			<td>-2.17*10<sup>-3</sup></td>
+			<td>4.44*10<sup>-3</sup></td>
+			<td>1.19*10<sup>-5</sup></td>
+			<td>-2.01*10<sup>-3</sup></td>
+			<td>-1.91*10<sup>-5</sup></td>
+			<td>-1.59*10<sup>-8</sup></td>
+			<td>6.43*10<sup>-4</sup></td>
+			<td>3.37*10<sup>-6</sup></td>
+			<td>2.38*10<sup>-8</sup></td>
+		</tr>
+		<tr>
+			<td class="side-head">3</td>
+			<td>1.64*10<sup>-1</sup></td>
+			<td>-6.20*10</td>
+			<td>-8.81*10<sup>-2</sup></td>
+			<td>-5.88*10</td>
+			<td>4.57*10<sup>-2</sup></td>
+			<td>1.10*10<sup>-4</sup></td>
+			<td>3.92*10<sup>-1</sup></td>
+			<td>1.24*10<sup>-2</sup></td>
+			<td>-7.43*10<sup>-5</sup></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>The Reynolds number could then be calculated as follows to determine the friction factor for the flow:</p>
+<pre><p><span class="front"><b>reynolds number</b> = density *</span><table id="rey-equation">
+	<tr class="num">
+		<td>flow*diameter</td>
+	</tr>
+	<tr class="denom">
+		<td>15 000*(viscosity)<sup>3</sup></td>
+	</tr>
+</table></p></pre>
+<p>Once the Reynolds number has been determined, it was rounded to the nearest whole number and the friction factor for the tubing was<br/>
+was found in a table according to its corresponding Reynolds number.  The turbulent pressure of the piping could be determined using the friction factor</p>
+<pre><p><span class="front02"><b>turbulent pressure</b> = friction factor*tubing diameter(&mu;m)*</span><table id="turb-equation">
+	<tr class="num">
+		<td>density*(velocity)<sup>2</sup></td>
+	</tr>
+	<tr class="denom">
+		<td>2 000*diameter</td>
+	</tr>
+</table></p></pre>
+<p>The calculations outlined in the "Determining Turbulent Flow" section were run several times, substituting the pressure from the previous iteration with the <br/>
+newly calculated pressure for the next set of calculations.  The calculations were repeated until the difference between the viscosity used to determine the Reynolds number<br/>
+in the previous calculation and the viscosity determined using that Reynolds number and its corresponding pressure value had a difference of less than 0.0001.  Once the <br />
+viscosity was determined to be unchanging, the most recent calculated value of pressure was stored to be plotted as a turbulent pressure point on the graph</p>
+<strong>Determining Laminar Flow</strong>
+<p>Having determined the viscosity value and the Turbulent flow pressure value for this particular flow rate value, the only thing left to do is calculate the <br/>
+pressure of the tubing under Laminar flow conditions.<p>
+<pre><p><span class="front"><b>laminar flow pressure</b> = 128*length*</span><table id="laminar-equation">
+	<tr>
+		<td class="num">viscosity*flow</td>
+	</tr>
+	<tr>
+		<td class="denom">188 495 559.2*[diameter (cm)]<sup>2</sup></td>
+	</tr>
+</table></p></pre>
+<p>It should be noted that the determination of laminar flow pressure requires the same calculation as described above regardless of how viscosity was calculated.  This means <br/>
+that the calculation for laminar flow assuming viscosity at ambient pressure will be the equation used above.  The only difference is that the calculation takes place before <br/>
+the calculations used to determine the friction factor (previous section), when the pressure has not yet been changed by increasing viscosity.<p>
+
+<Following the calculation of one point, all of the steps shown above are repeated from flow rate = .2 to flow rate = 5, stepping at a rate of 0.000799 units per point.</p>
+<p>The graph was made using plotly (<a href="https://plot.ly/javascript/">https://plot.ly</a>), an open-source graphing library for javascript</p>
+
+<hr></hr>
+<h2>Information</h2>
+
+<p>If you have any questions, comments or concerns, please contact Dr. Dwight Stoll at multidlc(at)multidlc.com or dstoll@gustavus.edu
+
+<hr></hr>
+<h2>License</h2>
+
+<p>Copyright &copy; 2016 Multi-Dimensional Separations - All Rights Reserved</p>
+<a href="../pressure_prediction.html">Return to Pressure Prediction Calculator</a>
+</body>
+</html>

@@ -1,7 +1,9 @@
 <?php
 	$local_root = 'http://' . $_SERVER['SERVER_NAME'];	
 	$selected_tab = 5;
-	include($_SERVER['DOCUMENT_ROOT']. '/scaffold/header_hplcsim.php');
+	$isHPLCSim = "4.0.0";
+	$tab_title = 'HPLC Simulator '.$isHPLCSim;
+	include($_SERVER['DOCUMENT_ROOT']. '/scaffold/header.php');
 ?>
 <link rel="stylesheet" type="text/css" href="sim_css.css">
 <script src="http://d3js.org/d3.v4.min.js"></script>
@@ -50,7 +52,7 @@
 										</td>
 										<td>
 											<input class="export_button" type="button" value="Export Chromatogram" onclick="logExportFileData_Full()">
-											<h3 style="width:50px; height:25px; float:right;">Version:<br>4.0.0</h3>
+											<h3 style="width:50px; height:25px; float:right;">Version:<br><?php global $isHPLCSim; echo $isHPLCSim; ?></h3>
 											<input class="export_button" type="button" value="Export Selected Compound" onclick="logExportFileData_Selected()">
 										</td>
 									</tr>

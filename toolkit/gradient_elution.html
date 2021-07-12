@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gradient Elution</title>
+		<link rel="stylesheet" type="text/css" href="../index2.css">
+		<link rel="stylesheet" type="text/css" href="gradient_elution.css">
+		<link rel="icon" href="../images/mini-icon.png">
+		<link rel="shortcut icon" href="../images/mini-icon.png">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+		<script type="text/javascript" src="gradient_elution.js"></script>
+		<script type="text/javascript" src="../master-js.js"></script>
+	</head>
+	<body>
+		<div id="everything">
+			<div class="bar"></div>
+			<div id="topYellowBar" class="bar"></div>
+			<div style="min-width:1060px">
+				<div id="left-books">
+					<a href="../index.html"><img src="../images/icon.png" alt="Multi-D LC" id="logo"></img></a>
+					<div id="corner"></div>
+				</div>
+				<div id="middle-pressure">
+					<header>
+						<div id="tfheader">
+							<form id="tfnewsearch" method="get" action="http://www.google.com">
+								<input type="text" id="tfq" class="tftextinput" name="q" size="21" maxlength="120" value="Search our website">
+								<input type="submit" value=">" class="tfbutton">
+							</form>
+							<div class="tfclear"></div>
+						</div>
+						<a href="http://gustavus.edu">
+						<div id="banner" onmouseover="lower($(this))" onmouseleave="raise($(this))">
+							<img src="../images/gac_logo.png" alt="GAC" id="gac" style="width:76px"></img>
+						</div> </a>
+						<h1></br>Multi-Dimensional Separations</h1>
+
+						<div style="color:#FDBD2D;float:left;">
+							A site dedicated to multi-dimensional separations with an emphasis on the liquid phase.
+						</div>
+
+						<img src="../images/peak.png" alt="peak" class="peak" id="peak1" style="right:-430px"></img>
+						<img src="../images/peak2.png" alt="peak" class="peak" id="peak2" style="right:-205px"></img></br></br></br>
+						<menu>
+							<cap id="column"></cap>
+							<ul class="cf">
+								<li class="unselectable" onmouseover="scrollOverHome()" onmouseleave="scrollOverToolkit()">
+									<a href="../index.html">Home</a>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverAbout()" onmouseleave="scrollOverToolkit()">
+									<a href="../about/about.html">About</a>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverBooks()" onmouseleave="scrollOverToolkit()">
+									<a href="../books.html">Books</a>
+								</li>
+								<li id="column" class="unselectable" onmouseover="scrollOverLiterature()" onmouseleave="scrollOverToolkit()">
+									<a class="dropdown" href="pressure_prediction.html" style="width:110px">Literature</a>
+									<ul>
+										<li>
+											<a href="../literature/applications-multidlc.html" style="font-size:10px;">Applications of Multi-Dimensional LC</a>
+										</li>
+										<li>
+											<a href="../literature/reviews.html">Reviews</a>
+										</li>
+										<li>
+											<a href="../literature/top-30.html">Top 30</a>
+										</li>
+										<li>
+											<a href="../literature/top-10.html">Top Ten</a>
+										</li>
+									</ul>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverTerminology()" onmouseleave="scrollOverToolkit()">
+									<a href="../terminology.html">Terminology</a>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverToolkit()" onmouseleave="scrollOverToolkit()">
+									<a href="toolkit.html">Tools</a>
+								</li>
+							</ul>
+							<cap id="column"></cap>
+						</menu>
+					</header>
+
+					<main>
+						<div id="description">
+							<h1 id="page-title">Gradient Elution</h1>
+							<p>
+								Add a description of the Gradient Elution tool here.
+							</p>
+							<hr>
+							</hr>
+						</div>
+						<div id="content">
+							<div id="gradient_elution_calculator">
+								<form onsubmit="return readDataS();">
+									<table id="calculator">
+										<tr>
+											<td colspan='3'><h2>Inputs</h2></td>
+										</tr>
+										<tr>
+											<td class="label">Flow Rate (mL/min)</td>
+											<td class="input">
+											<input class="number" type="number" step="1" id="flow_input" name="flow_input" min = "0" value = "0.5"/>
+											</td>
+											
+											<td class="space">     </td>
+											
+											<td class="label">Dead Volume (&mu;L)</td>
+											<td class="input">
+											<input class="number" type="number" step="100" id="deadvol_input" name="deadvol_input" min = "0" value="500"/>
+											</td>
+										</tr>
+										
+										<tr>
+											<td class="label">Initial Organic Solvent Composition</td>
+											<td class="input">
+											<input class="number" type="number" step="0.1" id="initial_percentB" name="initial_percentB" min="0" max="1" value="0.2"/>
+											</td>
+
+											<td class="space">     </td>
+
+											<td class="label">Final Organic Solvent Composition</td>
+											<td class="input">
+											<input class="number" type="number" step="0.1" id="final_percentB" name="final_percentB" min="0" max="1" value="0.8"/>
+											</td>
+										</tr>
+										<tr>
+											<td class="label">Gradient Time (min)</td>
+											<td class="input">
+											<input class="number" type="number" step="1" id="gradient_time_input" name="gradient_time_input" min = "0" value="5"/></td>
+										</tr>
+										<tr>
+											<td class="space">
+											</td>
+											<td class="space">
+											</td>
+										</tr>
+										<tr><td id="button_container" colspan="5">
+											<button type="button" class="submit" onclick="readDataS()">Submit</button>
+										</td></tr>
+										<tr>
+											<td colspan="3"><h2>Output</h2></td>
+										</tr>
+										<tr>
+											<td class="label">Retention Time (min)</td>
+											<td>
+											<input type="text" id="retention_time" name="retention_time"/>
+											</td>
+										</tr>
+									</table>
+								</form>
+							</div>
+							<div id="graph" style='height:500px; width:675px'></div>
+							<!--<div id="graph">
+								<svg id="graph_svg" width="1400" height="500"></svg>	
+							</div>-->
+							<div id="tableDiv">
+								<table id="headerTable">
+									<tr>
+										<th>Compound</th>
+										<th>t<sub>R</sub> (min)</th>
+										<th>k<sub>w</sub></th>
+										<th>S</th>
+									</tr>
+								</table>
+								<div id="scrollTable">
+									<table id="dataTable">
+									</table>
+								</div>
+							</div>
+							<div id="readme">
+								<a id="readme-link" href="readme/gradient_elution.html">Stuck? Click Here for the README</a>
+							</div>
+							<hr>
+							</hr>
+							<div id="return">
+								<a id="return" href="toolkit.html">Return to toolkit</a>
+							</div>
+						</div>
+					</main>
+					<div id="copyright">
+					Copyright &copy; 2016 Multi-Dimensional Separations - All Rights Reserved
+					</div>
+				</div>	
+			</div>
+			<div id="lowerYellowBar" class="bar"></div>
+			<footer></footer>
+		</div>
+		<script>
+			document.onload = readDataS();
+
+			function readDataS() {
+				var flow_rate = document.getElementById('flow_input').value;
+				var dead_volume = document.getElementById('deadvol_input').value;
+				var gradient_time = document.getElementById('gradient_time_input').value;
+				var b_initial = document.getElementById('initial_percentB').value;
+				var b_final = document.getElementById('final_percentB').value;
+				//document.getElementById("retention_time").value = main(flow_rate,dead_volume,gradient_time,b_initial,b_final);
+				main(flow_rate,dead_volume,gradient_time,b_initial,b_final);
+				return false;
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+

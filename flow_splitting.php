@@ -1,6 +1,7 @@
 <?php
 	$local_root = 'http://' . $_SERVER['SERVER_NAME'];	
-	$selected_tab = 3;
+	$selected_tab = 5;
+	$tab_title = "Flow Splitting Calculator";
 	include($_SERVER['DOCUMENT_ROOT']. '/scaffold/header.php');
 ?>
 
@@ -13,7 +14,7 @@ th, td {
 <main onload="calculateFlowSplitting();">
 <div id="description">
 	<h1 id="page-title">Flow Splitting Calculator</h1>
-	<p>This calculator is based off of findings in <a href="https://doi.org/10.1016/j.chroma.2021.461893">THIS PAPER</a>.</p>
+	<p>This calculator is based off of findings in <a href="https://doi.org/10.1016/j.chroma.2021.461893" target="_blank">THIS PAPER</a>.</p>
 	<hr></hr>
 </div>
 <div id="content">

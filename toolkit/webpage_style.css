@@ -1,0 +1,547 @@
+html {
+	background-color: black;
+}
+
+body {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.bar {
+	position: absolute;
+	width: 100%;
+	background-color: black;
+	height: 35px;
+	float: left;
+}
+
+#topYellowBar {
+	background-color: #FDBD2D;
+	height: 40px;
+	z-index: -1;
+}
+
+#lowerYellowBar {
+	background-color: #FDBD2D;
+	height: 5px;
+	bottom: 35px;
+}
+
+footer {
+	font-size: 10px;
+	color: white;
+	background-color: black;
+	text-align: center;
+	bottom: 0;
+	width: 100%;
+	height: 15px;
+	padding: 0px;
+}
+
+#corner {
+	position: relative;
+	float: right;
+	bottom: 98px;
+	left: 150px;
+	border-top: 261px solid transparent;
+	border-right: 860px solid transparent;
+	z-index: -1;
+}
+
+img {
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	-moz-user-drag: none;
+	-khtml-user-drag: none;
+	-webkit-user-drag: none;
+	user-drag: none;
+}
+
+#logo {
+	float: right;
+	position: relative;
+	top: 10px;
+	right: 48px;
+	width: 190px;
+}
+
+#banner {
+	padding: 20px 0 0 0;
+	width: 76px;
+	height: 90px;
+	position: relative;
+	left: 82px;
+	top: -40px;
+	float: right;
+	border: 2px solid #f2f2f2;
+}
+
+#LTriangle {
+	border-top: 38px solid black;
+	border-right: 38px solid transparent;
+	float: left;
+}
+
+#RTriangle {
+	border-top: 38px solid black;
+	border-left: 38px solid transparent;
+	float: right;
+}
+
+#tfheader {
+	height: 50px;
+	background-color: blue;
+	float: right;
+	margin-left: 560px;
+	top: 3px;
+	z-index: 2;
+}
+
+.tftextinput {
+	margin: 0;
+	height: 10px;
+	padding: 5px 15px;
+	font-size: 11px;
+	color: grey;
+	background-color: white;
+	border: 1px solid #feefcd;
+	border-right: 0px;
+	border-top-left-radius: 5px 5px;
+	border-bottom-left-radius: 5px 5px;
+}
+.tfbutton {
+	height: 24px;
+	font-size: 14px;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	color: #ffffff;
+	border: solid 1px white;
+	border-right: 0px;
+	background: #0095cd;
+	background: -webkit-gradient(linear, left top, left bottom, from(#FDBD2D), to(#e3a002));
+	background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+	border-top-right-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+}
+.tfbutton:hover {
+	text-decoration: none;
+	background: #007ead;
+	background: -webkit-gradient(linear, left top, left bottom, from(white), to(#e3a002));
+	background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+}
+
+/* Fixes submit button height problem in Firefox */
+.tfbutton::-moz-focus-inner {
+	border: 0;
+}
+.tfclear {
+	clear: both;
+}
+
+#left {
+	position: relative;
+	float: left;
+	width: calc(50% - 380px);
+	min-width: 300px;
+	height:200px;
+}
+
+cap {
+	float: left;
+	height: 40px;
+	width: 30px;
+}
+
+#column {
+	z-index: 1;
+	opacity: .9;
+}
+
+ul {
+	/*background-color:white;*/
+	-webkit-font-smoothing: antialiased;
+	text-shadow: 0 1px 0 #FFF;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	float: left;
+}
+
+li {
+	-webkit-transition: all .25s ease;
+	-moz-transition: all .25s ease;
+	-ms-transition: all .25s ease;
+	-o-transition: all .25s ease;
+	transition: all .25s ease;
+	float: left;
+}
+
+li a {
+	-webkit-transition: all .25s ease;
+	-moz-transition: all .25s ease;
+	-ms-transition: all .25s ease;
+	-o-transition: all .25s ease;
+	transition: all .25s ease;
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+li a:hover {
+	color: #ffd966;
+}
+
+.dropdown:after {
+	content: ' \25b6';
+}
+
+.dropdown:hover:after {
+	content: '\25bc'
+}
+
+li ul {
+	visibility: hidden;
+	position: absolute;
+	opacity: 0;
+	float: left;
+	margin: 0px;
+	z-index: 1;
+	line-height: 20px;
+	width: 140px;
+}
+
+li:hover ul {
+	opacity: 1;
+	visibility: visible;
+	z-index: 100;
+}
+
+li ul li {
+	float: left;
+	width: 100%;
+}
+
+li ul a:hover {
+	background: #bbb;
+}
+
+.cf:after, .cf:before {
+	content: "";
+	display: table;
+}
+
+.cf:after {
+	clear: both;
+}
+
+#middle {
+	width: 760px;
+	height:220px;
+	float: left;
+	margin: 0px 0 0px 0;
+}
+
+header {
+	line-height: 10px;
+	z-index: 3;
+	height: 200px;
+	width: 100%;
+	padding: 0;
+}
+
+menu {
+	float: left;
+	padding: 0;
+	z-index: 10;
+	-webkit-transition: all .25s ease;
+	-moz-transition: all .25s ease;
+	-ms-transition: all .25s ease;
+	-o-transition: all .25s ease;
+	transition: all .25s ease;
+}
+
+.fixed {
+	position: fixed;
+	top: -10px;
+	padding-top: 10px;
+	margin: 0;
+	color: white;
+	border-radius: 10px;
+	background-color: white;
+	background: red; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(left, white , #f2f2f2); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(white , #f2f2f2); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(white , #f2f2f2); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(white , #f2f2f2); /* Standard syntax */
+	box-shadow: 1px 1px 1px 2px #888888;
+}
+
+.fixedColor {
+	color: black;
+}
+
+.floating {
+	position: static;
+	color: black;
+}
+
+#everything {
+	background-color: #f2f2f2;
+	position: absolute;
+	z-index: 5;
+	width: 100%;
+}
+
+main {
+	float: left;
+	position: absolute;
+	top: 200px;
+	z-index: -30;
+	width: 760px;
+}
+
+#newsfeed {
+	width: 200px;
+	z-index: 4;
+	float: right;
+	position: relative;
+	bottom: 260px;
+	margin: 60px 30px 30px 30px;
+	padding: 0;
+	opacity: .9;
+}
+
+h3 {
+	float: left;
+	color: #808080;
+	width: 186px;
+	height: 20px;
+	padding: 5px;
+	margin: 0;
+	text-align: center;
+	z-index: 3;
+	background-color: black;
+	color: white;
+	border-radius: 5px;
+	font-size: 12px;
+	box-shadow: 2px 2px 2px 2px #888888;
+}
+
+#news {
+	font-size: 12px;
+	float: left;
+	width: 185px;
+	line-height: 12px;
+	overflow: hidden;
+	padding: 6px;
+	color: black;
+	z-index: 2;
+	position: relative;
+	bottom: 8px;
+	border-radius: 5px;
+	background: white;
+	box-shadow: 2px 2px 2px 2px #888888;
+}
+
+a {
+	color: #FDBD2D;
+	text-decoration: none;
+}
+
+@-webkit-keyframes dropDown {
+from {
+	bottom: 20px;
+	opacity: 0;
+}
+to {
+	bottom: 0px;
+	opacity: 1;
+}
+}
+@-moz-keyframes
+dropDown {from   {
+	bottom: 20px;
+	opacity: 0;
+}
+to {
+	bottom: 0px;
+	opacity: 1;
+}
+}
+@keyframes
+dropDown {from   {
+	bottom: 20px;
+	opacity: 0;
+}
+to {
+	bottom: 0px;
+	opacity: 1;
+}
+}
+
+.labels-appear {
+	position: relative;
+	-webkit-animation-name: dropDown; /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+	-moz-animation-name: dropDown;
+	animation-name: dropDown;
+	-webkit-animation-fill-mode: forwards; /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+	-moz-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+	-webkit-animation-duration: .1s;
+	-moz-animation-duration: .1s;
+	animation-duration: .1s;
+	animation-iteration-count: 1;
+}
+
+.labels-disappear {
+	position: relative;
+	-webkit-animation-name: dropDown; /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+	-moz-animation-name: dropDown;
+	animation-name: dropDown;
+	-webkit-animation-fill-mode: forwards; /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+	-moz-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+	-webkit-animation-delay: 1s;
+	-moz-animation-delay: 1s;
+	animation-delay: 1s;
+	-webkit-animation-duration: 1s;
+	-moz-animation-duration: 1s;
+	animation-duration: 1s;
+	animation-direction: reverse;
+}
+
+#welcome {
+	height: 220px;
+	color: black;
+	background-color: white;
+	width: 740px;
+	font-size: 18px;
+	padding: 10px;
+	padding-top: 0px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	opacity: .8;
+	float: left;
+	box-shadow: 2px 2px 2px 2px #888888;
+	z-index: -50;
+}
+
+#icons {
+	position: absolute;
+	width: 160px;
+	height: 80px;
+	margin: 10px;
+	margin-left: 0px;
+	border-radius: 5px;
+	padding: 5px;
+	right: 100px;
+	opacity: 1;
+	z-index: 1;
+	top: 345px;
+}
+
+#labels {
+	width: 500px;
+	height: 100px;
+	background-color: white;
+	float: left;
+}
+
+.labels {
+	width: 56px;
+	padding: 2px;
+	font-size: 10px;
+	text-align: center;
+	position: relative;
+	top: -40px;
+	float: left;
+	z-index: -1;
+}
+
+.button {
+	width: 60px;
+	height: 60px;
+	z-index: 1;
+	float: left;
+}
+
+#toolbutton {
+	width: 65px;
+	z-index: 1;
+}
+
+#posts {
+	right: 110px;
+	float: left;
+	font-size: 12px;
+	width: 740px;
+	padding: 10px;
+	margin: 0;
+	border-radius: 5px;
+	opacity: .8;
+	background-color: white;
+	z-index: -1;
+	box-shadow: 2px 2px 2px 2px #888888;
+}
+
+#toolmiddle {
+	width: 760px;
+	float: left;
+	margin: 0px 0 0px 0;
+}
+
+#toolleft {
+	position: relative;
+	float: left;
+	width: 20%;
+	width: calc(50% - 380px);
+	min-width: 300px;
+}
+
+#toolkit {
+	border:3px solid #000000;
+	padding:3px;
+	margin-top:25px;
+	margin-bottom:75px;
+	text-align:center;
+}
+
+.menubar {
+	background-color:#4d4d4d;
+	color:#ffffff;
+	width:120px;
+	height:50px;
+}
+
+.buttonlink {
+	border:2px solid #171c41;
+	background-color:#ffd966;
+	width:110px;
+	height:30px;
+}
+
+.option {
+	color:#000000;
+	display:inline-block;
+	padding-top:25px;
+	padding-bottom:25px;
+}
+
+.option:hover {
+	color:#ffffff;
+}
+
+.option:visited {
+	display:inline-block;
+	padding-top:25px;
+	padding-bottom:25px;
+}

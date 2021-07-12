@@ -1,0 +1,5 @@
+DirectorySlash On
+Redirect /hplcsim_3_3_0/index.php /hplcsim_3_3_0/hplcsim.html
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^.]+)$ $1.php [NC,L]

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html
+<head><link rel="stylesheet" type="text/css" href="readme.css"></head>
+<body>
+<h1>Viscosity Calculator</h1>
+
+<p>This application calculates the theoretical density (g/mL) and viscosity (cP) using the composition<br/>
+of the mobile phase of your HPLC tubing (scale ACN/water), the temperature (C) of the tubing and the pressure
+(bar) of the system.</p>
+
+<hr></hr>
+<hr></hr>
+
+<h2>Function</h2>
+
+<p>In order to better predict the pressure of HPLC tubing, it is important to take viscosity due to pressure into<br/>
+account.  Because the equation is itself dependent on pressure, it may require that you run the calculations a few times<br/>
+to get the most accurate viscosity and, subsequently, pressure values.  This combined with the complicated equation <br/>
+required to calculate viscosity make the use of a calculator like this one a valuable time-saver making predictions <br/>
+for HPLC operation.</p>
+
+<hr></hr>
+
+<h2>Usage</h2>
+
+<p>To determine the viscosity  and density of your tubing, input values into the fields as follows:</p>
+
+<pre><p><b>Composition</b> should be a number between 0 and 1, and should be a ratio of ACN to water</p></pre>
+<pre><p><b>Temperature</b> should be a number between 20 and 80 and should be temperature of the system in degrees Celcius</p></pre>
+<pre><p><b>Pressure</b> should be a number between 0 and 1000, and should be the pressure of the system in bar</p></pre>
+
+<p>Once all fields in the input section of the page are filled, click the <b>"Submit"</b> button to start the calculation <br />
+The density and viscosity should appear in the labelled fields in the <b>"Output"</b> section of the calculator.  <br />
+<b>Density</b> is calculated in grams per milliliter (g/mL) and <b>viscosity</b> is calculated with the units centiPoise (cP)</p>
+<p>To clear all of the fields in the calculator, click the <b>"Clear"</b> button.  The calculator does not require that <br />
+you clear all fields before every calculation, but the Clear button will remove values from all fields in the <br />
+"Input" and "Output" sections of the calculator</p>
+
+<hr></hr>
+
+<h2>Calculations</h2>
+<strong>Setup</strong>
+<p>Before the desired calculations could be made, the input temperature was converted from degrees Celcius to Kelvin</p>
+
+<strong>Determining Density and Viscosity</strong>
+<p>Density is calculated using the following equation:</p>
+
+<pre><p><b>&rho;</b> = <i>A<sub>1</sub>P<sup>2</sup> + A<sub>2</sub>P + A<sub>3</sub> + (B<sub>1</sub>P<sup>2</sup> + B<sub>2</sub>P + B<sub>3</sub>)&Phi; + (C<sub>1</sub>P<sup>2</sup> + C<sub>2</sub>P + C<sub>3</sub>)T + 
+	(D<sub>1</sub>P<sup>2</sup> + D<sub>2</sub>P + D<sub>3</sub>)&Phi;<sup>2</sup> +(E<sub>1</sub>P<sup>2</sup> + E<sub>2</sub>P + E<sub>3</sub>)&Phi;T + (F<sub>1</sub>P<sup>2</sup> + F<sub>2</sub>P + F<sub>3</sub>)T<sup>2</sup>
+</i></pre></p>
+	
+<p>In this equation, </p>
+<p><pre><b>P</b> = pressure in bar</pre></p></p>
+<p><pre><b>T</b> = temperature in K</pre></p></p>
+<p><pre><b>&Phi;</b> = volume fraction of ACN on 0-1 scale</pre></p></p>
+	
+<table class="variables">
+	<thead>
+		<td class="blank"> </td>
+		<td>A</td>
+		<td>B</td>
+		<td>C</td>
+		<td>D</td>
+		<td>E</td>
+		<td>F</td>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="side-head">1</td>
+			<td>-8.84*10<sup>-8</sup></td>
+			<td>5.06*10<sup>-8</sup></td>
+			<td>4.98*10<sup>-10</sup></td>
+			<td>-1.57*10<sup>-8</sup></td>
+			<td>-1.63*10<sup>-10</sup></td>
+			<td>-7.29*10<sup>-13</sup></td>
+		</tr>
+		<tr>
+			<td class="side-head">2</td>
+			<td>1.15*10<sup>-4</sup></td>
+			<td>-1.75*10<sup>-4</sup></td>
+			<td>-3.18*10<sup>-7</sup></td>
+			<td>2.75*10<sup>-5</sup></td>
+			<td>6.07*10<sup>-7</sup></td>
+			<td>2.66*10<sup>-10</sup></td>
+		</tr>
+		<tr>
+			<td class="side-head">3</td>
+			<td>9.63*10<sup>-1</sup></td>
+			<td>1.96*10<sup>-2</sup></td>
+			<td>7.17*10<sup>-4</sup></td>
+			<td>-5.57*10<sup>-2</sup></td>
+			<td>-6.37*10<sup>-4</sup></td>
+			<td>-1.95*10<sup>-6</sup></td>
+		</tr>
+	</tbody>
+</table>
+<p>Viscosity is calculated using the following equation:</p>
+
+<pre><p><b>ln(&eta;)</b> = A<sub>1</sub>P<sup>2</sup>+A<sub>2</sub>P + A<sub>3</sub> + (B<sub>1</sub>P<sup>2</sup>+B<sub>2</sub>P + B<sub>3</sub>)&Phi; + (C<sub>1</sub>P<sup>2</sup>+C<sub>2</sub>P + C<sub>3</sub>)T + (D<sub>1</sub>P<sup>2</sup>+D<sub>2</sub>P + D<sub>3</sub>)&Phi;<sup>2</sup> +
+	(E<sub>1</sub>P<sup>2</sup>+E<sub>2</sub>P + E<sub>3</sub>)&Phi;T + (F<sub>1</sub>P<sup>2</sup>+F<sub>2</sub>P + F<sub>3</sub>)T<sup>2</sup> + (G<sub>1</sub>P<sup>2</sup>+G<sub>2</sub>P + G<sub>3</sub>)&Phi;<sup>3</sup> +(H<sub>1</sub>P<sup>2</sup>+H<sub>2</sub>P + H<sub>3</sub>)&Phi;<sup>2</sup>T + (I<sub>1</sub>P<sup>2</sup>+I<sub>2</sub>P + I<sub>3</sub>)&Phi;T<sup>2</sup>
+	</p></pre>
+
+<table class="variables">
+	<thead>
+		<td class="blank"> </td>
+		<td>A</td>
+		<td>B</td>
+		<td>C</td>
+		<td>D</td>
+		<td>E</td>
+		<td>F</td>
+		<td>G</td>
+		<td>H</td>
+		<td>I</td>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="side-head">1</td>
+			<td>4.82*10<sup>-7</sup></td>
+			<td>-7.41*10<sup>-7</sup></td>
+			<td>-2.77*10<sup>-9</sup></td>
+			<td>1.04*10<sup>-6</sup></td>
+			<td>2.54*10<sup>-9</sup></td>
+			<td>4.00*10<sup>-12</sup></td>
+			<td>-4.57*10<sup>-7</sup></td>
+			<td>-1.10*10<sup>-9</sup></td>
+			<td>-4.05*10<sup>-12</sup></td>
+		</tr>
+		<tr>
+			<td class="side-head">2</td>
+			<td>-2.17*10<sup>-3</sup></td>
+			<td>4.44*10<sup>-3</sup></td>
+			<td>1.19*10<sup>-5</sup></td>
+			<td>-2.01*10<sup>-3</sup></td>
+			<td>-1.91*10<sup>-5</sup></td>
+			<td>-1.59*10<sup>-8</sup></td>
+			<td>6.43*10<sup>-4</sup></td>
+			<td>3.37*10<sup>-6</sup></td>
+			<td>2.38*10<sup>-8</sup></td>
+		</tr>
+		<tr>
+			<td class="side-head">3</td>
+			<td>1.64*10<sup>-1</sup></td>
+			<td>-6.20*10</td>
+			<td>-8.81*10<sup>-2</sup></td>
+			<td>-5.88*10</td>
+			<td>4.57*10<sup>-2</sup></td>
+			<td>1.10*10<sup>-4</sup></td>
+			<td>3.92*10<sup>-1</sup></td>
+			<td>1.24*10<sup>-2</sup></td>
+			<td>-7.43*10<sup>-5</sup></td>
+		</tr>
+	</tbody>
+</table>
+<p>The values were then sent to the corresponding fields in the <b>Output</b> section of the calculator</p>
+
+<hr></hr>
+
+<h2>Information</h2>
+<p>Many of the calculations for this tool were taken from the <a href="../pressure_prediction.html">Pressure Prediction Calculator</a><br />
+that is also a part of the toolkit in <a href="../../index.html">www.multidlc.org</a></p>
+<p>If you have any questions, comments or concerns, please contact Dr. Dwight Stoll at multidlc(at)multidlc.com or dstoll@gustavus.edu
+
+<hr></hr>
+
+<h2>License</h2>
+
+<p>Copyright &copy; 2016 Multi-Dimensional Separations - All Rights Reserved</p>
+<a href="../viscosity_calculator.html">Return to Viscosity Calculator</a>
+</body>
+</html>

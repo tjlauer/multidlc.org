@@ -1,0 +1,97 @@
+h1 {
+	color: #007aa2;
+}
+
+h2 {
+	color: #007aa2;
+}
+
+pre {
+	margin-left:25px;
+}
+
+b {
+	color: #00b3ea;
+}
+
+a {
+	color: #00b3ea;
+}
+
+a:hover {
+	color: #007aa2; !important;
+}
+
+a:visited {
+	color: #00b3ea;
+}
+
+thead {
+	background-color: #8cc6da;
+	text-align:center;
+}
+
+.front {
+	float:left;
+	padding-top:11px;
+}
+
+.front02 {
+	float:left;
+	padding-top:15px;
+}
+
+.num {
+	text-align:center;
+	border-bottom:1px solid #000000;
+}
+
+.denom {
+	border-top:1px solid #000000;
+	text-align:center;
+}
+
+.variables {
+	border-collapse:collapse;
+	background-color: #f7f7f7;
+	border:1px solid #000000;
+	margin:15px;
+	margin-bottom:30px;
+	margin-left:20px;
+}
+
+.variables td {
+	border:1px solid #000000;
+	padding:5px;
+}
+
+.side-head {
+	width:40px;
+	padding:5px;
+	background-color: #ffd77d;
+	text-align:center;
+}
+
+.blank {
+	background-color: #ffffff;
+}
+
+#velocity-equation {
+	border-collapse:collapse;
+	margin-left:35px;
+}
+
+#rey-equation {
+	border-collapse:collapse;
+	margin-left:130px;
+}
+
+#turb-equation {
+	border-collapse:collapse;
+	margin-left:410px;
+}
+
+#laminar-equation {
+	border-collapse:collapse;
+	margin-left:223px;
+}

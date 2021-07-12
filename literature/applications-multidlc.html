@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Applications of MultiDLC</title>
+		<link rel="stylesheet" type="text/css" href="../index2.css">
+		<link rel="icon" href="../images/mini-icon.png">
+		<link rel="shortcut icon" href="../images/mini-icon.png">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+		<script type="text/javascript" src="../master-js.js"></script>
+	</head>
+	<body>
+		<div id="everything">
+			<div class="bar"></div>
+			<div id="topYellowBar" class="bar"></div>
+			<div style="min-width:1060px">
+				<div id="left-books">
+					<a href="../index.html"><img src="../images/icon.png" alt="Multi-D LC" id="logo"></img></a>
+					<div id="corner"></div>
+				</div>
+				<div id="middle-books">
+					<header>
+						<div id="tfheader">
+							<form id="tfnewsearch" method="get" action="http://www.google.com">
+								<input type="text" id="tfq" class="tftextinput" name="q" size="21" maxlength="120" value="Search our website">
+								<input type="submit" value=">" class="tfbutton">
+							</form>
+							<div class="tfclear"></div>
+						</div>
+						<a href="http://gustavus.edu">
+						<div id="banner" onmouseover="lower($(this))" onmouseleave="raise($(this))">
+							<img src="../images/gac_logo.png" alt="GAC" id="gac" style="width:76px"></img>
+						</div> </a>
+						<h1></br>Multi-Dimensional Separations</h1>
+
+						<div style="color:#FDBD2D;float:left;">
+							A site dedicated to multi-dimensional separations with an emphasis on the liquid phase.
+						</div>
+
+						<img src="../images/peak.png" alt="peak" class="peak" id="peak1" style="right:-196px"></img>
+						<img src="../images/peak2.png" alt="peak" class="peak" id="peak2" style="right:29px"></img>
+						<menu>
+							<cap id="column"></cap>
+							<ul class="cf">
+								<li class="unselectable" onmouseover="scrollOverHome()" onmouseleave="scrollOverLiterature()">
+									<a href="../index.html">Home</a>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverAbout()" onmouseleave="scrollOverLiterature()">
+									<a href="../about/about.html">About</a>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverBooks()" onmouseleave="scrollOverLiterature()">
+									<a href="../books.html">Books</a>
+								</li>
+								<li id="column" class="unselectable" onmouseover="scrollOverLiterature()" onmouseleave="scrollOverLiterature()">
+									<a class="dropdown" href="applications-multidlc.html" style="width:110px">Literature</a>
+									<ul>
+										<li>
+											<a href="applications-multidlc.html" style="font-size:10px;">Applications of Multi-Dimensional LC</a>
+										</li>
+										<li>
+											<a href="reviews.html">Reviews</a>
+										</li>
+										<li>
+											<a href="top-30.html">Top 30</a>
+										</li>
+										<li>
+											<a href="top-10.html">Top Ten</a>
+										</li>
+									</ul>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverTerminology()" onmouseleave="scrollOverLiterature()">
+									<a href="../terminology.html">Terminology</a>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverToolkit()" onmouseleave="scrollOverLiterature()">
+									<a href="../toolkit/toolkit.html">Tools</a>
+								</li>
+							</ul>
+							<cap id="column"></cap>
+						</menu>
+					</header>
+					<main>
+						<div id="description">
+							<h1 id="page-title">Applications of Multi-Dimensional LC</h1>
+							<hr>
+							</hr>
+							<p>The following table contains a compilation of references to applications of 2D-LC published in the peer-reviewed literature. Click <a href="apps_bib.html">here</a> to see the complete citations for the references cited in the table.</p>
+						</div>
+						<div id="content">
+							<table id="table-app">
+						<thead>
+						<tr>
+							<td>Application</td>
+							<td>Year</td>
+							<td>First Mode/Phase</td>
+							<td>Second Mode/Phase</td>
+							<td>Reference</td>
+						</tr>
+						</thead>
+						<tbody>
+						<tr id="odd">
+							<td>Small Molecule Pharmaceuticals</td>
+							<td>2009</td>
+							<td>RP/C18 (low pH)</td>
+							<td>RP/C18 (pH 8.6)</td>
+							<td>[1]</td>
+						</tr>
+						<tr id="even">
+							<td>Surfactants</td>
+							<td>2012</td>
+							<td>HILIC/Zic-HILIC</td>
+							<td>RP/C8-Aqua</td>
+							<td>[2]</td>
+						</tr>
+						<tr id="odd">
+							<td>Traditional Chinese Medicine</td>
+							<td>2013</td>
+							<td>RP/CN</td>
+							<td>RP/C18 (low pH)</td>
+							<td>[3]</td>
+						</tr>
+						<tr id="even">
+							<td>Lipids</td>
+							<td>2005</td>
+							<td>Argentation (Silver ion)</td>
+							<td>RP/C18</td>
+							<td>[4]</td>
+						</tr>
+						<tr id="odd">
+							<td>Carotenoids</td>
+							<td>2006</td>
+							<td>NP/Bare silica</td>
+							<td>RP/C18</td>
+							<td>[5]</td>
+						</tr>
+						<tr id="even">
+							<td>Peptides</td>
+							<td>2008</td>
+							<td>RP/C18 (pH 1.8)</td>
+							<td>RP/C18 (pH 10)</td>
+							<td>[6]</td>
+						</tr>
+						<tr id="odd">
+							<td>Peptides</td>
+							<td>2005</td>
+							<td>IEX/Phosphate modified zirconia</td>
+							<td>RP/C18 (low pH)</td>
+							<td>[7]</td>
+						</tr>
+						<tr id="even">
+							<td>Polymethacrylates</td>
+							<td>2012</td>
+							<td>RP/C18</td>
+							<td>SEC/C18 (critical conditions)</td>
+							<td>[8]</td>
+						</tr>
+						</tbody>
+					</table>
+						</div>
+					</main>
+					<div id="copyright">
+						Copyright &copy 2016 Multi-Dimensional Separations - All Rights Reserved
+					</div>
+				</div>
+
+			</div>
+
+			<div id="lowerYellowBar" class="bar"></div>
+			<footer></footer>
+		</div>
+	</body>
+</html>

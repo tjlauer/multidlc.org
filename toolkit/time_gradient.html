@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pressure Prediction Calculator</title>
+		<link rel="stylesheet" type="text/css" href="../index2.css">
+		<link rel="icon" href="../images/mini-icon.png">
+		<link rel="shortcut icon" href="../images/mini-icon.png">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+		<script type="text/javascript" src="pressure_prediction.js"></script>
+		<script type="text/javascript" src="../master-js.js"></script>
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+	</head>
+	<body>
+		<div id="everything">
+			<div class="bar"></div>
+			<div id="topYellowBar" class="bar"></div>
+			<div style="min-width:1060px">
+				<div id="left-books">
+					<a href="../index.html"><img src="../images/icon.png" alt="Multi-D LC" id="logo"></img></a>
+					<div id="corner"></div>
+				</div>
+				<div id="middle">
+					<header>
+						<div id="tfheader">
+							<form id="tfnewsearch" method="get" action="http://www.google.com">
+								<input type="text" id="tfq" class="tftextinput" name="q" size="21" maxlength="120" value="Search our website">
+								<input type="submit" value=">" class="tfbutton">
+							</form>
+							<div class="tfclear"></div>
+						</div>
+						<a href="http://gustavus.edu">
+						<div id="banner" onmouseover="lower($(this))" onmouseleave="raise($(this))">
+							<img src="../images/gac_logo.png" alt="GAC" id="gac" style="width:76px"></img>
+						</div> </a>
+						<h1></br>Multi-Dimensional Separations</h1>
+
+						<div style="color:#FDBD2D;float:left;">
+							A site dedicated to multi-dimensional separations with an emphasis on the liquid phase.
+						</div>
+
+						<img src="../images/peak.png" alt="peak" class="peak" id="peak1" style="right:-430px"></img>
+						<img src="../images/peak2.png" alt="peak" class="peak" id="peak2" style="right:-205px"></img>
+						<menu>
+							<cap id="column"></cap>
+							<ul class="cf">
+								<li class="unselectable" onmouseover="scrollOverHome()" onmouseleave="scrollOverToolkit()">
+									<a href="../index.html">Home</a>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverAbout()" onmouseleave="scrollOverToolkit()">
+									<a href="../about/about.html">About</a>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverBooks()" onmouseleave="scrollOverToolkit()">
+									<a href="../books.html">Books</a>
+								</li>
+								<li id="column" class="unselectable" onmouseover="scrollOverLiterature()" onmouseleave="scrollOverToolkit()">
+									<a class="dropdown" href="pressure_prediction.html" style="width:110px">Literature</a>
+									<ul>
+										<li>
+											<a href="../literature/applications-multidlc.html" style="font-size:10px;">Applications of Multi-Dimensional LC</a>
+										</li>
+										<li>
+											<a href="../literature/reviews.html">Reviews</a>
+										</li>
+										<li>
+											<a href="../literature/top-30.html">Top 30</a>
+										</li>
+										<li>
+											<a href="../literature/top-10.html">Top Ten</a>
+										</li>
+									</ul>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverTerminology()" onmouseleave="scrollOverToolkit()">
+									<a href="../terminology.html">Terminology</a>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverToolkit()" onmouseleave="scrollOverToolkit()">
+									<a href="toolkit.html">Tools</a>
+								</li>
+							</ul>
+							<cap id="column"></cap>
+						</menu>
+					</header>
+					<div id="main">
+						<div class="chart"></div>
+					</div>
+					<div id="copyright">
+						Copyright &copy; 2016 Multi-Dimensional Separations - All Rights Reserved
+					</div>
+				</div>
+			</div>
+			<div id="lowerYellowBar" class="bar"></div>
+			<footer></footer>
+		</div>
+	</body>
+	<style>
+		.chart div {
+			font: 10px sans-serif;
+			background-color: steelblue;
+			text-align: right;
+			padding: 3px;
+			margin: 1px;
+			color: white;.chart rect {
+			fill: steelblue;
+		}
+
+		.chart rect {
+			fill: steelblue;
+		}
+
+		.chart text {
+			fill: white;
+			font: 10px sans-serif;
+			text-anchor: end;
+		}
+	</style>
+	<script>
+//		var data = [2, 3, 4, 6, 8, 11, 15];
+//		d3.select(".chart").selectAll("div").data(data).enter().append("div").style("width", function(d) {
+//			return d * 10 + "px"
+//		}).text(function(d) {
+//			return d;
+//		});
+
+		var data = [4, 8, 15, 16, 23, 42];
+		var width = 420, barHeight = 20;
+		var x = d3.scale.linear()
+			.domain([0, d3.max(data)])
+			.range([0, width]);
+			
+		var chart = d3.select(".chart")
+			.attr("width", width)
+			.attr("height", barHeight * data.length);
+			
+		var bar = chart.selectAll("g")
+			.data(data)
+		.enter().append("g")
+			.attr("transform", function(d, i){ return "translate(0, " + i* barHeight + ")"; });
+			
+		bar.append("rect")
+			.attr("width", x)
+			.attr("height", barHeight - 1);
+		
+		bar.append("text")
+			.attr("x", function(d) { return x(d) - 3; })
+			.attr("y", barHeight / 2)
+			.attr("dy", ".35em")
+			.text(function(d) { return d; });
+	</script>
+</html>

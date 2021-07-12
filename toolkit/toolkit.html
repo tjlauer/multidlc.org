@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>MultiDLC Toolkit</title>
+		<link rel="stylesheet" type="text/css" href="../index2.css">
+		<link rel="icon" href="../images/mini-icon.png">
+		<link rel="shortcut icon" href="../images/mini-icon.png">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+		<script type="text/javascript" src="../master-js.js"></script>
+	</head>
+	<body>
+		<div id="everything">
+			<div class="bar"></div>
+			<div id="topYellowBar" class="bar"></div>
+			<div style="min-width:1060px">
+				<div id="left-books">
+					<a href="../index.html"><img src="../images/icon.png" alt="Multi-D LC" id="logo"></img></a>
+					<div id="corner"></div>
+					<div id="newsfeed">
+						<div id="tool-wrapper">
+						<h2>Links</h2>
+						<div id="toollinks">
+							<h3>HPLC Simulation</h3>
+							<p class="tool-head">This <a id="more-tools-link" href="http://www.hplcsimulator.org/simulator.php">simulator</a> running in Java is quite sophisticated, yet easy to use.</p><br /><hr></hr>
+							<h3>Instument Configuration Simulation</h3>
+							<p class="tool-head">This <a id="more-tools-link" href="http://www.hplcsimulator.org/fluidvisualizer/index.php">Fluid Visualizer</a> also running in Java, allows drag-and-drop building of virtual HPLC instruments, and provides estimates of pressure drops and dispersion values.</p><br /><hr></hr>
+							<h3>Choosing HPLC columns with Orthogonal/Similar Selectivity</h3>
+							<p class="tool-head">See <a id="more-tools-link" href="http://www.hplccolumns.org/">www.hplccolumns.org</a> &#8208; this site is a complement to the USP website on the same topic, and provides estimates of column similarity using stationary phase characterization data based on the Hydophobic Subtraction Model of reversed-phase selectivity.</p><br /><hr></hr>
+							<h3>Orthogonality Estimation from Experimental Data</h3>
+							<p class="tool-head"><a id="more-tools-link" href="http://www.kroungold.com/OrCa_Info.html">OrCa</a> &#8208; Windows-based software that calculates orthogonality of a 2D separation using fractals. This is based on the work of Mark Schure, which is described in a <a id="more-tools-link" href="http://www.sciencedirect.com/science/article/pii/S0021967310015827">paper</a> in the <i>Journal of Chromatography, A.</p></i>
+
+						</div>
+						</div>
+					</div>
+				</div>
+				<div id="middle-crossing">
+					<header>
+						<div id="tfheader">
+							<form id="tfnewsearch" method="get" action="http://www.google.com">
+								<input type="text" id="tfq" class="tftextinput" name="q" size="21" maxlength="120" value="Search our website">
+								<input type="submit" value=">" class="tfbutton">
+							</form>
+							<div class="tfclear"></div>
+						</div>
+						<a href="http://gustavus.edu">
+						<div id="banner" onmouseover="lower($(this))" onmouseleave="raise($(this))">
+							<img src="../images/gac_logo.png" alt="GAC" id="gac" style="width:76px"></img>
+						</div> </a>
+						<h1></br>Multi-Dimensional Separations</h1>
+
+						<div style="color:#FDBD2D;float:left;">
+							A site dedicated to multi-dimensional separations with an emphasis on the liquid phase.
+						</div>
+
+						<img src="../images/peak.png" alt="peak" class="peak" id="peak1" style="right:-430px"></img>
+						<img src="../images/peak2.png" alt="peak" class="peak" id="peak2" style="right:-205px"></img>
+						<menu>
+							<cap id="column"></cap>
+							<ul class="cf">
+								<li class="unselectable" style="padding:14px 16px" onmouseover="scrollOverHome()" onmouseleave="scrollOverToolkit()">
+									Home
+								</li>
+								<li class="unselectable" onmouseover="scrollOverAbout()" onmouseleave="scrollOverToolkit()">
+									<a href="../about/about.html">About</a>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverBooks()" onmouseleave="scrollOverToolkit()">
+									<a href="../books.html">Books</a>
+								</li>
+								<li id="column" class="unselectable" onmouseover="scrollOverLiterature()" onmouseleave="scrollOverToolkit()">
+									<a class="dropdown" href="toolkit.html" style="width:110px">Literature</a>
+									<ul>
+										<li>
+											<a href="../literature/applications-multidlc.html" style="font-size:10px;">Applications of Multi-Dimensional LC</a>
+										</li>
+										<li>
+											<a href="../literature/reviews.html">Reviews</a>
+										</li>
+										<li>
+											<a href="../literature/top-30.html">Top 30</a>
+										</li>
+										<li>
+											<a href="../literature/top-10.html">Top Ten</a>
+										</li>
+									</ul>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverTerminology()" onmouseleave="scrollOverToolkit()">
+									<a href="../terminology.html">Terminology</a>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverToolkit()" onmouseleave="scrollOverToolkit()">
+									<a href="toolkit.html">Tools</a>
+								</li>
+							</ul>
+							<cap id="column"></cap>
+						</menu>
+					</header>
+					<main>
+						<div id="description">
+							<h1 id="page-title">HPLC Toolkit</h1>
+							<p>Below are the links to several tools that can be used to aid in HPLC calculations.  The 
+							bar on the left contains links to additional HPLC simulators and tools</p>
+						<hr>
+						</hr>
+						</div>
+						<div id="content">
+							<table  id="toolkit">
+							<tr>
+								<td class='menubar'>
+								<p><b>
+									Basics
+								</p></b></td>
+								<td class='buttonlink'><a class='option' href='tubing_volume.html'>Tubing Volume</a></td>
+								<td class='buttonlink'><a class='option' href='viscosity_calculator.html'>Viscosity Calculator</a></td>
+								<td class='buttonlink'><a class='option' href=''> </a></td>
+								<td class='buttonlink'><a class='option' href=''> </a></td>
+								<td class='buttonlink'><a class='option' href=''> </a></td>
+							</tr>
+							<tr>
+								<td class='menubar'>
+								<p><b>
+									Dynamics-Level 1
+								</p></b></td>
+								<td class='buttonlink'><a class='option' href=''>Viscosity</a></td>
+								<td class='buttonlink'><a class='option' href=''>Diffusion Coefficients</a></td>
+								<td class='buttonlink'><a class='option' href='crossing_point.html'>Partical Size Crossover</a></td>
+								<td class='buttonlink'><a class='option' href=''>Gradients</a></td>
+								<td class='buttonlink'><a class='option' href=''>Method Transfer</a></td>
+							</tr>
+							<tr>
+								<td class='menubar'>
+								<p><b>
+									Dynamics-Level 2
+								</p></b></td>
+								<td class='buttonlink'><a class='option' href=''>Dynamics Dashboard</a></td>
+								<td class='buttonlink'><a class='option' href=''>Poppe Plot-Isocratic</a></td>
+								<td class='buttonlink'><a class='option' href=''>Poppe Plot-Gradient</a></td>
+								<td class='buttonlink'><a class='option' href=''>Compare Poppe Curves</a></td>
+								<td class='buttonlink'><a class='option' href='pressure_prediction.html'>Pressure Prediction Plot</a></td>
+							</tr>
+							<tr>
+								<td class='menubar'>
+								<p><b>
+									2D Liquid Chromatography
+								</p></b></td>
+								<td class='buttonlink'><a class='option' href=''>Fraction Volume</a></td>
+								<td class='buttonlink'><a class='option' href=''> </a></td>
+								<td class='buttonlink'><a class='option' href=''> </a></td>
+								<td class='buttonlink'><a class='option' href=''> </a></td>
+								<td class='buttonlink'><a class='option' href=''> </a></td>
+							</tr>
+							<tr>
+								<td class='menubar'>
+								<p><b>
+									LC Mass Spec
+								</p></b></td>
+								<td class='buttonlink'><a class='option' href=''> </a></td>
+								<td class='buttonlink'><a class='option' href=''> </a></td>
+								<td class='buttonlink'><a class='option' href=''> </a></td>
+								<td class='buttonlink'><a class='option' href=''> </a></td>
+								<td class='buttonlink'><a class='option' href=''> </a></td>
+							</tr>
+						</table>
+						</div>
+					</main>
+					<div id="copyright">
+						Copyright &copy 2016 Multi-Dimensional Separations - All Rights Reserved
+					</div>
+				</div>
+
+			</div>
+
+			<div id="lowerYellowBar" class="bar"></div>
+			<footer></footer>
+		</div>
+	</body>
+</html>

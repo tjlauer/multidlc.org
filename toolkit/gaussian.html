@@ -1,0 +1,231 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Gaussian Plotter</title>
+  <link rel="stylesheet" href="d3.slider.css" /> 
+   <script src="http://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+  <div id="form">
+  µ:
+  <input id ="Miu" type="text" name="miu" value="0">
+  <br>
+  σ:
+  <input id="Sigma" type="text" name="sigma" value=".5">
+  <br><br>
+  <input type="submit" onclick="graphNonSlider()" value="Calculate">
+</div> 
+
+
+<script type="text/javascript">
+
+  var data = [];
+
+  // PLOT
+  // line chart based on http://bl.ocks.org/mbostock/3883245
+  var margin = {
+        top: 20,
+        right: 20,
+        bottom: 30,
+        left: 50
+    },
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+  var x = d3.scaleLinear()
+    .range([0, width]);
+
+  var y = d3.scaleLinear()
+    .range([height*.7, 0]);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  var xAxis = d3.axisBottom().scale(x);
+  var yAxis = d3.axisLeft().scale(y);
+  var line = d3.line()
+    .x(function(d) {
+        return x(d.q);
+    })
+    .y(function(d) {
+        return y(d.p);
+    });
+
+var miu = 0;
+var sigma =  .5;
+  svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height * .7 + ")")
+    .call(xAxis);
+
+  svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis);
+
+  graph(); // populate data 
+
+  // Manual input of values
+  function graphNonSlider(){
+    miu = document.getElementById("Miu").value;
+    sigma = document.getElementById("Sigma").value;
+    graph();
+  }
+
+  function graph(){
+    getData();
+
+    // Clears the graph
+    d3.select("#graph").remove();
+
+    x.domain(d3.extent(data, function(d) {
+      return d.q;
+      }));
+    y.domain(d3.extent(data, function(d) {
+      return d.p;
+      }));
+
+    // Plotting the G
+    svg.append("path")
+      .datum(data)
+      .attr("class", "line")
+      .attr("id", "graph")
+      .attr("d", line);
+  }
+
+
+  function getData() {
+  // loop to populate data array with 
+  // probabily - quantile pairs
+    data = [];
+    var k = 0;
+    for (var x = 0; x < 1; x = x + .01) {
+      q = x  // calc random draw from normal dist
+      p = gaussian(x, sigma, miu) // calc prob of rand draw
+      el = {
+        "q": q,
+        "p": p
+      }
+      data.push(el)
+      k++;
+    }
+    //alert(k);
+    // need to sort for plotting
+  //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+      
+    /*data.sort(function(x, y) {
+      return x.q - y.q;
+      }); */
+  };
+
+//taken from Jason Davies science library
+// https://github.com/jasondavies/science.js/
+  function gaussian(x, sigma, mean) {
+    var gaussianConstant = 1 / (Math.sqrt(2 * Math.PI) * sigma);
+    var exponent = -(x - mean) * (x - mean)/(2*sigma*sigma);
+    return gaussianConstant * Math.exp(exponent);
+  };
+
+//https://bl.ocks.org/mbostock/6452972
+// Sliders
+var x = d3.scaleLinear()
+    .domain([0, 180])
+    .range([0, width])
+    .clamp(true);
+
+var slider = svg.append("g")
+    .attr("class", "slider")
+    .attr("transform", "translate(" + margin.left + "," + height * .85 + ")");
+
+slider.append("line")
+    .attr("class", "track")
+    .attr("x1", x.range()[0])
+    .attr("x2", x.range()[1])
+  .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-inset")
+  .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-overlay")
+    .call(d3.drag()
+        .on("start.interrupt", function() { slider.interrupt(); })
+        .on("start drag", function() { changeMiu(x.invert(d3.event.x)); }));
+
+slider.insert("g", ".track-overlay")
+    .attr("class", "ticks")
+    .attr("transform", "translate(0," + 18 + ")")
+  .selectAll("text")
+  .data(x.ticks(10))
+  .enter().append("text")
+    .attr("x", x)
+    .attr("text-anchor", "middle")
+    .text(function(d) { return d; });
+
+var slider2 = svg.append("g")
+    .attr("class", "slider")
+    .attr("transform", "translate(" + margin.left + "," + height  + ")");
+
+slider2.append("line")
+    .attr("class", "track")
+    .attr("x1", x.range()[0])
+    .attr("x2", x.range()[1])
+  .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-inset")
+  .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+    .attr("class", "track-overlay")
+    .call(d3.drag()
+        .on("start.interrupt", function() { slider2.interrupt(); })
+        .on("start drag", function() { changeSigma(x.invert(d3.event.x)); }));
+
+slider2.insert("g", ".track-overlay")
+    .attr("class", "ticks")
+    .attr("transform", "translate(0," + 18 + ")")
+  .selectAll("text")
+  .data(x.ticks(10))
+  .enter().append("text")
+    .attr("x", x)
+    .attr("text-anchor", "middle")
+    .text(function(d) { return d; });
+
+var handle = slider.insert("circle", ".track-overlay")
+    .attr("class", "handle")
+    .attr("r", 9);
+
+var handle2 = slider2.insert("circle", ".track-overlay")
+    .attr("class", "handle")
+    .attr("r", 9);
+
+/*slider.transition() // Gratuitous intro!
+    .duration(750)
+    .tween("hue", function() {
+      var i = d3.interpolate(0, 70);
+      return function(t) { hue(i(t)); };
+    });*/
+
+
+function changeMiu(h) {
+  handle.attr("cx", x(h));
+  miu = h;
+  graph();
+  //svg.style("background-color", d3.hsl(h, 0.8, 0.8));
+}
+
+function changeSigma(h) {
+  handle2.attr("cx", x(h));
+  sigma = h;
+  graph();
+}
+
+
+// need to sort for plotting
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+  data.sort(function(x, y) {
+      return x.q - y.q;
+  }); 
+
+
+</script>
+</body>
+</html>
