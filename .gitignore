@@ -6,12 +6,13 @@
 inventory/
 *backup*/
 *trash*/
-**/*htdocs default docs*/
-**/megatable/
-**/megatable/wp-content/
-**/megatable/wp-includes/
-**/megatable/dbconfig.php
-**/chromSimLite/
-**/wikiChrom/
-**/wikiChrom_new/
-**/wikiChrom_ARCHIVED/
+*htdocs default docs*/
+pirok/
+megatable/
+megatable/wp-content/
+megatable/wp-includes/
+megatable/dbconfig.php
+chromSimLite/
+wikiChrom/
+wikiChrom_new/
+wikiChrom_ARCHIVED/
