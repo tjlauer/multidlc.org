@@ -2,6 +2,10 @@
 .html~
 .vs/
 .idea/
+.well-known/
+*backup*/
+*trash*/
+**/*htdocs default docs*/
 **/megatable/
 **/megatable/wp-content/
 **/megatable/wp-includes/
