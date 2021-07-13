@@ -64,18 +64,3 @@ Agilent SB-C18,Water,Methanol,0,100,10,150,p-xylene,18.60112905,-0.035232525,17.
 Agilent SB-C18,Water,Methanol,0,100,10,150,p-dichlorobenzene,19.82780565,-0.038510356,19.46621767,-0.034304037
 Agilent SB-C18,Water,Methanol,0,100,10,150,propylbenzene,21.66724134,-0.040779941,20.28349365,-0.033992127
 Agilent SB-C18,Water,Methanol,0,100,10,150,n-butylbenzene,24.29235972,-0.045139192,22.21729734,-0.036714258
-Eclipse PAH,pH 3.2,Acetonitrile,0,100,40,40,nortriptyline,7.49455636,0,19.33436196,0
-Eclipse PAH,pH 3.2,Acetonitrile,0,100,40,40,amitriptyline,7.504864803,0,18.62926835,0
-Eclipse PAH,pH 3.2,Acetonitrile,0,100,40,40,p-nitrophenol,3.389696894,0,9.295888054,0
-Eclipse PAH,pH 3.2,Acetonitrile,0,100,40,40,"5,5-diphenylhydantoin",6.285324777,0,17.87550841,0
-Eclipse PAH,pH 3.2,Acetonitrile,0,100,40,40,acetophenone,4.32125594,0,10.36688612,0
-PFP,pH 3.2,Acetonitrile,0,100,40,40,nortriptyline,6.091486571,0,14.13167557,0
-PFP,pH 3.2,Acetonitrile,0,100,40,40,amitriptyline,6.247966304,0,14.26378108,0
-PFP,pH 3.2,Acetonitrile,0,100,40,40,p-nitrophenol,3.7887812,0,10.15610083,0
-PFP,pH 3.2,Acetonitrile,0,100,40,40,"5,5-diphenylhydantoin",5.172820655,0,13.86878416,0
-PFP,pH 3.2,Acetonitrile,0,100,40,40,acetophenone,4.169671424,0,13.75567203,0
-SB-C18,pH 3.2,Acetonitrile,0,100,40,40,nortriptyline,7.245190588,0,11.53616646,0
-SB-C18,pH 3.2,Acetonitrile,0,100,40,40,amitriptyline,7.364703013,0,11.81453301,0
-SB-C18,pH 3.2,Acetonitrile,0,100,40,40,p-nitrophenol,3.864241291,0,7.616627991,0
-SB-C18,pH 3.2,Acetonitrile,0,100,40,40,"5,5-diphenylhydantoin",6.393918973,0,12.00773975,0
-SB-C18,pH 3.2,Acetonitrile,0,100,40,40,acetophenone,4.632807784,0,9.001566454,0

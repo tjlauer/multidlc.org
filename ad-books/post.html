@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Add Post</title>
+		<link rel="stylesheet" type="text/css" href="../index2.css">
+		<link rel="icon" href="../images/mini-icon.png">
+		<link rel="shortcut icon" href="../images/mini-icon.png">
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+		<script type="text/javascript" src="../master-js.js"></script>
+		<script type="text/javascript" src="valid.js"></script>
+	</head>
+	<body>
+		<div id="everything">
+			<div class="bar"></div>
+			<div id="topYellowBar" class="bar"></div>
+			<div style="min-width:1060px">
+				<div id="left-top">
+					<a href="../index.html"><img src="../images/icon.png" alt="Multi-D LC" id="logo"></img></a>
+					<div id="corner"></div>
+				</div>
+				<div id="middle-top">
+					<header>
+						<div id="tfheader">
+							<form id="tfnewsearch" method="get" action="http://www.google.com">
+								<input type="text" id="tfq" class="tftextinput" name="q" size="21" maxlength="120" value="Search our website">
+								<input type="submit" value=">" class="tfbutton">
+							</form>
+							<div class="tfclear"></div>
+						</div>
+						<a href="http://gustavus.edu">
+						<div id="banner" onmouseover="lower($(this))" onmouseleave="raise($(this))">
+							<img src="../images/gac_logo.png" alt="GAC" id="gac" style="width:76px"></img>
+						</div> </a>
+						<h1></br>Multi-Dimensional Separations</h1>
+
+						<div style="color:#FDBD2D;float:left;">
+							A site dedicated to multi-dimensional separations with an emphasis on the liquid phase.
+						</div>
+
+						<img src="../images/peak.png" alt="peak" class="peak" id="peak1" style="right:-16px"></img>
+						<img src="../images/peak2.png" alt="peak" class="peak" id="peak2" style="right:209px"></img>
+						<menu>
+							<cap id="column"></cap>
+							<ul class="cf">
+								<li class="unselectable" onmouseover="scrollOverHome()" onmouseleave="scrollOverAbout()">
+									<a href="../index.html">Home</a>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverAbout()" onmouseleave="scrollOverAbout()">
+									<a href="about.html">About</a>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverBooks()" onmouseleave="scrollOverAbout()">
+									<a href="../books.html">Books</a>
+								</li>
+								<li id="column" class="unselectable" onmouseover="scrollOverLiterature()" onmouseleave="scrollOverAbout()">
+									<a class="dropdown" href="dwight-stoll.html" style="width:110px">Literature</a>
+									<ul>
+										<li>
+											<a href="../literature/applications-multidlc.html" style="font-size:10px;">Applications of Multi-Dimensional LC</a>
+										</li>
+										<li>
+											<a href="../literature/reviews.html">Reviews</a>
+										</li>
+										<li>
+											<a href="../literature/top-30.html">Top 30</a>
+										</li>
+										<li>
+											<a href="../literature/top-10.html">Top Ten</a>
+										</li>
+									</ul>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverTerminology()" onmouseleave="scrollOverAbout()">
+									<a href="../terminology.html">Terminology</a>
+								</li>
+								<li class="unselectable" onmouseover="scrollOverToolkit()" onmouseleave="scrollOverAbout()">
+									<a href="../toolkit/toolkit.html">Tools</a>
+								</li>
+							</ul>
+							<cap id="column"></cap>
+						</menu>
+					</header>
+					<main>
+						<div id="description">
+							<h1>Create New Blogpost</h1>
+							<p>
+								Fill in the fields below to create a new item to appear on the homepage newsfeed
+							</p>
+							<p>
+								<strong>To make font changes to your submissions, please put content in between div tags corresponding to the desired effect.</strong>
+							</p>
+							<ol class="bloglist">
+								<li>
+									<span>&#60;italics&#62;&#60;/italics&#62;</span> should be used to italicise content
+								</li>
+								<li>
+									<span>&#60;bold&#62;&#60;/bold&#62;</span> should be used for bolded content
+								</li>
+								<li>
+									<span>&#60;subscript&#62;&#60;/subscript&#62;</span> will give the previous content a subscript of the contents
+								</li>
+								<li>
+									<span>&#60;superscript&#62;&#60;/superscript&#62;</span> will give the previous content a superscript of the contents
+								</li>
+							</ol>
+							<p>
+								<strong>To add a link to your name or description, follow the instructions below:</strong>
+							</p>
+							<ol class="bloglist">
+								<li>
+									The following is a template to create a link to another page in html: <span>&#60;link href=' '&#62;&#60;/link&#62;</span>
+								</li>
+								<li>
+									Between the parenthesis in &#60;link href=''&#62;, type the full link, including <i>http://</i> at the beginning
+								</li>
+								<li>
+									Between the two brackets, &#60;link href='http://samplelink.com'&#62; and &#60;/link&#62;, put the text that you want the user to click on
+								</li>
+								<li>
+									Your final link should look like this: <span>&#60;link href='http://samplelink.com'&#62;Click Here!&#60;/link&#62;</span> and will look like this:
+									<br/>
+									<a href="post.html">Click Here!</a>
+								</li>
+						</div>
+						<hr>
+						</hr>
+						<div id="hidden-good" style="display:none">
+							<h1>Success! Submit your Post</h1>
+						</div>
+						<div id="hidden-bad" style="display:none">
+							<h1>Not quite. Fix the following:</h1>
+							<p id="fixthis"></p>
+						</div>
+						<div id="content">
+								<form id="post" method="post" action="confirm.php" onsubmit="if(validateSubmission()){ submitAll();} else {return false;}">
+								<table id="fields">
+									<tr>
+										<td>
+										<p class="description">
+											Title
+										</p></td>
+										<td>
+										<input id="title" name="title" class="post-field" type="text" onchange="document.getElementById('submit').disabled = true" required>
+										</td>
+									</tr>
+									<tr>
+										<td>
+										<p class="description">
+											Post Author
+										</p></td>
+										<td>
+										<input id="author" name="author" class="post-field" type="text" onchange="document.getElementById('submit').disabled = true" required>
+										</td>
+									</tr>
+									<tr>
+										<td>
+										<p class="description">
+											Other Info
+										</p>
+										<p class="sub">
+											(e.g. Bibliography entry, location, etc.)
+										</p></td>
+										<td>
+										<input id="info" name="info" class="post-field" type="text" onchange="document.getElementById('submit').disabled = true">
+										</td>
+									</tr>
+									<tr>
+										<td>
+										<p class="description">
+											Description
+										</p></td>
+										<td><textarea id="desc" name="description" cols="50" rows="5" onchange="document.getElementById('submit').disabled = true" required></textarea></td>
+									</tr>
+									<tr>
+										<td colspan="2"><input type="checkbox" id="check-web">All links referenced in the description have been checked</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+										<button id="validate" type="button" onclick="validateSubmission();" value="Validate Submission">Validate Submission</button>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+										<input type="submit" id="submit" name="submit" value="Submit" disabled=true>
+										</td>
+									</tr>
+								</table>
+							</form>
+						</div>
+					</main>
+					<div id="copyright">
+						Copyright &copy 2016 Multi-Dimensional Separations - All Rights Reserved
+					</div>
+				</div>
+
+			</div>
+
+			<div id="lowerYellowBar" class="bar"></div>
+			<footer></footer>
+		</div>
+	</body>
+</html>

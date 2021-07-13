@@ -3,6 +3,7 @@
 .vs/
 .idea/
 .well-known/
+inventory/
 *backup*/
 *trash*/
 **/*htdocs default docs*/

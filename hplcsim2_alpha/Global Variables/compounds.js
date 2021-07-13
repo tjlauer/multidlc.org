@@ -1,0 +1,74 @@
+var compoundList = [
+	"phenol",
+	"benzonitrile",
+	"p-chlorophenol",
+	"acetophenone",
+	"nitrobenzene"
+];
+
+var compoundFamilies = {
+	"Phenones":[[
+		"acetophenone",
+		"benzophenone",
+		"propiophenone",
+		"butyrophenone",
+		"valerophenone",
+		"hexanophenone",
+		"heptanophenone",
+		"octanophenone"
+		],
+		true
+	],
+	"Benzenes":[[
+		"benzene",
+		"nitrobenzene",
+		"bromobenzene",
+		"ethylbenzene",
+		"propylbenzene",
+		"n-butylbenzene",
+		"p-dichlorobenzene"
+		],
+		true
+	],
+	"Parabens":[[
+		"methylparaben",
+		"ethylparaben",
+		"propylparaben",
+		"butylparaben"
+		],
+		true
+	],
+	"Impurities":[[
+		"Impurity-A",
+		"Impurity-B",
+		"Impurity-C",
+		"Impurity-D",
+		"Impurity-E",
+		"Impurity-F",
+		"Impurity-G"
+		],
+		true
+	],
+	"Other":[[
+		"N-benzylformamide",
+		"benzylalcohol",
+		"phenol",
+		"3-phenylpropanol",
+		"p-chlorophenol",
+		"benzonitrile",
+		"methylbenzoate",
+		"anisole",
+		"p-nitrotoluene",
+		"p-nitrobenzylchloride",
+		"toluene",
+		"naphthalene",
+		"p-xylene",
+		"diethylformamide",
+		"acetanilide",
+		"ibuprofen",
+		"Loratidine"
+		],
+		true
+	],
+	"Custom":[[], true]
+}
