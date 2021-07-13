@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Multi-Dimensional Separations</title>
+		<link rel="stylesheet" type="text/css" href="index2-content.css">
+		<link rel="icon" href="images/mini-icon.png">
+		<link rel="shortcut icon" href="images/mini-icon.png">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+	</head>
+	<body>
+	  <div id="everything">
+		<div class="bar"></div>
+		<div id="topYellowBar" class="bar"></div>
+		<div style="min-width:1060px">
+			<div id="left">
+				<img src="images/icon.png" alt="Multi-D LC" id="logo"></img>
+				<div id="corner"></div>
+			</div>
+			<div id="middle">
+				<header>
+					<div id="tfheader">
+						<form id="tfnewsearch" method="get" action="http://www.google.com">
+						        <input type="text" id="tfq" class="tftextinput" name="q" size="21" maxlength="120" value="Search our website"><input type="submit" value=">" class="tfbutton">
+						</form>
+						<div class="tfclear"></div>
+					</div>
+					<a href="http://gustavus.edu">
+						<div id="banner" onmouseover="lower($(this))" onmouseleave="raise($(this))">
+							<img src="images/gac_logo.png" alt="GAC" id="gac" style="width:76px"></img>
+						</div>
+					</a>
+					<h1></br>Multi-Dimensional Separations</h1>
+
+					<div style="color:#FDBD2D;float:left;"> A site dedicated to multi-dimensional separations with an emphasis on the liquid phase.</div>
+
+					<img src="images/peak.png" alt="peak" class="peak" id="peak1"></img>					
+					<img src="images/peak2.png" alt="peak" class="peak" id="peak2"></img>	
+					<menu>
+						<cap id="column"></cap>
+						<ul class="cf">
+							<li class="unselectable" style="color:white;padding:14px 16px">Home</li>
+							<li class="unselectable"><a href="about/about.html">About</a></li>
+							<li class="unselectable"><a href="books.html">Books</a></li>
+							<li id="column" class="unselectable"><a class="dropdown" href="multiDLC.html" style="width:110px">Literature</a>
+								<ul>
+									<li><a href="literature/applications-multidlc.html" style="font-size:10px;">Applications of Multi-Dimensional LC</a></li>
+									<li><a href="literature/reviews.html">Reviews</a></li>
+									<li><a href="literature/top-30.html">Top 30</a></li>
+									<li><a href="literature/top-10.html">Top Ten</a></li>
+								</ul>
+							</li>
+							<li class="unselectable"><a href="terminology.html">Terminology</a></li>
+							<li class="unselectable"><a href="toolkit/toolkit.html">Tools</a></li>
+						</ul>
+						<cap id="column"></cap>
+					</menu>
+				</header>
+			</div>
+			<div id="content">
+			<main>
+					
+			</main>
+			</div>
+			<div id="copyright"> Copyright &copy 2016 Multi-Dimensional Separations - All Rights Reserved </div>
+		</div>
+		<div id="lowerYellowBar" class="bar"></div>
+		<footer>  </footer>
+		</div>
+		<script>
+			window.onload = function(){ 
+				//Get submit button
+				var submitbutton = document.getElementById("tfq");
+				//Add listener to submit button
+				if(submitbutton.addEventListener){
+					submitbutton.addEventListener("click", function() {
+						if (submitbutton.value == 'Search our website'){//Customize this text string to whatever you want
+							submitbutton.value = '';
+						}
+					});
+				}
+
+			}
+
+			function scrollDown(el) {
+			    el.animate({
+			        scrollTop: el[0].scrollHeight
+			    }, 90000, function() {
+			        scrollUp(el)
+			    });
+			    document.querySelector("#news").style.overflow = "hidden";
+			};
+
+			function halt(el) {
+				el.stop();
+			    document.querySelector("#news").style.overflow = "scroll";
+			}
+
+			function scrollUp(el) {
+			    el.animate({
+			        scrollTop: 0
+			    }, 5000, function() {
+			        scrollDown(el);
+			    });
+			};
+			scrollDown($("#news"));
+
+			function lower(el) {
+			    el.animate({top:'-45px'},200);
+			}
+
+			function raise(el) {
+			    el.animate({top:'-50px'},200);
+			}
+
+			$(window).scroll(function(){
+			    
+			    if($(window).scrollTop() >= '101'){
+			        $('menu').removeClass('floating');
+			        $('menu').addClass('fixed');
+			        $('li a').removeClass('floatingColor');
+			        $('li a').addClass('fixedColor');
+			    }
+			    
+			    else{
+			        $('menu').addClass('floating');
+			        $('menu').removeClass('fixed');
+			        $('li a').addClass('floatingColor');
+			        $('li a').removeClass('fixedColor');
+			    }
+			});
+
+		</script>
+	</body>
+</html>

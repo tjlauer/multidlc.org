@@ -1,5 +1,9 @@
+.com.apple.timemachine.supported
+.htaccess.phpupgrader.bc74e1fc
+.htaccess.phpupgrader.initial
 .htaccess
 .html~
+*.zip
 .vs/
 .idea/
 .well-known/

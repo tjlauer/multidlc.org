@@ -1,0 +1,355 @@
+<html>
+  <head>
+    <title>Multi-Dimensional Separations</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="index2.css">
+    <link rel="icon" href="images/mini-icon.png">
+    <link rel="shortcut icon" href="images/mini-icon.png">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+    <script type="text/javascript" src="master-js.js"></script>
+  </head>
+  <body>
+    <div id="everything">
+      <div class="bar"></div>
+      <div id="topYellowBar" class="bar"></div>
+      <div style="min-width:1060px">
+        <div id="left">
+          <img src="images/icon.png" alt="Multi-D LC" id="logo"></img>
+          <div id="corner"></div>
+        </div>
+        <div id="middle">
+          <header>
+            <div id="tfheader">
+              <form id="tfnewsearch" method="get" action="http://www.google.com">
+                <input type="text" id="tfq" class="tftextinput" name="q" size="21" maxlength="120" value="Search our website">
+                <input type="submit" value=">" class="tfbutton">
+              </form>
+              <div class="tfclear"></div>
+            </div>
+            <a href="http://gustavus.edu">
+            <div id="banner" onmouseover="lower($(this))" onmouseleave="raise($(this))">
+              <img src="images/gac_logo.png" alt="GAC" id="gac" style="width:76px"></img>
+            </div> </a>
+            <h1></br>Multi-Dimensional Separations</h1>
+
+            <div style="color:#FDBD2D;float:left;">
+              A site dedicated to multi-dimensional separations with an emphasis on the liquid phase.
+            </div>
+
+            <img src="images/peak.png" alt="peak" class="peak" id="peak1" style="right:60px"></img>
+            <img src="images/peak2.png" alt="peak" class="peak" id="peak2" style="right:285px"></img>
+            <menu>
+              <cap id="column"></cap>
+              <ul class="cf">
+                <li class="unselectable">
+                  <a href="index.html">Home</a>
+                </li>
+                <li class="unselectable" onmouseover="scrollOverAbout()" onmouseleave="scrollOverHome()">
+                  <a href="about/about.html">About</a>
+                </li>
+                <li class="unselectable" onmouseover="scrollOverBooks()" onmouseleave="scrollOverHome()">
+                  <a href="books.html">Books</a>
+                </li>
+                <li id="column" class="unselectable" onmouseover="scrollOverLiterature()" onmouseleave="scrollOverHome()">
+                  <a class="dropdown" href="index.html" style="width:110px">Literature</a>
+                  <ul>
+                    <li>
+                      <a href="literature/applications-multidlc.html" style="font-size:10px;">Applications of Multi-Dimensional LC</a>
+                    </li>
+                    <li>
+                      <a href="literature/reviews.html">Reviews</a>
+                    </li>
+                    <li>
+                      <a href="literature/top-30.html">Top 30</a>
+                    </li>
+                    <li>
+                      <a href="literature/top-10.html">Top Ten</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="unselectable" onmouseover="scrollOverTerminology()" onmouseleave="scrollOverHome()">
+                  <a href="terminology.html">Terminology</a>
+                </li>
+                <li class="unselectable" onmouseover="scrollOverToolkit()" onmouseleave="scrollOverHome()">
+                  <a href="toolkit/toolkit.html">Tools</a>
+                </li>
+              </ul>
+              <cap id="column"></cap>
+            </menu>
+          </header>
+          <main>
+            <div id="description">
+              <h1 id="page-title">Welcome!</h1>
+            <hr>
+            </hr>
+            <p>
+            This page is an outcome of an informal survey I made of
+                several HPLC experts in preparation for an article I wrote for
+                <i>LCGC Magazine</i> in 2018. The intention here is to collect
+                a number of (mostly free) resources that users of liquid
+                chromatography find very useful in their work on HPLC. If you
+                know of an resource that you think is particularly useful but
+                not listed here, I'd be happy to know about it. Please feel
+                  free to email me with suggestions.<br>
+                  &nbsp;&nbsp;&nbsp; ~ Dwight R. Stoll (updated October, 2017)
+            </p>
+            </div>
+            <div id="content"> 
+            <table cellspacing="2" cellpadding="2"
+              border="1">
+              <tbody>
+                <tr>
+                  <td width="33%" valign="middle" bgcolor="#33ccff"
+                    align="center"><font size="+2"><b>Resources, Broadly
+                        Defined<br>
+                      </b></font></td>
+                  <td width="33%" valign="middle" bgcolor="#33ccff"
+                    align="center"><font size="+2"><b>Tutorials,
+                        Primers, and Guides</b><b><br>
+                      </b></font></td>
+                  <td valign="middle" bgcolor="#33ccff" align="center"><font
+                      size="+2"><b>Tools for LC Simulation and
+                        Calculation</b><b><br>
+                      </b></font></td>
+                </tr>
+                <tr>
+                  <td width="33%" valign="top" align="left">
+                    <ul>
+                      <li><a href="http://www.chromatographyonline.com"
+                          target="_blank"><b>LCGC Website</b></a> -
+                        Great free resource for all aspects of
+                        separation science</li>
+                      <li><b><a
+                            href="http://www.lcresources.com/training/tsbible.html"
+                            target="_blank">John Dolan's LC
+                            Troubleshooting Bible</a></b> - All of
+                        Dolan's LC Troubleshooting articles, searchable
+                        by keyword<br>
+                      </li>
+                      <li>List of <a
+                          href="https://www.lcresources.com/training/LCR-resources.html"
+                          target="_blank">miscellaneous resources</a>
+                        curated by <i>LC Resources</i></li>
+                      <li><a href="http://www.asdlib.org"
+                          target="_blank"><b>Analytical Sciences Digital
+                            Library</b></a> - Collection of resources
+                        developed with funding from the U.S. National
+                        Science Foundation</li>
+                      <li><b><a
+                            href="http://www.agilent.com/en-us/promotions/academia-resources"
+                            target="_blank">Agilent Teaching Resources
+                            for Academia</a></b> - Collection of videos
+                        and animations demonstrating the principles of
+                        various LC and MS approaches<br>
+                      </li>
+                    </ul>
+                  </td>
+                  <td width="33%" valign="top" align="left">
+                    <ul>
+                      <li><b><a href="http://www.chromacademy.com"
+                            target="_blank">CHROMAcademy</a></b> - Full
+                        suite of multimedia learning resources for
+                        sample preparation, chromatography, and mass
+                        spectrometry - free and paid levels of
+                        subscription</li>
+                      <li><b><a href="http://www.chromedia.org"
+                            target="_blank">Chromedia</a></b> -
+                        multimedia learning resources for sample
+                        preparation, chromatography, and mass
+                        spectrometry - free and paid levels of
+                        subscription</li>
+                      <li><b>Primers by Agilent</b></li>
+                      <ul>
+                        <li><a
+                            href="http://www.agilent.com/en-us/library/literature?N=159"
+                            target="_blank">List of all Primers</a><br>
+                        </li>
+                        <li><a
+href="https://www.agilent.com/cs/library/primers/Public/LC-Handbook-Complete-2.pdf"
+                            target="_blank">Introduction to Liquid
+                            Chromatography</a></li>
+                        <li><a
+href="http://www.reolgrade.ru/docs/documents/news/2017-04-21/5991-2359EN.pdf"
+                            target="_blank">Two-Dimensional Liquid
+                            Chromatography</a><br>
+                        </li>
+                      </ul>
+                      <li><b>Primers by Waters</b></li>
+                      <ul>
+                        <li><a
+href="http://www.waters.com/waters/en_US/Primers/nav.htm?locale=en_US&amp;cid=10048920"
+                            target="_blank">List of all Primers</a></li>
+                        <li><a
+href="http://www.waters.com/waters/en_US/HPLC---High-Performance-Liquid-Chromatography-Explained/nav.htm?locale=en_US&amp;cid=10048919"
+                            target="_blank">Beginners Guide to HPLC</a></li>
+                      </ul>
+                      <li><b><a
+                            href="http://www.youtube.com/watch?v=kz_egMtdnL4"
+                            target="_blank">Introductory Video about
+                            HPLC</a></b> - Produced by the Royal Society
+                        of Chemistry, captures in 5 minutes the essence
+                        of how HPLC works and why it is so useful.</li>
+                      <li><b><a
+href="http://www.sigmaaldrich.com/analytical-chromatography/chiral-chromatography.html"
+                            target="_blank">Supelco Resources for Chiral
+                            Chromatography</a></b> - multimedia learning
+                        resources for chiral separations<br>
+                      </li>
+                    </ul>
+                  </td>
+                  <td valign="top" align="left">
+                    <ul>
+                      <li><b>HPLC Simulator</b> (www.hplcsimulator.org)
+                        - Dynamic simulator for exploring the effects of
+                        operating variables on reversed-phase
+                        separations - Developed at U. Minnesota<br>
+                      </li>
+                      <ul>
+                        <li><a href="http://www.hplcsimulator.org"
+                            target="_blanks">Java application</a> (free)</li>
+                      </ul>
+                      <li><b>HPLC Simulator</b> - More detailed
+                        simulator compared to hplcsimulator.org -
+                        Developed at U. Geneva<br>
+                      </li>
+                      <ul>
+                        <li><a
+                            href="https://epgl.unige.ch/labs/fanal/hplc-calculator"
+                            target="_blanks">Excel spreadsheet</a>
+                          (free)</li>
+                      </ul>
+                      <li><b>HPLC Teaching Assistant</b> - Calculators
+                        to facilitate teaching and learning about HPLC
+                        concepts - Developed at U. Geneva<br>
+                      </li>
+                      <ul>
+                        <li><a
+                            href="https://epgl.unige.ch/labs/fanal/hplc-teaching-assistant"
+                            target="_blank">Excel spreadsheet</a> (free)</li>
+                      </ul>
+                      <li><b>Calculator Apps for Parameter Estimation </b>(e.g.,
+
+
+                        pressure vs. flow rate)</li>
+                      <ul>
+                        <li>Agilent (free) (<a
+href="http://www.agilent.com/en-us/products/liquid-chromatography/lccalcweb"
+                            target="_blank">web</a>, <a
+                            href="https://itunes.apple.com/us/app/lc-calculator/id355827606?mt=8"
+                            target="_blank">iOS</a>)</li>
+                      </ul>
+                      <li><b>Method Transfer Tools </b>- Calculators
+                        for scaling to different particle sizes,
+                        movement between instruments, etc.</li>
+                      <ul>
+                        <li>Thermo <a
+href="https://www.thermofisher.com/content/.../RSLC-Method-Transfer-Tool-2-3.xlsm"
+                            target="_blank">Excel spreadsheet</a> (free)</li>
+                        <li>Waters<b> </b><a
+                            href="http://www.waters.com/waters/support.htm?lid=134891632"
+                            target="_blank">Desktop application</a>
+                          (free)<b><br>
+                          </b></li>
+                      </ul>
+                      <li><a href="https://www.zirchrom.com/Pass.asp"
+                          target="_blank"><b>Buffer Wizard</b></a> -
+                        Web-based application designed to assist with
+                        calculations needed for preparing buffers (free
+                        and paid versions available)<br>
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top" bgcolor="#33ccff" align="center"><br>
+                    <p align="center"><font size="+2"><b>Wall Charts and
+                          Quick-Start Guides</b></font><br>
+                    </p>
+                  </td>
+                  <td valign="top" bgcolor="#33ccff" align="center"><font
+                      size="+2"><b>Tools for Column Selection and
+                        Characterization</b><b><br>
+                      </b></font></td>
+                  <td valign="top" bgcolor="#33ccff" align="center"><font
+                      size="+2"><b>Tools for Molecular Properties</b><b><br>
+                      </b></font></td>
+                </tr>
+                <tr>
+                  <td width="33%" valign="top" align="left"><br>
+                    <ul>
+                      <li>LCGC's <a
+                          href="http://www.chromatographyonline.com/lcgc-ebooks-10-01-2016"
+                          target="_blank">Sample Preparation Guide</a></li>
+                      <li>LCGC's <a
+                          href="http://www.chromatographyonline.com/lcgc-ebooks-05-01-2017"
+                          target="_blank">LC Troubleshooting Guide</a></li>
+                    </ul>
+                    <p align="center"> </p>
+                    <ul>
+                    </ul>
+                  </td>
+                  <td width="33%" valign="middle" align="left">
+                    <ul>
+                      <li><a
+                          href="http://www.usp.org/resources/pqri-approach-column-equiv-tool"
+                          target="_blank"><b>PQRI Website</b></a> -
+                        Database of column parameters based on the
+                        Hydrophobic Subtraction (HS) model developed by
+                        Snyder, Dolan, and coworkers - maintained by
+                        United States Pharmacopoeia<br>
+                      </li>
+                      <li> <a href="http://www.hplccolumns.org/"
+                          target="_blank"><b>hplccolumns.org</b></a> -
+                        Database of column parameters based on HS model,
+                        presented in a different way compared to USP
+                        PQRI site, and with unique tools for
+                        visualization - maintained by Stoll Laboratory</li>
+                      <li><b><a
+href="www.waters.com/waters/promotionDetail.htm?id=10048475&amp;locale=en_CA"
+                            target="_blank">Waters RP Column Selectivity
+                            Chart</a></b>&nbsp; - Tool for comparing
+                        selectivities of different RP chemistries, and
+                        columns from different vendors<b><br>
+                        </b></li>
+                      <li><b><a
+                            href="http://www.icoa.fr/classification_c18_columns/index.php"
+                            target="_blank">ICOA Website</a></b> -
+                        Classification tool for RP phases developed at
+                        Institut de Chimie Organique et Analytique<br>
+                      </li>
+                    </ul>
+                  </td>
+                  <td valign="top" align="left">
+                    <ul>
+                      <li> <a href="http://www.chemspider.com/"
+                          target="_blank"><b>ChemSpider</b> </a>- Free
+                        chemical structure database providing access to
+                        millions of structures from hundreds of data
+                        sources. Enables predication of properties
+                        including pKa and log P using a number of
+                        different algorithms</li>
+                      <li><b><a href="http://webbook.nist.gov/"
+                            target="_blank">NIST WebBook</a></b> - Free
+                        access to physical and chemical property data
+                        compiled by U.S. National Institute of Standards
+                        and Technology (NIST)<br>
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </main>
+          <div id="copyright">
+            Copyright &copy 2016 Multi-Dimensional Separations - All Rights Reserved
+          </div>
+        </div>
+
+      </div>
+
+      <div id="lowerYellowBar" class="bar"></div>
+      <footer></footer>
+    </div>
+  </body>
+</html>
